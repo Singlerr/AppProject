@@ -2,7 +2,7 @@
 Git 저장소 사용법:
 
 
-(처음 소스코드를 받아올 때, 이미 받아져있고, 다른 사람이 작업한 최신 상태의 소스코드를 받으려면 7번으로) 1. git clone 으로 소스코드를 받아옵니다.
+(처음 소스코드를 받아올 때, 이미 받아져있고, 다른 사람이 작업한 최신 상태의 소스코드를 받으려면 7번으로) 1. git clone https://github.com/Singlerr/EscapeHonbab.git 으로 소스코드를 받아옵니다.
 2. 소스코드에서 작업을 합니다.
 3. git add *으로 모든 파일을 선택합니다.
 4. git remote add origin https://github.com/Singlerr/EscapeHonbab 을 입력하여 파일을 업로드할 저장소를 선택합니다.
