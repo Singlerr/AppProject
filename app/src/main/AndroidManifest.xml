@@ -9,6 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EscapeHonbab">
+        <activity android:name=".FriendsActivity"></activity>
+        <activity android:name=".RestaurantAddressActivity" />
+        <activity android:name=".NewRestaurantActivity" />
+        <activity android:name=".RestPicChangeActivity" />
+        <activity android:name=".RestaurantActivity" />
+        <activity android:name=".SearchRestaurantActivity" />
+        <activity android:name=".InputReviewActivity" />
+        <activity android:name=".RestaurantListActivity" />
+        <activity android:name=".ChatRoomActivity" />
+        <activity android:name=".ChattingListActivity" />
+        <activity android:name=".BlacklistActivity" />
+        <activity android:name=".LogoutActivity" />
+        <activity android:name=".TermsActivity" />
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".MatchingDecision" />
+        <activity android:name=".MatchedStatusActivity" />
+        <activity
+            android:name=".MainActivity2"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.EscapeHonbab.NoActionBar" />
+        <activity android:name=".MatchActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".InterestListActivity" />
+        <activity android:name=".ProfileSettingActivity" />
+        <activity android:name=".VerificationActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
