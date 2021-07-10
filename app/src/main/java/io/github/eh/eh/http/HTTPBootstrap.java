@@ -19,14 +19,19 @@ import io.github.eh.eh.http.bundle.ResponseBundle;
 import io.github.eh.eh.http.cipher.CipherBase;
 import lombok.Builder;
 
-@Builder
 public class HTTPBootstrap {
 
     private StreamHandler handler;
 
-    private String host = "localhost";
+    public static int PORT;
 
-    private int port = 1300;
+    public static String HTTP_LOGIN = "";
+
+    public static String HTTP_REGISTER = "";
+
+    private String host;
+
+    private int port;
 
     private int timeOut = 5;
 
@@ -34,7 +39,6 @@ public class HTTPBootstrap {
         URL url = new URL(host);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setConnectTimeout(timeOut);
-
         OutputStream stream = con.getOutputStream();
         HTTPContext httpCtx = HTTPContext.getInstance(stream);
 
@@ -51,6 +55,35 @@ public class HTTPBootstrap {
 
         handler.onRead(responseBundle);
 
+        //Free memory
+        mapper = null;
+
         inputStream.close();
+    }
+
+    public static Builder builder(){
+        return new Builder();
+    }
+
+    public static class Builder{
+        private HTTPBootstrap bootstrap;
+        private Builder(){
+            this.bootstrap = new HTTPBootstrap();
+        }
+        public Builder port(int port){
+            bootstrap.port = port;
+            return this;
+        }
+        public Builder host(String host){
+            bootstrap.host = host;
+            return this;
+        }
+        public Builder streamHandler(StreamHandler handler){
+            bootstrap.handler = handler;
+            return this;
+        }
+        public HTTPBootstrap build(){
+            return bootstrap;
+        }
     }
 }

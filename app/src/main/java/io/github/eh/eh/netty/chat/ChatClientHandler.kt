@@ -23,7 +23,7 @@ class ChatClientHandler : ChannelInboundHandlerAdapter {
     @Throws(Exception::class)
     override fun channelActive(ctx: ChannelHandlerContext) {
         context = ctx
-        chatContext = ChatContext.Companion.getInstance(ctx)
+        chatContext = ChatContext.getInstance(ctx)
     }
 
     @Throws(Exception::class)

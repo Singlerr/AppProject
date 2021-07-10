@@ -29,6 +29,7 @@ public class HTTPContext {
 
     public void write(Object o) throws IOException, NoSuchPaddingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         outputStream.write(CipherBase.getInstance().encode(objectMapper.writeValueAsBytes(o)));
+
     }
 
     public void write(byte[] data,boolean encrypted) throws IOException, NoSuchPaddingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
