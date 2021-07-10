@@ -52,9 +52,7 @@ public class HTTPBootstrap {
         ObjectMapper mapper = new ObjectMapper();
 
         ResponseBundle responseBundle = mapper.readValue(CipherBase.getInstance().decode(inputStream), ResponseBundle.class);
-
         handler.onRead(responseBundle);
-
         //Free memory
         mapper = null;
 
