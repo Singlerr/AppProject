@@ -16,16 +16,5 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val boot:HTTPBootstrap = HTTPBootstrap.builder().host(HTTPBootstrap.HTTP_LOGIN).port(1300)
-            .streamHandler(object : StreamHandler {
-                override fun onRead(bundle: ResponseBundle?) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onWrite(outputStream: HTTPContext?) {
-
-                    TODO("Not yet implemented")
-                }
-        }).build();
     }
 }
