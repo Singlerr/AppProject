@@ -38,7 +38,8 @@ public class HTTPBootstrap {
     public void submit() throws IOException, NoSuchPaddingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         URL url = new URL(host);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setConnectTimeout(timeOut);
+        //con.setConnectTimeout(timeOut);
+        con.setDoOutput(true);
         OutputStream stream = con.getOutputStream();
         HTTPContext httpCtx = HTTPContext.getInstance(stream);
 

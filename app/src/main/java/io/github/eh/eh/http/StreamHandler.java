@@ -5,6 +5,6 @@ import io.github.eh.eh.http.bundle.ResponseBundle;
 public interface StreamHandler {
 
     void onWrite(HTTPContext outputStream);
-    void onRead(ResponseBundle bundle);
+    void onRead(Object obj);
 
 }

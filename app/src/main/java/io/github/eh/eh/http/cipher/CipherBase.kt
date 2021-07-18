@@ -50,7 +50,7 @@ class CipherBase private constructor() {
         BadPaddingException::class
     )
     fun encode(data: ByteArray?): ByteArray {
-        val secretKey: SecretKey = SecretKeySpec(data, "AES")
+        val secretKey: SecretKey = SecretKeySpec(PRIVATE_KEY.toByteArray(StandardCharsets.UTF_8), "AES")
         val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
         cipher.init(
             Cipher.ENCRYPT_MODE, secretKey, IvParameterSpec(

@@ -23,7 +23,7 @@ class ChatClientBootstrap private constructor(host: String, port: Int) {
     private var future: ChannelFuture? = null
     @Throws(InterruptedException::class)
     fun startConnection(msgHandler: MessageHandler) {
-        messageHandler = ChatClientHandler.Companion.getInstance(msgHandler)
+        messageHandler = ChatClientHandler.getInstance(msgHandler)
         val bootstrap = Bootstrap()
         val group: EventLoopGroup = NioEventLoopGroup(3)
         bootstrap.group(group)
