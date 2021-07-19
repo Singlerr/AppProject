@@ -13,11 +13,10 @@ import io.netty.handler.codec.serialization.ObjectDecoder
 import io.netty.handler.codec.serialization.ObjectEncoder
 import io.netty.handler.logging.LogLevel
 import io.netty.handler.logging.LoggingHandler
-import lombok.Getter
 
 class ChatClientBootstrap private constructor(host: String, port: Int) {
-    @Getter
     private var messageHandler: ChatClientHandler? = null
+    get() {return messageHandler}
     private val host: String? = null
     private val port = 0
     private var future: ChannelFuture? = null

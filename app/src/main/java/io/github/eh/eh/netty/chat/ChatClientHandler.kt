@@ -3,13 +3,12 @@ package io.github.eh.eh.netty.chat
 import io.github.eh.eh.netty.chat.bundle.MessageBundle
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
-import lombok.Getter
 
 class ChatClientHandler : ChannelInboundHandlerAdapter {
     private var chatContext: ChatContext? = null
 
-    @Getter
     private var context: ChannelHandlerContext? = null
+    get() {return context}
     private var messageHandler: MessageHandler? = null
 
     private constructor(context: ChatContext) {
