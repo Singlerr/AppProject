@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="io.github.eh.eh">
 
     <application
@@ -26,12 +27,9 @@
         <activity android:name=".SettingActivity" />
         <activity android:name=".MatchingDecision" />
         <activity android:name=".MatchedStatusActivity" />
-        <activity
-            android:name=".MainActivity2"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.EscapeHonbab.NoActionBar" />
         <activity android:name=".MatchActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".InterestListActivity" />
         <activity android:name=".ProfileSettingActivity" />
         <activity android:name=".VerificationActivity" />

@@ -40,11 +40,11 @@
         app:layout_constraintVertical_bias="0.245" />
 
     <EditText
-        android:id="@+id/etv_phoneNumber"
+        android:id="@+id/etv_id"
         android:layout_width="350dp"
         android:layout_height="63dp"
         android:ems="10"
-        android:hint="휴대폰 번호"
+        android:hint="ID"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

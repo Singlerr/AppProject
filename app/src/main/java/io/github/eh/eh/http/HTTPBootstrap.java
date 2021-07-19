@@ -17,7 +17,6 @@ import javax.crypto.NoSuchPaddingException;
 
 import io.github.eh.eh.http.bundle.ResponseBundle;
 import io.github.eh.eh.http.cipher.CipherBase;
-import lombok.Builder;
 
 public class HTTPBootstrap {
 
