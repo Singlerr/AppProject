@@ -1,7 +1,7 @@
 package io.github.eh.eh
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class RestaurantAddressActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

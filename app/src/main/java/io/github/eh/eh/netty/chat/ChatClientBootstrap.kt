@@ -1,6 +1,5 @@
 package io.github.eh.eh.netty.chat
 
-import io.github.eh.eh.netty.chat.ChatClientHandler
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelInitializer
@@ -16,10 +15,13 @@ import io.netty.handler.logging.LoggingHandler
 
 class ChatClientBootstrap private constructor(host: String, port: Int) {
     private var messageHandler: ChatClientHandler? = null
-    get() {return messageHandler}
+        get() {
+            return messageHandler
+        }
     private val host: String? = null
     private val port = 0
     private var future: ChannelFuture? = null
+
     @Throws(InterruptedException::class)
     fun startConnection(msgHandler: MessageHandler) {
         messageHandler = ChatClientHandler.getInstance(msgHandler)

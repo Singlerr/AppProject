@@ -7,10 +7,12 @@ class User {
      * A user id
      **/
     var userId: String? = null
+
     /**
      * A user password
      */
     var password: String? = null
+
     /**
      * A real name of a user, not a nick name.
      **/

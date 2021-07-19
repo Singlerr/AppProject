@@ -25,12 +25,17 @@ class MatchingClientBootstrap private constructor(private val host: String, priv
                 .handler(object : ChannelInitializer<SocketChannel>() {
                     @Throws(Exception::class)
                     override fun initChannel(ch: SocketChannel) {
-                        ch.pipeline().addLast(ObjectDecoder(1024*1024,ClassResolvers.weakCachingConcurrentResolver(javaClass.classLoader)))
+                        ch.pipeline().addLast(
+                            ObjectDecoder(
+                                1024 * 1024,
+                                ClassResolvers.weakCachingConcurrentResolver(javaClass.classLoader)
+                            )
+                        )
                         ch.pipeline().addLast(handler)
                         ch.pipeline().addLast(ObjectEncoder())
                     }
                 })
-            val future = bootstrap.connect(host,port).sync();
+            val future = bootstrap.connect(host, port).sync()
             future.channel().closeFuture().sync()
         } catch (ex: Exception) {
             ex.printStackTrace()

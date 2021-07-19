@@ -1,25 +1,14 @@
-
 package io.github.eh.eh
 
 import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
 import io.github.eh.eh.http.StreamHandler
-import io.github.eh.eh.http.bundle.ResponseBundle
 import io.github.eh.eh.serverside.User
-import io.netty.channel.ChannelInitializer
-import io.netty.channel.socket.SocketChannel
-import io.netty.handler.codec.serialization.ClassResolvers
-import io.netty.handler.codec.serialization.ObjectDecoder
-import io.netty.handler.codec.serialization.ObjectEncoder
 import kotlinx.android.synthetic.main.activity_login.*
-import io.github.eh.eh.FindPasswordActivity
-import io.github.eh.eh.MainActivity
-import io.github.eh.eh.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,16 +33,14 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                     override fun onRead(obj: Any) {
-                        if(obj is User) {
-                            if(obj.result == "SUCCESS_TRANSACTION") {
+                        if (obj is User) {
+                            if (obj.result == "SUCCESS_TRANSACTION") {
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
-                            }
-                            else if(obj.result == "ERROR_TRANSACTION") {
+                            } else if (obj.result == "ERROR_TRANSACTION") {
                                 dialog("fail")
                             }
-                        }
-                        else {
+                        } else {
                             dialog("fail")
                         }
                     }
@@ -80,10 +67,10 @@ class LoginActivity : AppCompatActivity() {
 
 
     // 로그인 성공/실패 시 다이얼로그를 띄워주는 메소드
-    fun dialog(type: String){
+    fun dialog(type: String) {
         var dialog = AlertDialog.Builder(this)
 
-        if(type.equals("fail")) {
+        if (type.equals("fail")) {
             dialog.setTitle("로그인 실패")
             dialog.setMessage("아이디와 비밀번호를 확인해주세요")
         }

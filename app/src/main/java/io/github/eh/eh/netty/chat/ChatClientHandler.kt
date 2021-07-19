@@ -8,7 +8,9 @@ class ChatClientHandler : ChannelInboundHandlerAdapter {
     private var chatContext: ChatContext? = null
 
     private var context: ChannelHandlerContext? = null
-    get() {return context}
+        get() {
+            return context
+        }
     private var messageHandler: MessageHandler? = null
 
     private constructor(context: ChatContext) {

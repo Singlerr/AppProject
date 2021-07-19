@@ -1,8 +1,6 @@
 package io.github.eh.eh.http.cipher
 
 import android.util.Base64
-import kotlin.Throws
-import io.github.eh.eh.http.cipher.CipherBase
 import io.github.eh.eh.ioutils.IOUtils
 import java.io.IOException
 import java.io.InputStream
@@ -16,6 +14,7 @@ import javax.crypto.spec.SecretKeySpec
 
 class CipherBase private constructor() {
     private val PRIVATE_KEY = "Vaf6vj6MmVo1NIUbKfk1SfXx3JGdM48B"
+
     @Throws(
         IOException::class,
         NoSuchAlgorithmException::class,
@@ -50,7 +49,8 @@ class CipherBase private constructor() {
         BadPaddingException::class
     )
     fun encode(data: ByteArray?): ByteArray {
-        val secretKey: SecretKey = SecretKeySpec(PRIVATE_KEY.toByteArray(StandardCharsets.UTF_8), "AES")
+        val secretKey: SecretKey =
+            SecretKeySpec(PRIVATE_KEY.toByteArray(StandardCharsets.UTF_8), "AES")
         val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
         cipher.init(
             Cipher.ENCRYPT_MODE, secretKey, IvParameterSpec(

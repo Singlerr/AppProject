@@ -16,14 +16,14 @@ import io.github.eh.eh.http.cipher.CipherBase;
 
 public class HTTPContext {
 
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
     private OutputStream outputStream;
 
-    private HTTPContext(OutputStream outputStream){
+    private HTTPContext(OutputStream outputStream) {
         this.objectMapper = new ObjectMapper();
     }
 
-    public static HTTPContext getInstance(OutputStream outputStream){
+    public static HTTPContext getInstance(OutputStream outputStream) {
         return new HTTPContext(outputStream);
     }
 
@@ -32,8 +32,8 @@ public class HTTPContext {
 
     }
 
-    public void write(byte[] data,boolean encrypted) throws IOException, NoSuchPaddingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
-        if(! encrypted)
+    public void write(byte[] data, boolean encrypted) throws IOException, NoSuchPaddingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+        if (!encrypted)
             outputStream.write(data);
         else
             outputStream.write(CipherBase.getInstance().encode(data));

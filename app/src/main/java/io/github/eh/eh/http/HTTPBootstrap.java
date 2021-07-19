@@ -20,19 +20,19 @@ import io.github.eh.eh.http.cipher.CipherBase;
 
 public class HTTPBootstrap {
 
-    private StreamHandler handler;
-
     public static int PORT;
-
     public static String HTTP_LOGIN = "";
-
     public static String HTTP_REGISTER = "";
-
+    private StreamHandler handler;
     private String host;
 
     private int port;
 
-    private int timeOut = 5;
+    private final int timeOut = 5;
+
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public void submit() throws IOException, NoSuchPaddingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         URL url = new URL(host);
@@ -59,28 +59,29 @@ public class HTTPBootstrap {
         inputStream.close();
     }
 
-    public static Builder builder(){
-        return new Builder();
-    }
+    public static class Builder {
+        private final HTTPBootstrap bootstrap;
 
-    public static class Builder{
-        private HTTPBootstrap bootstrap;
-        private Builder(){
+        private Builder() {
             this.bootstrap = new HTTPBootstrap();
         }
-        public Builder port(int port){
+
+        public Builder port(int port) {
             bootstrap.port = port;
             return this;
         }
-        public Builder host(String host){
+
+        public Builder host(String host) {
             bootstrap.host = host;
             return this;
         }
-        public Builder streamHandler(StreamHandler handler){
+
+        public Builder streamHandler(StreamHandler handler) {
             bootstrap.handler = handler;
             return this;
         }
-        public HTTPBootstrap build(){
+
+        public HTTPBootstrap build() {
             return bootstrap;
         }
     }
