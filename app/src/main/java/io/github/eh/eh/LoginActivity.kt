@@ -1,8 +1,9 @@
 package io.github.eh.eh
 
-import android.app.AlertDialog
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
@@ -14,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        // 로그인 버튼
+        // login button
         btn_login.setOnClickListener {
             val id = etv_id.text.toString()
             val pw = etv_password.text.toString()
@@ -32,16 +33,17 @@ class LoginActivity : AppCompatActivity() {
                         outputStream!!.write(user)
                     }
 
-                    override fun onRead(obj: Any) {
+                    override fun onRead(obj: Any?) {
                         if (obj is User) {
                             if (obj.result == "SUCCESS_TRANSACTION") {
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
-                            } else if (obj.result == "ERROR_TRANSACTION") {
-                                dialog("fail")
+                                IntentSupport(obj)
                             }
-                        } else {
-                            dialog("fail")
+                            else if (obj.result == "ERROR_TRANSACTION") {
+                                loginfailed()
+                            }
+                        }
+                        else {
+                            loginfailed()
                         }
                     }
                 }).build()
@@ -59,20 +61,20 @@ class LoginActivity : AppCompatActivity() {
             startActivity(tofindpwintent)
         }
 
+
+    }
+    //go to MainActivity
+    private fun IntentSupport(user: Any?) {
+        user as Bundle
+        val tomainintent = Intent(this, MainActivity::class.java)
+        intent.putExtras(user)
+        startActivity(tomainintent)
     }
 
-    private fun Intent(streamHandler: StreamHandler, java: Class<MainActivity>): Intent? {
-        return null
-    }
-
-
-    // 로그인 성공/실패 시 다이얼로그를 띄워주는 메소드
-    fun dialog(type: String) {
-        var dialog = AlertDialog.Builder(this)
-
-        if (type.equals("fail")) {
-            dialog.setTitle("로그인 실패")
-            dialog.setMessage("아이디와 비밀번호를 확인해주세요")
-        }
+    //Toast message when login failed
+    private fun loginfailed() {
+        Toast.makeText(this, "로그인 실패, 아이디와 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
     }
 }
+
+
