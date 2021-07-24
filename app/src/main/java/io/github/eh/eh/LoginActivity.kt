@@ -64,10 +64,11 @@ class LoginActivity : AppCompatActivity() {
 
     }
     //go to MainActivity
-    private fun IntentSupport(user: Any?) {
-        user as Bundle
+    private fun IntentSupport(user: User?) {
         val tomainintent = Intent(this, MainActivity::class.java)
-        intent.putExtras(user)
+        var bundle:Bundle = Bundle()
+        bundle.putSerializable("user",user)
+        tomainintent.putExtra("user",bundle)
         startActivity(tomainintent)
     }
 

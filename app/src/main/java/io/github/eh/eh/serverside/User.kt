@@ -1,8 +1,9 @@
 package io.github.eh.eh.serverside
 
+import java.io.Serializable
 import java.sql.Date
 
-class User {
+class User : Serializable{
     /**
      * A user id
      **/
