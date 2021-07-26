@@ -10,6 +10,10 @@ import io.github.eh.eh.http.HTTPContext
 import io.github.eh.eh.http.StreamHandler
 import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.net.ConnectException
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
             val bootstrap: HTTPBootstrap = HTTPBootstrap.builder()
                 .port(1300)
-                .host("testHost")
+                .host(Env.API_URL)
                 .streamHandler(object : StreamHandler {
 
 
@@ -47,7 +51,10 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                 }).build()
-            bootstrap.submit()
+            CoroutineScope(Dispatchers.IO).launch {
+                    bootstrap.submit()
+
+            }
         }
         // go to RegisterActivity
         btn_moveToRegister.setOnClickListener {
