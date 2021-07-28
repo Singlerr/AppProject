@@ -25,8 +25,8 @@ class IntroActivity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_intro)
 
-        loadingBar.max = 2000
-        var animator = ObjectAnimator.ofInt(loadingBar,"progress",0,2000)
+        loadingBar.max = 5000
+        var animator = ObjectAnimator.ofInt(loadingBar,"progress",0,5000)
         animator.duration = 1000
         animator.interpolator = AccelerateInterpolator()
         animator.addListener({
