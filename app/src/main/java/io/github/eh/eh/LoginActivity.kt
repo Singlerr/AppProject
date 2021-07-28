@@ -2,13 +2,18 @@ package io.github.eh.eh
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.transition.Explode
 import android.transition.Slide
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import io.github.eh.eh.asutils.IAlertDialog
 import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
@@ -20,8 +25,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.net.ConnectException
+import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity() {
+    private var instance:LoginActivity? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         with(window){
@@ -29,12 +36,12 @@ class LoginActivity : AppCompatActivity() {
             enterTransition = Slide()
         }
         setContentView(R.layout.activity_login)
-
+        instance = this
         // login button
         btn_login.setOnClickListener {
             val id = etv_id.text.toString()
             val pw = etv_password.text.toString()
-
+            Utils.showMessageBox(instance,"Test","Test",AlertDialog.BUTTON_POSITIVE)
             val bootstrap: HTTPBootstrap = HTTPBootstrap.builder()
                 .port(1300)
                 .host(Env.API_URL)
@@ -85,7 +92,22 @@ class LoginActivity : AppCompatActivity() {
             val tofindpwintent = Intent(this, FindPasswordActivity::class.java)
             startActivity(tofindpwintent)
         }
+        btn_previousPage.setOnClickListener {
+            var dialog = AlertDialog.Builder(instance)
+                .setMessage("정말로 앱을 종료하시겠습니까?")
+                .setCancelable(false)
+                .setTitle("확인")
+                .setPositiveButton("네"
+                ) { p0, p1 -> finishAndRemoveTask()
+                    exitProcess(0) }
+                .create()
 
+            dialog.setContentView(R.layout.dialog)
+            dialog.setCancelable(false)
+            //dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.setTitle("확인")
+            dialog.show()
+        }
 
     }
     //go to MainActivity

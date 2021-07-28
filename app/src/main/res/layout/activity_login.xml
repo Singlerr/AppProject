@@ -33,10 +33,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204" />
+        app:layout_constraintVertical_bias="0.239" />
 
     <EditText
         android:id="@+id/etv_id"
@@ -61,6 +61,8 @@
         android:id="@+id/etv_password"
         android:layout_width="350dp"
         android:layout_height="63dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:ems="10"
         android:textCursorDrawable="@drawable/color_cursor"
         android:hint="비밀번호"
@@ -141,10 +143,11 @@
         android:layout_width="225dp"
         android:layout_height="64dp"
         android:background="#00FFFFFF"
-        android:text="뒤로가기"
-        android:drawableStart="@drawable/i"
+        android:text="로그인"
+        android:drawableStart="@drawable/ic_back_icon"
         android:gravity="left|center"
         android:textColor="#0E0E0E"
+        android:textSize="20dp"
         app:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
