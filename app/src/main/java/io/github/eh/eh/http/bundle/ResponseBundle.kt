@@ -1,3 +1,3 @@
 package io.github.eh.eh.http.bundle
 
-class ResponseBundle(responseCode: Int, response: String)
+class ResponseBundle(val responseCode: Int, val response: String)
