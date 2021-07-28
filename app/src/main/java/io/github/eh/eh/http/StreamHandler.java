@@ -6,4 +6,5 @@ public interface StreamHandler {
 
     void onRead(Object obj);
 
+    void onFailed();
 }

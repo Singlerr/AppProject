@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDFD"
+    android:background="@color/white"
     tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/tv_title1"
-        android:layout_width="238dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
+        android:layout_width="244dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="450dp"
         android:text="다이닝 프렌즈 찾기"
         android:textColor="#FFC107"
@@ -20,10 +18,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <TextView
         android:id="@+id/tv_title2"
@@ -31,22 +29,24 @@
         android:layout_height="wrap_content"
         android:text="혼밥탈출"
         android:textColor="#FFC107"
-        android:textSize="36sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245" />
+        app:layout_constraintVertical_bias="0.204" />
 
     <EditText
         android:id="@+id/etv_id"
         android:layout_width="350dp"
         android:layout_height="63dp"
-        android:backgroundTint="#C8C4C4"
         android:ems="10"
         android:hint="ID"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/input"
         android:inputType="textPersonName"
         android:textColorHint="#C8C4C4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,11 +60,11 @@
         android:id="@+id/etv_password"
         android:layout_width="350dp"
         android:layout_height="63dp"
-        android:backgroundTint="#C8C4C4"
         android:ems="10"
         android:hint="비밀번호"
         android:inputType="textPersonName"
         android:textColorHint="#C8C4C4"
+        android:background="@drawable/input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.377"
@@ -78,7 +78,9 @@
         android:layout_height="63dp"
         android:text="로그인"
         android:textSize="20dp"
-        app:backgroundTint="#FFC107"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:background="@drawable/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.377"
@@ -121,13 +123,48 @@
         android:layout_width="198dp"
         android:layout_height="36dp"
         android:background="#00FFFFFF"
+        android:gravity="right"
         android:text="비밀번호를 잊으셨나요?"
         android:textColor="#0E0E0E"
         app:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintHorizontal_bias="0.821"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.597" />
+
+    <Button
+        android:id="@+id/btn_previousPage"
+        android:layout_width="225dp"
+        android:layout_height="64dp"
+        android:background="#00FFFFFF"
+        android:text="로그인"
+        android:drawableStart="@drawable/ic_baseline_arrow_back_24"
+        android:gravity="left|center"
+        android:textColor="#0E0E0E"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/msg_error"
+        android:layout_width="198dp"
+        android:layout_height="36dp"
+        android:background="#00FFFFFF"
+        android:gravity="right"
+        android:text=""
+        android:textColor="#e94250"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.821"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

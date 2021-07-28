@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.net.ConnectException
 
 class LoginActivity : AppCompatActivity() {
@@ -45,17 +46,24 @@ class LoginActivity : AppCompatActivity() {
                                 IntentSupport(obj)
                             }
                             else if (obj.result == "ERROR_TRANSACTION") {
-                                loginfailed()
+                                loginFailed()
                             }
                         }
                         else {
-                            loginfailed()
+                            loginFailed()
                         }
+                    }
+
+                    override fun onFailed() {
+
                     }
                 }).build()
             CoroutineScope(Dispatchers.IO).launch {
+                try {
                     bootstrap.submit()
-
+                }catch (e:Exception){
+                    loginFailedIO()
+                }
             }
         }
         // go to RegisterActivity
@@ -82,9 +90,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
     //Toast message when login failed
-    private fun loginfailed() {
-        Utils.showMessageBox(this,"로그인 실패","로그인 실패, 아이디와 비밀번호를 다시 확인해주세요.",AlertDialog.BUTTON_POSITIVE)
+    private fun loginFailed() {
+        msg_error.text = "비밀번호가 일치하지 않습니다."
+        //Utils.showMessageBox(this,"로그인 실패","로그인 실패, 아이디와 비밀번호를 다시 확인해주세요.",AlertDialog.BUTTON_POSITIVE)
         //Toast.makeText(this, "로그인 실패, 아이디와 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
+    }
+    private fun loginFailedIO(){
+        msg_error.text = "로그인을 할 수 없습니다."
     }
 }
 

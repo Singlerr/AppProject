@@ -22,7 +22,7 @@
         <activity android:name=".RestaurantActivity"
             android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".SearchRestaurantActivity"
-            android:theme="@style/Theme.AppCompat"/>
+            android:theme="@style/Theme.AppCompat.Light"/>
         <activity android:name=".InputReviewActivity"
             android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".RestaurantListActivity"
@@ -57,7 +57,7 @@
         <activity android:name=".RegisterActivity"
             android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".IntroActivity"
             android:theme="@style/Theme.AppCompat"
             android:exported="true">

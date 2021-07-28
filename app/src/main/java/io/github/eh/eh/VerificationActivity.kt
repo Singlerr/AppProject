@@ -44,6 +44,10 @@ class VerificationActivity : AppCompatActivity() {
                     override fun onWrite(outputStream: HTTPContext?) {
                         outputStream!!.write(user)
                     }
+
+                    override fun onFailed() {
+                        TODO("Not yet implemented")
+                    }
                 })
         }
     }
