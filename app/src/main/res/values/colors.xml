@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="colorPrimary">@color/purple_500</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="mainColor">#f9b447</color>
 </resources>

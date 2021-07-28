@@ -15,7 +15,7 @@
         android:layout_marginEnd="248dp"
         android:layout_marginRight="248dp"
         android:text="혼밥탈출"
-        android:textColor="#FFC107"
+        android:textColor="@color/mainColor"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +33,7 @@
         android:layout_marginRight="200dp"
         android:layout_marginBottom="450dp"
         android:text="WELCOME!"
-        android:textColor="#FFC107"
+        android:textColor="@color/mainColor"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,17 +55,18 @@
 
     <EditText
         android:id="@+id/etv_verificationPhoneNumber"
-        android:layout_width="350dp"
-        android:layout_height="63dp"
+        android:layout_width="261dp"
+        android:layout_height="49dp"
         android:ems="10"
         android:hint="ex)01012341234"
         android:inputType="textPersonName"
+        android:background="@drawable/input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.438" />
+        app:layout_constraintVertical_bias="0.445" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
@@ -74,6 +75,7 @@
         android:ems="10"
         android:hint="6자리 인증 코드(3분 내로 입력)"
         android:inputType="textPersonName"
+        android:background="@drawable/input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
@@ -88,7 +90,7 @@
         android:text="인증 완료"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:backgroundTint="#FFC107"
+        app:backgroundTint="@color/mainColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
@@ -100,21 +102,22 @@
         android:id="@+id/btn_reRequest"
         android:layout_width="75dp"
         android:layout_height="45dp"
+        android:background="@drawable/button"
         android:text="재요청"
         android:textColor="#373434"
-        app:backgroundTint="#BFB8B8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443" />
+        app:layout_constraintVertical_bias="0.448" />
 
     <TextView
         android:id="@+id/timeLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:gravity="right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.084"

@@ -4,6 +4,9 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Explode
+import android.transition.Slide
+import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.asutils.Utils
@@ -21,7 +24,12 @@ import java.net.ConnectException
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        with(window){
+            requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+            enterTransition = Slide()
+        }
         setContentView(R.layout.activity_login)
+
         // login button
         btn_login.setOnClickListener {
             val id = etv_id.text.toString()
