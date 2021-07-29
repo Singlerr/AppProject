@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Verification">
 
     <TextView
@@ -90,7 +91,7 @@
         android:text="인증 완료"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:backgroundTint="@color/mainColor"
+        android:background="@drawable/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"

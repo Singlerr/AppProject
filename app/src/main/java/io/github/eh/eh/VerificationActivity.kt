@@ -3,6 +3,9 @@ package io.github.eh.eh
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.format.DateUtils
+import android.transition.Slide
+import android.view.Gravity
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
@@ -16,8 +19,13 @@ class VerificationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        with(window){
+            requestWindowFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+            exitTransition = Slide(Gravity.RIGHT)
+        }
         setContentView(R.layout.activity_verification);
-        var user = savedInstanceState!!.getSerializable("user") as User
+
+        var user = intent.extras!!.getSerializable("user") as User
         btn_reRequest.setOnClickListener {
             val http = HTTPBootstrap.builder()
                 .host(Env.AUTH_API_URL)

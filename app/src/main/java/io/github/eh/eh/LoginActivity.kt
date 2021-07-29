@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.transition.Explode
 import android.transition.Slide
+import android.view.Gravity
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -33,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         with(window){
             requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
-            enterTransition = Slide()
+            enterTransition = Slide(Gravity.RIGHT)
         }
         setContentView(R.layout.activity_login)
         instance = this
@@ -93,19 +94,16 @@ class LoginActivity : AppCompatActivity() {
             startActivity(tofindpwintent)
         }
         btn_previousPage.setOnClickListener {
-            var dialog = AlertDialog.Builder(instance)
-                .setMessage("정말로 앱을 종료하시겠습니까?")
-                .setCancelable(false)
-                .setTitle("확인")
-                .setPositiveButton("네"
-                ) { p0, p1 -> finishAndRemoveTask()
-                    exitProcess(0) }
-                .create()
+            var dialog = IAlertDialog.Builder(instance)
+                .message("정말로 앱을 종료하시겠습니까?")
+                .title("확인")
+                .positiveButton{
+                    finishAndRemoveTask()
+                    exitProcess(0)
+                }
+                .negativeButton{
 
-            dialog.setContentView(R.layout.dialog)
-            dialog.setCancelable(false)
-            //dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.setTitle("확인")
+                }.create()
             dialog.show()
         }
 

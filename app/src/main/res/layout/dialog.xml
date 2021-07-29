@@ -1,65 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/round"
-    tools:layout_height="wrap_content">
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:background="@color/mainColor"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/messageTextView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/messageTextView"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:background="@color/white"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/edit_username"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"/>
+        android:hint="Username" />
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_username"
+        android:layout_alignParentStart="true"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/negativeButton"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:textSize="18sp"
-        android:background="#9B9B9B"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/positiveButton"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:id="@+id/button"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_password"
+        android:layout_alignTop="@+id/edit_password"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="60dp"
+        android:text="Button" />
 
     <Button
-        android:id="@+id/positiveButton"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:textSize="18sp"
-        android:background="@color/mainColor"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/negativeButton" />
+        android:id="@+id/button2"
+        android:layout_width="114dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_password"
+        android:layout_alignTop="@+id/edit_password"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="142dp"
+        android:layout_toEndOf="@+id/button"
+        android:text="Button" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
