@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">EscapeHonbab</string>
-    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_activity_main2" translatable="false">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
 
     <string name="Title1" translatable="false">관심사를 입력하세요</string>
     <string name="Subtitle" translatable="false">관심사는 프로필 설정에서 언제든지 변경 가능합니다.</string>
@@ -46,6 +46,21 @@
     <string name="finished" translatable="false">가입완료</string>
     <string name="todo" translatable="false">TODO</string>
     <string name="back" translatable="false">가입하기</string>
+    <string name="title">프렌즈 매칭</string>
+    <string name="Matching">매칭 시작</string>
+    <string name="explain1">아래 조건에 맞게 매칭을 시작합니다</string>
+    <string name="sex">선호 성별</string>
+    <string name="woman">여성</string>
+    <string name="man">남성</string>
+    <string name="setting">…</string>
+    <string name="age">선호 나이</string>
+    <string name="store">주변 맛집 보러가기</string>
+    <string name="all">모두</string>
+    <string name="mex">지금 이 시간, 혼밥탈출하기 딱 좋은 시간</string>
+    <string name="age1">랜덤</string>
+    <string name="age2">20-25세</string>
+    <string name="age3">26-30세</string>
+    <string name="age4">30세 이상</string>
 
 
 </resources>
