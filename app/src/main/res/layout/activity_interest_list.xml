@@ -46,7 +46,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:text="@string/Title1"
-        android:textColor="#FF9800"
+        android:textColor="@color/mainColor"
         android:textSize="20sp" />
 
     <TextView
@@ -97,7 +97,7 @@
                         android:layout_weight="1"
                         android:text="@string/subject1_1"
                         android:textColor="#000000"
-                        app:buttonTint="#FF9800" />
+                        app:buttonTint="@color/mainColor" />
 
                     <CheckBox
                         android:id="@+id/checkYangsik"
@@ -105,7 +105,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject1_2"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -114,7 +114,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject1_3"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -123,7 +123,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject1_4"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
                 </LinearLayout>
 
@@ -140,7 +140,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject1_5"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -149,7 +149,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject1_6"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -158,7 +158,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject1_7"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -167,7 +167,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject1_8"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
                 </LinearLayout>
             </LinearLayout>
@@ -200,7 +200,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_1"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000" />
 
                     <CheckBox
@@ -209,7 +209,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_2"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -218,7 +218,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_3"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -227,7 +227,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_4"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
                 </LinearLayout>
 
@@ -244,7 +244,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_5"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -253,7 +253,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_6"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -262,7 +262,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_7"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -271,7 +271,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_8"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
                 </LinearLayout>
 
@@ -288,7 +288,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_9"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -297,7 +297,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_10"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -306,7 +306,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_11"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -315,7 +315,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_13"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                 </LinearLayout>
@@ -348,7 +348,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_1"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -357,7 +357,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_2"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -366,7 +366,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_3"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -375,7 +375,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_4"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
                 </LinearLayout>
 
@@ -390,7 +390,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_5"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -399,7 +399,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_6"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -408,7 +408,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_7"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
 
                     <CheckBox
@@ -417,7 +417,7 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_8"
-                        app:buttonTint="#FF9800"
+                        app:buttonTint="@color/mainColor"
                         android:textColor="#000000"/>
                 </LinearLayout>
             </LinearLayout>
@@ -432,7 +432,7 @@
                 android:background="@drawable/button_background"
                 android:insetLeft="0dp"
                 android:text="@string/finished"
-                app:backgroundTint="#FF9800" />
+                app:backgroundTint="@color/mainColor" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
