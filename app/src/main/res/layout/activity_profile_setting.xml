@@ -26,9 +26,8 @@
         android:id="@+id/btn_openGallery"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="#C8C4C4"
+        android:background="#00C8C4C4"
         android:backgroundTint="#D6D6D6"
-        android:text="+"
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +96,7 @@
         android:id="@+id/tv_profileSettingText3"
         android:layout_width="80dp"
         android:layout_height="46dp"
-        android:text="생년월일"
+        android:text=" 생년월일"
         android:textColor="#0E0E0E"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -116,7 +115,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain2"
         app:layout_constraintVertical_bias="0.448" />
@@ -125,9 +124,9 @@
         android:id="@+id/etv_profileSettingNickName"
         android:layout_width="270dp"
         android:layout_height="40dp"
-        android:backgroundTint="#C8C4C4"
+        android:background="@drawable/input"
         android:ems="10"
-        android:hint="닉네임을 입력해주세요"
+        android:hint="  닉네임을 입력해주세요"
         android:inputType="textPersonName"
         android:textColor="#8F8A8A"
         android:textColorHighlight="#C8C4C4"
@@ -143,9 +142,9 @@
         android:id="@+id/etv_profileSettingBirth"
         android:layout_width="270dp"
         android:layout_height="40dp"
-        android:backgroundTint="#C8C4C4"
+        android:background="@drawable/input"
         android:ems="10"
-        android:hint="2000/00/00"
+        android:hint="  2000/00/00"
         android:inputType="textPersonName"
         android:textColorHint="#C8C4C4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -155,23 +154,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain2"
         app:layout_constraintVertical_bias="0.26" />
 
-    <EditText
-        android:id="@+id/etv_profileSettingSex"
-        android:layout_width="270dp"
-        android:layout_height="40dp"
-        android:backgroundTint="#C8C4C4"
-        android:ems="10"
-        android:hint="여성/남성"
-        android:inputType="textPersonName"
-        android:textColor="#7C7878"
-        android:textColorHint="#C8C4C4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toEndOf="@+id/tv_profileSettingText2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain2"
-        app:layout_constraintVertical_bias="0.456" />
-
     <TextView
         android:id="@+id/tv_profileSettingText5"
         android:layout_width="wrap_content"
@@ -180,10 +162,10 @@
         android:textColor="#121111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintHorizontal_bias="0.584"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etv_profileSettingSex"
-        app:layout_constraintVertical_bias="0.248" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.88" />
 
     <Button
         android:id="@+id/btn_moveToInterestSetting"
@@ -196,9 +178,47 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_profileSettingText5"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintVertical_bias="0.413" />
+
+    <ImageView
+        android:id="@+id/img_profileSettingImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_insertPictureExplain1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.605"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.878"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btn_profileSettingMale"
+        android:layout_width="125dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button"
+        android:text="남"
+        app:layout_constraintBottom_toTopOf="@+id/tv_profileSettingText5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.374"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etv_profileSettingBirth"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <Button
+        android:id="@+id/btn_profileSettingFemale"
+        android:layout_width="125dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button"
+        android:text="여"
+        app:layout_constraintBottom_toTopOf="@+id/tv_profileSettingText5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etv_profileSettingBirth"
+        app:layout_constraintVertical_bias="0.26" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
