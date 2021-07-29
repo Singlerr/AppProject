@@ -9,4 +9,43 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="Title1" translatable="false">관심사를 입력하세요</string>
+    <string name="Subtitle" translatable="false">관심사는 프로필 설정에서 언제든지 변경 가능합니다.</string>
+    <string name="subject1" translatable="false">음식</string>
+    <string name="subject1_1" translatable="false">한식</string>
+    <string name="subject1_2" translatable="false">양식</string>
+    <string name="subject1_3" translatable="false">중식</string>
+    <string name="subject1_4" translatable="false">일식</string>
+    <string name="subject1_5" translatable="false">아시아음식</string>
+    <string name="subject1_6" translatable="false">디저트</string>
+    <string name="subject1_7" translatable="false">술</string>
+    <string name="subject1_8" translatable="false">비건</string>
+    <string name="subject2" translatable="false">취미</string>
+    <string name="subject2_1" translatable="false">헬스</string>
+    <string name="subject2_2" translatable="false">독서</string>
+    <string name="subject2_3" translatable="false">음악</string>
+    <string name="subject2_4" translatable="false">영화</string>
+    <string name="subject2_5" translatable="false">수영</string>
+    <string name="subject2_6" translatable="false">자전거</string>
+    <string name="subject2_7" translatable="false">테니스</string>
+    <string name="subject2_8" translatable="false">축구</string>
+    <string name="subject2_9" translatable="false">명상</string>
+    <string name="subject2_10" translatable="false">공부</string>
+    <string name="subject2_11" translatable="false">사진</string>
+    <string name="subject2_13" translatable="false">골프</string>
+    <string name="subject3" translatable="false">장소</string>
+    <string name="subject3_1" translatable="false">한국</string>
+    <string name="subject3_2" translatable="false">영국</string>
+    <string name="subject3_3" translatable="false">프랑스</string>
+    <string name="subject3_4" translatable="false">중국</string>
+    <string name="subject3_5" translatable="false">일본</string>
+    <string name="subject3_6" translatable="false">미국</string>
+    <string name="subject3_7" translatable="false">호주</string>
+    <string name="subject3_8" translatable="false">홍콩</string>
+    <string name="finished" translatable="false">가입완료</string>
+    <string name="todo" translatable="false">TODO</string>
+    <string name="back" translatable="false">가입하기</string>
+
+
 </resources>
