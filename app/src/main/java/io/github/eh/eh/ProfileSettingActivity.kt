@@ -1,6 +1,5 @@
 package io.github.eh.eh
 
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +21,7 @@ class ProfileSettingActivity : AppCompatActivity() {
             //Set sex of user to female
         }
         img_profileSettingImage.setOnClickListener {
-            
+
         }
     }
 }

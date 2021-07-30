@@ -3,18 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/button_background.xml" value="0.24351851851851852" />
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/layout_background.xml" value="0.24351851851851852" />
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_interest_list.xml" value="0.2" />
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/button_gray.xml" value="0.1515625" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/dialogdrawable.xml" value="0.25104166666666666" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/textviewbackground.xml" value="0.25104166666666666" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_interest_list.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_profile_setting.xml" value="0.365625" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_register.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_restaurant.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_verification.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/dialog.xml" value="0.33" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/dialog.xml" value="0.25" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/fragment_first.xml" value="0.23385416666666667" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/fragment_second.xml" value="0.23385416666666667" />
       </map>
     </option>
   </component>

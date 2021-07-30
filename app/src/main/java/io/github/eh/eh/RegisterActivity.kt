@@ -12,17 +12,17 @@ import kotlinx.android.synthetic.main.activity_register.*
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        with(window){
+        with(window) {
             requestWindowFeature(Window.FEATURE_CONTENT_TRANSITIONS)
             enterTransition = Slide(Gravity.RIGHT)
             exitTransition = Slide(Gravity.RIGHT)
         }
         setContentView(R.layout.activity_register)
         btn_moveToVerification.setOnClickListener {
-            var intent = Intent(this@RegisterActivity,VerificationActivity::class.java)
+            var intent = Intent(this@RegisterActivity, VerificationActivity::class.java)
             var user = User()
             var bundle = Bundle()
-            bundle.putSerializable("user",user)
+            bundle.putSerializable("user", user)
             intent.putExtras(bundle)
             startActivity(intent)
         }

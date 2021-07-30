@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        with(window){
+        with(window) {
             requestWindowFeature(Window.FEATURE_CONTENT_TRANSITIONS)
             exitTransition = Slide(Gravity.RIGHT)
         }

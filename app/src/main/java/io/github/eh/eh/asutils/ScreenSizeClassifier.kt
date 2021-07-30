@@ -6,8 +6,8 @@ class ScreenSizeClassifier {
 
     companion object {
         @JvmStatic
-        fun getScreenSizeType(densityDpi:Int) : ScreenSize{
-            when(densityDpi){
+        fun getScreenSizeType(densityDpi: Int): ScreenSize {
+            when (densityDpi) {
                 in 1..120 -> {
                     return ScreenSize.LDPI
                 }
@@ -32,7 +32,7 @@ class ScreenSizeClassifier {
     }
 
 
-    enum class ScreenSize(val id:Int){
+    enum class ScreenSize(val id: Int) {
         UNKNOWN(-1),
         LDPI(R.drawable.intro_ldpi),
         MDPI(R.drawable.intro_mdpi),

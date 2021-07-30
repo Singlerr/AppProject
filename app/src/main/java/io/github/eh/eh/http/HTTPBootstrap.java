@@ -23,12 +23,10 @@ public class HTTPBootstrap {
     public static int PORT;
     public static String HTTP_LOGIN = "";
     public static String HTTP_REGISTER = "";
+    private final int timeOut = 5;
     private StreamHandler handler;
     private String host;
-
     private int port;
-
-    private final int timeOut = 5;
 
     public static Builder builder() {
         return new Builder();

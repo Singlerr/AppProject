@@ -8,7 +8,7 @@
             <!-- 각 모서리 dip 만큼 코너형식 -->
             <corners android:radius="8dip" />
             <!-- 배경색 -->
-            <solid android:color="#fff" />
+            <solid android:color="@color/mainColor" />
             <!-- 라인색 및 두께 -->
             <stroke
                 android:width="0dp"

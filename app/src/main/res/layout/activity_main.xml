@@ -61,8 +61,8 @@
             android:background="#00ff0000"
             android:drawableStart="@android:drawable/ic_input_get"
             android:text="@string/store"
-            android:textSize="13sp"
             android:textColor="#000000"
+            android:textSize="13sp"
             app:backgroundTint="#FFFFFF" />
 
         <TextView
@@ -156,19 +156,19 @@
                         android:id="@+id/radioButton"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
+                        android:layout_gravity="center"
                         android:buttonTint="@color/mainColor"
                         android:text="@string/woman"
-                        android:textColor="#827717"
-                        android:layout_gravity="center"/>
+                        android:textColor="#827717" />
 
                     <RadioButton
                         android:id="@+id/radioButton2"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
+                        android:layout_gravity="center"
                         android:buttonTint="@color/mainColor"
                         android:text="@string/man"
-                        android:textColor="#827717"
-                        android:layout_gravity="center"/>
+                        android:textColor="#827717" />
 
                 </RadioGroup>
 

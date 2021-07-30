@@ -1,9 +1,11 @@
 package io.github.eh.eh.serverside
 
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.Serializable
 import java.sql.Date
 
-class User : Serializable{
+class User : Serializable {
     /**
      * A user id
      **/
@@ -43,10 +45,10 @@ class User : Serializable{
     var image: ByteArray? = null
 
     /**
-     * A set of interests that a user has.
+     * A json of interests that a user has.
      * All interests are transformed from Korean to English in app.
      */
-    var interests: List<String>? = null
+    var interests: String? = null
 
     /**
      * A form of this is not set.
@@ -77,4 +79,15 @@ class User : Serializable{
 
     var sexType: Sex? = null
         get() = Sex.valueOf(sex!!)
+
+    var parseInterest: JSONObject? = null
+        get() = try {
+            JSONObject(interests)
+        } catch (e: JSONException) {
+            null
+        }
+
+    fun setInterests(json: JSONObject?) {
+        interests = json?.toString() ?: ""
+    }
 }
