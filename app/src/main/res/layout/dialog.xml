@@ -2,58 +2,94 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:orientation="vertical"
+    android:paddingLeft="50dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="15dp"
+    android:paddingRight="50dp"
     android:background="@drawable/dialogdrawable">
 
-   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:layout_gravity="top|center"
+       android:layout_marginVertical="0dp"
+       android:layout_marginTop="1dp"
        android:background="@color/white"
        android:orientation="vertical">
+
        <TextView
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:gravity="left"
-           android:textSize="20dp"
-           android:textColor="@color/white"
-           android:background="@drawable/textviewbackground"
            android:id="@+id/title"
-           android:text="" />
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:layout_marginTop="0dp"
+           android:fontFamily="@font/nscjk_medium"
+           android:gravity="center"
+           android:text="제목"
+           android:textColor="@color/black"
+           android:textSize="20dp" />
+
+       <View
+           android:layout_width="280dp"
+           android:layout_height="5px"
+
+           android:layout_gravity="center"
+           android:background="@color/mainColor"/>
    </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
+        android:layout_gravity="center|top"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:id="@+id/message"
+            android:textSize="9pt"
+            android:fontFamily="@font/nscjk_medium"
             android:textColor="@color/black"
-            android:text="" />
+            android:gravity="center"
+            android:text="메시지" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/yes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/button"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
+            android:background="@drawable/button_rounded_medium"
+            android:fontFamily="@font/nscjk_bold"
+            android:includeFontPadding="false"
+            android:text="버튼1"
+            android:textAlignment="gravity"
             android:textColor="@color/white"
-            android:text="네" />
-
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp" />
         <Button
             android:id="@+id/no"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/button"
+            android:layout_height="35dp"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:text="아니오" />
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/button_rounded_medium"
+            android:fontFamily="@font/nscjk_bold"
+            android:includeFontPadding="false"
+            android:text="버튼2"
+            android:textSize="9pt"
+            android:textColor="@color/white" />
     </LinearLayout>
 </LinearLayout>

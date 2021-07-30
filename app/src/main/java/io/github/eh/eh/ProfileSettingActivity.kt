@@ -12,12 +12,12 @@ class ProfileSettingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile_setting)
         btn_profileSettingMale.setOnClickListener {
             findViewById<Button>(R.id.btn_profileSettingFemale).setBackgroundResource(R.drawable.button_gray)
-            findViewById<Button>(R.id.btn_profileSettingMale).setBackgroundResource(R.drawable.button)
+            findViewById<Button>(R.id.btn_profileSettingMale).setBackgroundResource(R.drawable.button_rounded_medium)
             //Set sex of user to male
         }
         btn_profileSettingFemale.setOnClickListener {
             findViewById<Button>(R.id.btn_profileSettingMale).setBackgroundResource(R.drawable.button_gray)
-            findViewById<Button>(R.id.btn_profileSettingFemale).setBackgroundResource(R.drawable.button)
+            findViewById<Button>(R.id.btn_profileSettingFemale).setBackgroundResource(R.drawable.button_rounded_medium)
             //Set sex of user to female
         }
         img_profileSettingImage.setOnClickListener {

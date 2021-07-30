@@ -85,11 +85,11 @@ class LoginActivity : AppCompatActivity() {
             var dialog = IAlertDialog.Builder(instance)
                 .message("정말로 앱을 종료하시겠습니까?")
                 .title("확인")
-                .positiveButton {
+                .positiveButton("종료") {
                     finishAndRemoveTask()
                     exitProcess(0)
                 }
-                .negativeButton {
+                .negativeButton("취소") {
 
                 }.create()
             dialog.show()

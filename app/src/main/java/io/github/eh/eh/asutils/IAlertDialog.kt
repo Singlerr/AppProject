@@ -20,9 +20,9 @@ class IAlertDialog(private val context: Context?) {
             dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog!!.setCancelable(true)
             dialog!!.setContentView(R.layout.dialog)
-            dialog!!.findViewById<Button>(R.id.yes).isVisible = false
-            dialog!!.findViewById<Button>(R.id.no).isVisible = false
-            //dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            //dialog!!.findViewById<Button>(R.id.yes).isVisible = false
+            //dialog!!.findViewById<Button>(R.id.no).isVisible = false
+            dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         }
 
@@ -36,15 +36,17 @@ class IAlertDialog(private val context: Context?) {
             return this
         }
 
-        fun positiveButton(listener: View.OnClickListener): Builder {
+        fun positiveButton(text:String,listener: View.OnClickListener): Builder {
             var b = dialog!!.findViewById<Button>(R.id.yes)
+            b.text = text
             b.setOnClickListener(listener)
             b.isVisible = true
             return this
         }
 
-        fun negativeButton(listener: View.OnClickListener): Builder {
+        fun negativeButton(text:String,listener: View.OnClickListener): Builder {
             var b = dialog!!.findViewById<Button>(R.id.no)
+            b.text = text
             b.setOnClickListener(listener)
             b.isVisible = true
             return this

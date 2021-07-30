@@ -9,13 +9,13 @@
 
     <TextView
         android:id="@+id/tv_title1"
-        android:layout_width="244dp"
-        android:layout_height="40dp"
+        android:layout_width="260dp"
+        android:layout_height="69dp"
         android:layout_marginBottom="450dp"
+        android:fontFamily="@font/nscjk_bold"
         android:text="다이닝 프렌즈 찾기"
         android:textColor="@color/mainColor"
         android:textSize="30sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.109"
@@ -78,9 +78,9 @@
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="350dp"
-        android:layout_height="63dp"
-        android:background="@drawable/button"
+        android:layout_width="348dp"
+        android:layout_height="55dp"
+        android:background="@drawable/button_rounded_high"
         android:text="로그인"
         android:textColor="@android:color/white"
         android:textSize="20dp"
