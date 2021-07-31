@@ -154,23 +154,11 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain2"
         app:layout_constraintVertical_bias="0.26" />
 
-    <TextView
-        android:id="@+id/tv_profileSettingText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="사진을 제외한 기본정보는 가입 후 변경이 불가능합니다."
-        android:textColor="#121111"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.584"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88" />
-
     <Button
         android:id="@+id/btn_moveToInterestSetting"
         android:layout_width="350dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="28dp"
         android:background="#C8C4C4"
         android:text="확인"
         android:textColor="#F6F4F4"
@@ -179,9 +167,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profileSettingText5"
-        app:layout_constraintVertical_bias="0.413" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/img_profileSettingImage"
@@ -195,30 +181,46 @@
         app:layout_constraintVertical_bias="0.878"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/btn_profileSettingMale"
-        android:layout_width="125dp"
-        android:layout_height="40dp"
-        android:background="@drawable/button"
-        android:text="남"
-        app:layout_constraintBottom_toTopOf="@+id/tv_profileSettingText5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.374"
+    <CheckBox
+        android:id="@+id/cb_profileSettingAgree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:buttonTint="#070707"
+        android:text="사진을 제외한 기본정보는 가입 후 변경이 불가능합니다."
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etv_profileSettingBirth"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_profileSettingText4" />
 
-    <Button
-        android:id="@+id/btn_profileSettingFemale"
-        android:layout_width="125dp"
-        android:layout_height="40dp"
-        android:background="@drawable/button"
-        android:text="여"
-        app:layout_constraintBottom_toTopOf="@+id/tv_profileSettingText5"
+    <RadioGroup
+        android:id="@+id/rg_profileSettingSex"
+        android:layout_width="218dp"
+        android:layout_height="51dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etv_profileSettingBirth"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8">
+
+        <RadioButton
+            android:id="@+id/rb_profileSettingMale"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:buttonTint="#100F0F"
+            android:text="남성"
+            android:textColor="#040303" />
+
+        <RadioButton
+            android:id="@+id/rb_profileSettingSexFemale"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000000"
+            android:text="여성"
+            android:textColor="#101010" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
