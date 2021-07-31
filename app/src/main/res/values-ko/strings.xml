@@ -11,7 +11,7 @@
     <string name="age">선호 나이</string>
     <string name="store">주변 맛집 보러가기</string>
     <string name="all">모두</string>
-    <string name="mex">지금 이 시간,\n 혼밥탈출하기 딱 좋은 시간</string>
+    <string name="mex">지금 이 시간,\r\n 혼밥탈출하기 딱 좋은 시간</string>
     <string name="age1">랜덤</string>
     <string name="age2">20-25세</string>
     <string name="age3">26-30세</string>
