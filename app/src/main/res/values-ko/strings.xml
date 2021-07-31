@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Main</string>
+    <string name="title">프렌즈 매칭</string>
+    <string name="Matching">매칭 시작</string>
+    <string name="explain1">아래 조건에 맞게 매칭을 시작합니다</string>
+    <string name="sex">선호 성별</string>
+    <string name="woman">여성</string>
+    <string name="man">남성</string>
+    <string name="setting">…</string>
+    <string name="age">선호 나이</string>
+    <string name="store">주변 맛집 보러가기</string>
+    <string name="all">모두</string>
+    <string name="mex">지금 이 시간,\n 혼밥탈출하기 딱 좋은 시간</string>
+    <string name="age1">랜덤</string>
+    <string name="age2">20-25세</string>
+    <string name="age3">26-30세</string>
+    <string name="age4">30세 이상</string>
+
+</resources>

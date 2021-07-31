@@ -1,17 +1,11 @@
 package io.github.eh.eh
 
-import android.app.Activity
 import android.app.AlertDialog
-import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.transition.Explode
 import android.transition.Slide
+import android.view.Gravity
 import android.view.Window
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.asutils.IAlertDialog
 import io.github.eh.eh.asutils.Utils
@@ -23,17 +17,15 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Exception
-import java.net.ConnectException
 import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity() {
-    private var instance:LoginActivity? = null
+    private var instance: LoginActivity? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        with(window){
+        with(window) {
             requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
-            enterTransition = Slide()
+            enterTransition = Slide(Gravity.RIGHT)
         }
         setContentView(R.layout.activity_login)
         instance = this
@@ -41,7 +33,6 @@ class LoginActivity : AppCompatActivity() {
         btn_login.setOnClickListener {
             val id = etv_id.text.toString()
             val pw = etv_password.text.toString()
-            Utils.showMessageBox(instance,"Test","Test",AlertDialog.BUTTON_POSITIVE)
             val bootstrap: HTTPBootstrap = HTTPBootstrap.builder()
                 .port(1300)
                 .host(Env.API_URL)
@@ -59,12 +50,10 @@ class LoginActivity : AppCompatActivity() {
                         if (obj is User) {
                             if (obj.result == "SUCCESS_TRANSACTION") {
                                 IntentSupport(obj)
-                            }
-                            else if (obj.result == "ERROR_TRANSACTION") {
+                            } else if (obj.result == "ERROR_TRANSACTION") {
                                 loginFailed()
                             }
-                        }
-                        else {
+                        } else {
                             loginFailed()
                         }
                     }
@@ -76,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     bootstrap.submit()
-                }catch (e:Exception){
+                } catch (e: Exception) {
                     loginFailedIO()
                 }
             }
@@ -93,29 +82,27 @@ class LoginActivity : AppCompatActivity() {
             startActivity(tofindpwintent)
         }
         btn_previousPage.setOnClickListener {
-            var dialog = AlertDialog.Builder(instance)
-                .setMessage("정말로 앱을 종료하시겠습니까?")
-                .setCancelable(false)
-                .setTitle("확인")
-                .setPositiveButton("네"
-                ) { p0, p1 -> finishAndRemoveTask()
-                    exitProcess(0) }
-                .create()
+            var dialog = IAlertDialog.Builder(instance)
+                .message("정말로 앱을 종료하시겠습니까?")
+                .title("확인")
+                .positiveButton("종료") {
+                    finishAndRemoveTask()
+                    exitProcess(0)
+                }
+                .negativeButton("취소") {
 
-            dialog.setContentView(R.layout.dialog)
-            dialog.setCancelable(false)
-            //dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.setTitle("확인")
+                }.create()
             dialog.show()
         }
 
     }
+
     //go to MainActivity
     private fun IntentSupport(user: User?) {
         val tomainintent = Intent(this, MainActivity::class.java)
-        var bundle:Bundle = Bundle()
-        bundle.putSerializable("user",user)
-        tomainintent.putExtra("user",bundle)
+        var bundle: Bundle = Bundle()
+        bundle.putSerializable("user", user)
+        tomainintent.putExtra("user", bundle)
         startActivity(tomainintent)
     }
 
@@ -125,7 +112,8 @@ class LoginActivity : AppCompatActivity() {
         //Utils.showMessageBox(this,"로그인 실패","로그인 실패, 아이디와 비밀번호를 다시 확인해주세요.",AlertDialog.BUTTON_POSITIVE)
         //Toast.makeText(this, "로그인 실패, 아이디와 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
     }
-    private fun loginFailedIO(){
+
+    private fun loginFailedIO() {
         msg_error.text = "로그인을 할 수 없습니다."
     }
 }

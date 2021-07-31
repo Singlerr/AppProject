@@ -185,13 +185,15 @@
         android:id="@+id/cb_profileSettingAgree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:buttonTint="#070707"
         android:text="사진을 제외한 기본정보는 가입 후 변경이 불가능합니다."
         android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/btn_moveToInterestSetting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profileSettingText4" />
+        app:layout_constraintTop_toBottomOf="@+id/rg_profileSettingSex"
+        app:layout_constraintVertical_bias="0.444" />
 
     <RadioGroup
         android:id="@+id/rg_profileSettingSex"
@@ -200,27 +202,28 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8">
+        app:layout_constraintTop_toBottomOf="@+id/etv_profileSettingBirth"
+        app:layout_constraintVertical_bias="0.082">
 
         <RadioButton
-            android:id="@+id/rb_profileSettingMale"
-            android:layout_width="93dp"
+            android:id="@+id/rbtn_profileSettingSexmale"
+            android:layout_width="79dp"
             android:layout_height="wrap_content"
-            android:buttonTint="#100F0F"
-            android:text="남성"
-            android:textColor="#040303" />
-
-        <RadioButton
-            android:id="@+id/rb_profileSettingSexFemale"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:buttonTint="#000000"
-            android:text="여성"
-            android:textColor="#101010" />
+            android:text="남"
+            android:textColor="#050505" />
 
+        <RadioButton
+            android:id="@+id/rbtn_profileSettingSexFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="#000000"
+            android:text="여"
+            android:textColor="#000000" />
     </RadioGroup>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
