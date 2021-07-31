@@ -1,5 +1,6 @@
 package io.github.eh.eh
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.transition.Slide
@@ -22,7 +23,6 @@ class VerificationActivity : AppCompatActivity() {
             exitTransition = Slide(Gravity.RIGHT)
         }
         setContentView(R.layout.activity_verification);
-
         var user = intent.extras!!.getSerializable("user") as User
         btn_reRequest.setOnClickListener {
             val http = HTTPBootstrap.builder()
@@ -57,6 +57,19 @@ class VerificationActivity : AppCompatActivity() {
                         TODO("Not yet implemented")
                     }
                 })
+        }
+        btn_moveToProfileSetting.setOnClickListener {
+            var intent = Intent(this,ProfileSettingActivity::class.java)
+            var bundle = Bundle()
+            bundle.putSerializable("className",this::class.qualifiedName)
+            var user = User()
+            //나중에 휴대폰 번호 저장
+            user.phoneNumber = ""
+            var userBundle = Bundle()
+            userBundle.putSerializable("user",user)
+            intent.putExtra("classInfo",bundle)
+            intent.putExtra("user",userBundle)
+            startActivity(intent)
         }
     }
 }

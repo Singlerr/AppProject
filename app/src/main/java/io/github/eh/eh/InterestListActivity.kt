@@ -4,6 +4,9 @@ package io.github.eh.eh
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Slide
+import android.view.Gravity
+import android.view.Window
 import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.LinearLayout
@@ -81,8 +84,11 @@ class InterestListActivity : AppCompatActivity() {
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        with(window) {
+            requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+            enterTransition = Slide(Gravity.RIGHT)
+        }
         setContentView(binding.root)
-
         var bundle = intent.getBundleExtra("user")!!
         var classInfo = intent.getBundleExtra("classInfo")
         user = bundle.getSerializable("user") as User

@@ -27,6 +27,10 @@ class User : Serializable {
     var nickName: String? = null
 
     /**
+     * A set of friends.
+     */
+    private val friends: List<User>? = null
+    /**
      * A birth day of a user.
      **/
     var birthDay: Date? = null
