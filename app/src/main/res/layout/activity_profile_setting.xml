@@ -101,10 +101,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain2"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintVertical_bias="0.265" />
 
     <TextView
         android:id="@+id/tv_profileSettingText4"
@@ -118,7 +118,7 @@
         app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain2"
-        app:layout_constraintVertical_bias="0.448" />
+        app:layout_constraintVertical_bias="0.472" />
 
     <EditText
         android:id="@+id/etv_profileSettingNickName"
@@ -179,7 +179,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_profileSettingText5"
         app:layout_constraintVertical_bias="0.466" />
@@ -188,6 +188,9 @@
         android:id="@+id/img_profileSettingImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:background="@drawable/imgbutton_circle"
+        android:clipToOutline="true"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/tv_insertPictureExplain1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.605"
