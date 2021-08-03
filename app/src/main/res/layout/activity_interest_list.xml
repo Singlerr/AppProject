@@ -98,6 +98,7 @@
                         android:layout_weight="1"
                         android:text="@string/subject1_1"
                         android:textColor="#000000"
+                        android:fontFamily="@font/nscjk_medium"
                         app:buttonTint="@color/mainColor" />
 
                     <CheckBox
@@ -107,6 +108,7 @@
                         android:layout_weight="1"
                         android:text="@string/subject1_2"
                         android:textColor="#000000"
+                        android:fontFamily="@font/nscjk_medium"
                         app:buttonTint="@color/mainColor" />
 
                     <CheckBox
@@ -116,6 +118,7 @@
                         android:layout_weight="1"
                         android:text="@string/subject1_3"
                         android:textColor="#000000"
+                        android:fontFamily="@font/nscjk_medium"
                         app:buttonTint="@color/mainColor" />
 
                     <CheckBox
@@ -125,6 +128,7 @@
                         android:layout_weight="1"
                         android:text="@string/subject1_4"
                         android:textColor="#000000"
+                        android:fontFamily="@font/nscjk_medium"
                         app:buttonTint="@color/mainColor" />
                 </LinearLayout>
 
@@ -142,6 +146,7 @@
                         android:layout_weight="1"
                         android:text="@string/subject1_5"
                         android:textColor="#000000"
+                        android:fontFamily="@font/nscjk_regular"
                         app:buttonTint="@color/mainColor" />
 
                     <CheckBox
@@ -151,6 +156,7 @@
                         android:layout_weight="1"
                         android:text="@string/subject1_6"
                         android:textColor="#000000"
+                        android:fontFamily="@font/nscjk_regular"
                         app:buttonTint="@color/mainColor" />
 
                     <CheckBox
@@ -160,6 +166,7 @@
                         android:layout_weight="1"
                         android:text="@string/subject1_7"
                         android:textColor="#000000"
+                        android:fontFamily="@font/nscjk_regular"
                         app:buttonTint="@color/mainColor" />
 
                     <CheckBox

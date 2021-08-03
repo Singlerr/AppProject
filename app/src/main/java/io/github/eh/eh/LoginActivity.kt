@@ -1,14 +1,14 @@
 package io.github.eh.eh
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.transition.Slide
 import android.view.Gravity
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.database.getStringOrNull
 import io.github.eh.eh.asutils.IAlertDialog
-import io.github.eh.eh.asutils.Utils
+import io.github.eh.eh.db.LoginDatabase
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
 import io.github.eh.eh.http.StreamHandler
@@ -21,6 +21,7 @@ import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity() {
     private var instance: LoginActivity? = null
+    private lateinit var databaseHelper: LoginDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         with(window) {
@@ -29,6 +30,47 @@ class LoginActivity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_login)
         instance = this
+
+        databaseHelper = LoginDatabase(this, "session", null, 1)
+        if (databaseHelper.sessionExists()) {
+            var cursor = databaseHelper.select()
+            var id = cursor.getStringOrNull(cursor.getColumnIndexOrThrow("id"))
+            var password = cursor.getStringOrNull(cursor.getColumnIndexOrThrow("password"))
+            if (id != null && password != null) {
+                val bootstrap: HTTPBootstrap = HTTPBootstrap.builder()
+                    .port(1300)
+                    .host(Env.API_URL)
+                    .streamHandler(object : StreamHandler {
+                        override fun onWrite(outputStream: HTTPContext?) {
+                            val user = User()
+                            user.userId = id
+                            user.password = password
+                            outputStream!!.write(user)
+                        }
+
+                        override fun onRead(obj: Any?) {
+                            if (obj is User) {
+                                if (obj.result == "SUCCESS_TRANSACTION") {
+                                    IntentSupport(obj)
+                                } else if (obj.result == "ERROR_TRANSACTION") {
+                                    loginFailed()
+                                }
+                            } else {
+                                loginFailed()
+                            }
+                        }
+
+                    }).build()
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        bootstrap.submit()
+                    } catch (e: Exception) {
+                        loginFailedIO()
+                    }
+                }
+            }
+        }
+
         // login button
         btn_login.setOnClickListener {
             val id = etv_id.text.toString()
@@ -49,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
                     override fun onRead(obj: Any?) {
                         if (obj is User) {
                             if (obj.result == "SUCCESS_TRANSACTION") {
+                                databaseHelper.insertOrUpdate(obj.userId, obj.password)
                                 IntentSupport(obj)
                             } else if (obj.result == "ERROR_TRANSACTION") {
                                 loginFailed()
@@ -58,9 +101,6 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailed() {
-
-                    }
                 }).build()
             CoroutineScope(Dispatchers.IO).launch {
                 try {

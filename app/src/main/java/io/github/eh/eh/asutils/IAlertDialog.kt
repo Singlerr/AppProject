@@ -36,7 +36,7 @@ class IAlertDialog(private val context: Context?) {
             return this
         }
 
-        fun positiveButton(text:String,listener: View.OnClickListener): Builder {
+        fun positiveButton(text: String, listener: View.OnClickListener): Builder {
             var b = dialog!!.findViewById<Button>(R.id.yes)
             b.text = text
             b.setOnClickListener(listener)
@@ -44,7 +44,7 @@ class IAlertDialog(private val context: Context?) {
             return this
         }
 
-        fun negativeButton(text:String,listener: View.OnClickListener): Builder {
+        fun negativeButton(text: String, listener: View.OnClickListener): Builder {
             var b = dialog!!.findViewById<Button>(R.id.no)
             b.text = text
             b.setOnClickListener(listener)

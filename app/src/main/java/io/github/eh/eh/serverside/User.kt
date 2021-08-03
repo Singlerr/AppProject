@@ -29,7 +29,8 @@ class User : Serializable {
     /**
      * A set of friends.
      */
-    private val friends: List<User>? = null
+    val friends: List<User>? = null
+
     /**
      * A birth day of a user.
      **/

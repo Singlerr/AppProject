@@ -2,57 +2,59 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/dialogdrawable"
     android:orientation="vertical"
     android:paddingLeft="50dp"
     android:paddingTop="7dp"
-    android:paddingBottom="15dp"
     android:paddingRight="50dp"
-    android:background="@drawable/dialogdrawable">
+    android:paddingBottom="15dp">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_gravity="top|center"
-       android:layout_marginVertical="0dp"
-       android:layout_marginTop="1dp"
-       android:background="@color/white"
-       android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginVertical="0dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-       <TextView
-           android:id="@+id/title"
-           android:layout_width="match_parent"
-           android:layout_height="50dp"
-           android:layout_marginTop="0dp"
-           android:fontFamily="@font/nscjk_medium"
-           android:gravity="center"
-           android:text="제목"
-           android:textColor="@color/black"
-           android:textSize="20dp" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/nscjk_medium"
+            android:gravity="center"
+            android:text="제목"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
-       <View
-           android:layout_width="280dp"
-           android:layout_height="5px"
+        <View
+            android:layout_width="280dp"
+            android:layout_height="5px"
 
-           android:layout_gravity="center"
-           android:background="@color/mainColor"/>
-   </LinearLayout>
+            android:layout_gravity="center"
+            android:background="@color/mainColor" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="280dp"
-        android:layout_gravity="center|top"
         android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
         android:orientation="vertical">
+
         <TextView
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:id="@+id/message"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:id="@+id/message"
-            android:textSize="9pt"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/nscjk_medium"
-            android:textColor="@color/black"
             android:gravity="center"
-            android:text="메시지" />
+            android:text="메시지"
+            android:textColor="@color/black"
+            android:textSize="9pt" />
     </LinearLayout>
 
     <LinearLayout
@@ -66,7 +68,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="15dp"
+            android:layout_marginBottom="2dp"
             android:layout_weight="1"
             android:background="@drawable/button_rounded_medium"
             android:fontFamily="@font/nscjk_bold"
@@ -74,22 +78,21 @@
             android:text="버튼1"
             android:textAlignment="gravity"
             android:textColor="@color/white"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp"
             android:textSize="20dp" />
+
         <Button
             android:id="@+id/no"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_weight="1"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:background="@drawable/button_rounded_medium"
             android:fontFamily="@font/nscjk_bold"
             android:includeFontPadding="false"
             android:text="버튼2"
-            android:textSize="9pt"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="9pt" />
     </LinearLayout>
 </LinearLayout>

@@ -8,7 +8,7 @@ class MatchingClientHandler private constructor(private val user: UserWrapper) :
     ChannelInboundHandlerAdapter() {
     @Throws(Exception::class)
     override fun channelActive(ctx: ChannelHandlerContext) {
-        ctx.writeAndFlush(user.user)
+        ctx.writeAndFlush(user)
     }
 
     @Throws(Exception::class)

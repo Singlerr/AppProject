@@ -1,18 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #191919;
-      }
+<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            .cls-1 {
+            fill: #191919;
+            }
 
-      .cls-2 {
-        fill: none;
-        opacity: 0.5;
-      }
-    </style>
-  </defs>
-  <g id="그룹_18444" data-name="그룹 18444" transform="translate(-221 -4556.999)">
-    <path id="패스_7668" data-name="패스 7668" class="cls-1" d="M504.374-157.682H490.2l3.581-3.3-1.411-1.294-6,5.508,6,5.508,1.411-1.294-3.581-3.3h14.176Z" transform="translate(-262.37 4725.764)"/>
-    <path id="패스_7667" data-name="패스 7667" class="cls-2" d="M479.366-176.272h24v24h-24Z" transform="translate(-258.366 4733.271)"/>
-  </g>
+            .cls-2 {
+            fill: none;
+            opacity: 0.5;
+            }
+        </style>
+    </defs>
+    <g data-name="그룹 18444" id="그룹_18444" transform="translate(-221 -4556.999)">
+        <path class="cls-1" d="M504.374-157.682H490.2l3.581-3.3-1.411-1.294-6,5.508,6,5.508,1.411-1.294-3.581-3.3h14.176Z" data-name="패스 7668"
+            id="패스_7668"
+            transform="translate(-262.37 4725.764)" />
+        <path class="cls-2" d="M479.366-176.272h24v24h-24Z" data-name="패스 7667" id="패스_7667"
+            transform="translate(-258.366 4733.271)" />
+    </g>
 </svg>

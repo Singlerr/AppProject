@@ -45,10 +45,10 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun startActivity() {
-        var intent = Intent(this, MainActivity::class.java)
+        var intent = Intent(this, LoginActivity::class.java)
         var bundle = Bundle()
-        bundle.putString("className",this::class.qualifiedName)
-        intent.putExtra("classInfo",bundle)
+        bundle.putString("className", this::class.qualifiedName)
+        intent.putExtra("classInfo", bundle)
         startActivity(
             intent,
             ActivityOptions.makeSceneTransitionAnimation(this).toBundle()

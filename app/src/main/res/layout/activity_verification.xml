@@ -5,24 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Verification">
+    tools:context=".VerificationActivity">
 
     <TextView
         android:id="@+id/tv_verificationTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
-        android:layout_marginEnd="248dp"
         android:text="혼밥탈출"
         android:textColor="@color/mainColor"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_registerTitle1"
+        app:layout_constraintHorizontal_bias="0.084"
+
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.235" />
+        app:layout_constraintVertical_bias="0.234" />
 
     <TextView
         android:id="@+id/tv_verificationTitle1"
@@ -60,6 +60,7 @@
         android:ems="10"
         android:hint="ex)01012341234"
         android:inputType="textPersonName"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
@@ -75,6 +76,7 @@
         android:ems="10"
         android:hint="6자리 인증 코드(3분 내로 입력)"
         android:inputType="textPersonName"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"

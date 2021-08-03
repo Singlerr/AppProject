@@ -7,8 +7,6 @@ import android.transition.Slide
 import android.view.Gravity
 import android.view.Window
 import android.widget.Button
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profile_setting.*
@@ -34,8 +32,9 @@ class ProfileSettingActivity : AppCompatActivity() {
         }
         img_profileSettingImage.setOnClickListener {
             var intent = Intent(Intent.ACTION_PICK)
-            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*")
-            var launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
+            var launcher = registerForActivityResult(
+                ActivityResultContracts.StartActivityForResult()
             ) { result ->
                 if (result!!.resultCode == RESULT_OK && result!!.data != null && result!!.data!!.data != null) {
                     var uri = result!!.data!!.data

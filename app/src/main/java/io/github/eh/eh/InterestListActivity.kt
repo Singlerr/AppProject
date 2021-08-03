@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.databinding.ActivityMainBinding
 import io.github.eh.eh.serverside.User
-import org.xmlpull.v1.XmlPullParser
+import kotlinx.android.synthetic.main.activity_interest_list.*
 
 
 class InterestListActivity : AppCompatActivity() {
@@ -22,22 +22,43 @@ class InterestListActivity : AppCompatActivity() {
     private var user: User? = null
 
     //체크했을 때 체크박스를 문자열에 저장하기 위한 함수 생성
-    private fun Food(array1: String) {
-        var json = user!!.parseInterest!!.getJSONArray("food")
-        if (!Utils.hasValue(json, array1))
-            json.put(array1)
+    private fun setFood(array1: String,isChecked:Boolean) {
+        var parentJson = user!!.parseInterest!!
+        var json = parentJson.getJSONArray("food")
+        if(isChecked){
+            if (Utils.hasValue(json, array1))
+                json.remove(Utils.indexOf(json,array1))
+        }else{
+            if (!Utils.hasValue(json, array1))
+                json.put(array1)
+        }
+        user!!.setInterests(parentJson)
     }
 
-    private fun Hobby(array2: String) {
-        var json = user!!.parseInterest!!.getJSONArray("hobby")
-        if (!Utils.hasValue(json, array2))
-            json.put(array2)
+    private fun setHobby(array1: String,isChecked: Boolean) {
+        var parentJson = user!!.parseInterest!!
+        var json = parentJson.getJSONArray("hobby")
+        if(isChecked){
+            if (Utils.hasValue(json, array1))
+                json.remove(Utils.indexOf(json,array1))
+        }else{
+            if (!Utils.hasValue(json, array1))
+                json.put(array1)
+        }
+        user!!.setInterests(parentJson)
     }
 
-    private fun Place(array3: String) {
-        var json = user!!.parseInterest!!.getJSONArray("place")
-        if (!Utils.hasValue(json, array3))
-            json.put(array3)
+    private fun setPlace(array1: String,isChecked: Boolean) {
+        var parentJson = user!!.parseInterest!!
+        var json = parentJson.getJSONArray("place")
+        if(isChecked){
+            if (Utils.hasValue(json, array1))
+                json.remove(Utils.indexOf(json,array1))
+        }else{
+            if (!Utils.hasValue(json, array1))
+                json.put(array1)
+        }
+        user!!.setInterests(parentJson)
     }
 
     //체크박스 눌렀을 때 위의 함수들 실행하기
@@ -45,37 +66,37 @@ class InterestListActivity : AppCompatActivity() {
 
 
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    val listener by lazy {
+    private val listener by lazy {
         CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             when (buttonView.id) {
-                R.id.checkHansik -> Food("한식")
-                R.id.checkYangsik -> Food("양식")
-                R.id.checkJunsik -> Food("중식")
-                R.id.checkIlsik -> Food("일식")
-                R.id.checkAsian -> Food("아시아음식")
-                R.id.checkDessert -> Food("디저트")
-                R.id.checkDrink -> Food("술")
-                R.id.checkVeg -> Food("비건")
-                R.id.checkWorkout -> Hobby("헬스")
-                R.id.checkReading -> Hobby("독서")
-                R.id.checkMusic -> Hobby("음악")
-                R.id.checkMovie -> Hobby("영화")
-                R.id.checkSwimming -> Hobby("수영")
-                R.id.checkBicycle -> Hobby("자전거")
-                R.id.checkTennis -> Hobby("테니스")
-                R.id.checkSoccer -> Hobby("축구")
-                R.id.checkMedi -> Hobby("명상")
-                R.id.checkStudy -> Hobby("공부")
-                R.id.checkPicture -> Hobby("사진")
-                R.id.checkGolf -> Hobby("골프")
-                R.id.checkKorea -> Place("한국")
-                R.id.checkBri -> Place("영국")
-                R.id.checkFra -> Place("프랑스")
-                R.id.checkChi -> Place("중국")
-                R.id.checkJap -> Place("일본")
-                R.id.checkAmer -> Place("미국")
-                R.id.checkAust -> Place("호주")
-                R.id.checkHonk -> Place("홍콩")
+                R.id.checkHansik -> setFood("한식",isChecked)
+                R.id.checkYangsik -> setFood("양식",isChecked)
+                R.id.checkJunsik -> setFood("중식",isChecked)
+                R.id.checkIlsik -> setFood("일식",isChecked)
+                R.id.checkAsian -> setFood("아시아음식",isChecked)
+                R.id.checkDessert -> setFood("디저트",isChecked)
+                R.id.checkDrink -> setFood("술",isChecked)
+                R.id.checkVeg -> setFood("비건",isChecked)
+                R.id.checkWorkout -> setHobby("헬스",isChecked)
+                R.id.checkReading -> setHobby("독서",isChecked)
+                R.id.checkMusic -> setHobby("음악",isChecked)
+                R.id.checkMovie -> setHobby("영화",isChecked)
+                R.id.checkSwimming -> setHobby("수영",isChecked)
+                R.id.checkBicycle -> setHobby("자전거",isChecked)
+                R.id.checkTennis -> setHobby("테니스",isChecked)
+                R.id.checkSoccer -> setHobby("축구",isChecked)
+                R.id.checkMedi -> setHobby("명상",isChecked)
+                R.id.checkStudy -> setHobby("공부",isChecked)
+                R.id.checkPicture -> setHobby("사진",isChecked)
+                R.id.checkGolf -> setHobby("골프",isChecked)
+                R.id.checkKorea -> setPlace("한국",isChecked)
+                R.id.checkBri -> setPlace("영국",isChecked)
+                R.id.checkFra -> setPlace("프랑스",isChecked)
+                R.id.checkChi -> setPlace("중국",isChecked)
+                R.id.checkJap -> setPlace("일본",isChecked)
+                R.id.checkAmer -> setPlace("미국",isChecked)
+                R.id.checkAust -> setPlace("호주",isChecked)
+                R.id.checkHonk -> setPlace("홍콩",isChecked)
             }
         }
     }
@@ -94,7 +115,7 @@ class InterestListActivity : AppCompatActivity() {
         user = bundle.getSerializable("user") as User
 
         //이전 액티비티에서 그 액티비티의 클래스 이름을 가져옵니다. 반드시 모든 액티비티는 새로운 액티비티를 실행할 때 자신의 클래스 정보를 전달해야합니다.
-       var lastActivityClass = Class.forName(classInfo!!.getString("className"))
+        var lastActivityClass = Class.forName(classInfo!!.getString("className"))
 
         //화면 넘기기(고쳐야됩니다)
         //val intent = Intent(this, SubActivity::class.java)
@@ -102,14 +123,14 @@ class InterestListActivity : AppCompatActivity() {
 
         //CheckBox Listener 등록을 간소화시켰습니다
         var layout = findViewById<LinearLayout>(R.id.interestList)
-        for(i in 0..layout.childCount){
+        for (i in 0..layout.childCount) {
             var elem = layout!!.getChildAt(i)
-            if(elem is CheckBox){
+            if (elem is CheckBox) {
                 elem.setOnCheckedChangeListener(listener)
             }
         }
-       // binding.complete.setOnClickListener { startActivity(intent) }
-       // binding.backspace.setOnClickListener { LastActivity(intent2) }
+        // binding.complete.setOnClickListener { startActivity(intent) }
+        backspace.setOnClickListener { startActivity(intent2)}
 
         //체크박스
         /**

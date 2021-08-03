@@ -128,7 +128,7 @@
         android:ems="10"
         android:hint="  닉네임을 입력해주세요"
         android:inputType="textPersonName"
-        android:textColor="#8F8A8A"
+        android:textColor="@color/textColor"
         android:textColorHighlight="#C8C4C4"
         android:textColorHint="#C8C4C4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -147,6 +147,7 @@
         android:hint="  2000/00/00"
         android:inputType="textPersonName"
         android:textColorHint="#C8C4C4"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
@@ -178,10 +179,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_profileSettingText5"
-        app:layout_constraintVertical_bias="0.413" />
+        app:layout_constraintVertical_bias="0.466" />
 
     <ImageView
         android:id="@+id/img_profileSettingImage"

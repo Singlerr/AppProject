@@ -59,16 +59,16 @@ class VerificationActivity : AppCompatActivity() {
                 })
         }
         btn_moveToProfileSetting.setOnClickListener {
-            var intent = Intent(this,ProfileSettingActivity::class.java)
+            var intent = Intent(this, ProfileSettingActivity::class.java)
             var bundle = Bundle()
-            bundle.putSerializable("className",this::class.qualifiedName)
+            bundle.putSerializable("className", this::class.qualifiedName)
             var user = User()
             //나중에 휴대폰 번호 저장
             user.phoneNumber = ""
             var userBundle = Bundle()
-            userBundle.putSerializable("user",user)
-            intent.putExtra("classInfo",bundle)
-            intent.putExtra("user",userBundle)
+            userBundle.putSerializable("user", user)
+            intent.putExtra("classInfo", bundle)
+            intent.putExtra("user", userBundle)
             startActivity(intent)
         }
     }

@@ -12,7 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="83dp"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:minWidth="0dp"
         android:minHeight="0dp"
@@ -30,12 +30,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:fontFamily="@font/nscjk_medium"
             android:gravity="center"
             android:text="@string/title"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="22sp"
-            android:fontFamily="@font/nscjk_medium"
             android:textStyle="bold" />
 
         <Button
@@ -45,11 +45,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_weight="1"
+            android:fontFamily="@font/nscjk_medium"
             android:text="@string/setting"
             android:textColor="#595959"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:fontFamily="@font/nscjk_medium"
             app:backgroundTint="#FFFFFF" />
     </LinearLayout>
 
@@ -68,11 +68,12 @@
             android:layout_gravity="end"
             android:layout_marginRight="10dp"
             android:background="#00ff0000"
-            android:drawableStart="@android:drawable/ic_input_get"
+            android:drawableStart="@drawable/ic_clip"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/nscjk_medium"
             android:text="@string/store"
             android:textColor="#000000"
             android:textSize="13sp"
-            android:fontFamily="@font/nscjk_medium"
             app:backgroundTint="#FFFFFF" />
 
         <TextView
@@ -184,7 +185,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginTop="55dp"
             android:layout_marginRight="35dp"
-            android:background="@drawable/button_rounded_high"
+            android:background="@drawable/button_rounded_high_unclicked"
             android:fontFamily="@font/nscjk_bold"
             android:insetLeft="0dp"
             android:text="@string/Matching"
@@ -219,238 +220,141 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="0dp"
-                android:orientation="horizontal"
-                android:paddingBottom="0dp">
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/nscjk_medium"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:lineSpacingExtra="0dp"
-                    android:minWidth="0dp"
-                    android:paddingLeft="0dp"
-                    android:paddingRight="0dp"
-                    android:text="@string/sex"
-                    android:textAlignment="gravity"
-                    android:textColor="#000000"
-                    android:textStyle="normal" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="87dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radioButton3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:buttonTint="@color/mainColor"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:text="@string/all"
-
-                        android:textColor="#827717" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:buttonTint="@color/mainColor"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:text="@string/woman"
-                        android:textColor="#827717" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:buttonTint="@color/mainColor"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:text="@string/man"
-                        android:textColor="#827717" />
-
-                </RadioGroup>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="left"
-                android:layout_marginTop="0dp"
-                android:orientation="horizontal"
-                android:paddingBottom="0dp">
-
-                <TextView
-                    android:id="@+id/textView81"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/nscjk_medium"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:lineSpacingExtra="0dp"
-                    android:minWidth="0dp"
-                    android:paddingLeft="0dp"
-                    android:paddingRight="0dp"
-                    android:text="@string/sex"
-                    android:textAlignment="gravity"
-                    android:textColor="#000000"
-                    android:textStyle="normal" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="87dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_age_random"
-                        android:layout_width="wrap_content"
-                        android:layout_height="23dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_rounded_high"
-                        android:backgroundTint="#fde9cb"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:includeFontPadding="false"
-                        android:text="@string/age1"
-                        android:textColor="#827717" />
-
-                    <Button
-                        android:id="@+id/btn_age_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="23dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/button_rounded_high"
-                        android:backgroundTint="#fde9cb"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:includeFontPadding="false"
-                        android:text="@string/age1"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_weight="1"
-                        android:textColor="#827717" />
-                    <!--
-                    <RadioButton
-                        android:id="@+id/radioButton3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:buttonTint="@color/mainColor"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:text="@string/all"
-
-                        android:textColor="#827717" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:buttonTint="@color/mainColor"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:text="@string/woman"
-                        android:textColor="#827717" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:buttonTint="@color/mainColor"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:text="@string/man"
-                        android:textColor="#827717" />
-                        -->
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
+                android:layout_height="40dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="1dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
                     android:fontFamily="@font/nscjk_medium"
-                    android:gravity="left"
                     android:includeFontPadding="false"
-                    android:lineSpacingExtra="0dp"
-                    android:minWidth="0dp"
-                    android:paddingLeft="0dp"
-                    android:paddingRight="0dp"
-                    android:text="@string/age"
-                    android:textAlignment="gravity"
-                    android:textColor="@android:color/transparent"
-                    android:textStyle="normal" />
+                    android:text="선호 성별"
+                    android:textColor="@color/black" />
 
-                <LinearLayout
+                <Button
+                    android:id="@+id/btn_sex_all"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="50dp"
-                    android:layout_weight="0.13"
-                    android:orientation="horizontal"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/button_rounded_high_unclicked"
 
-                    <Button
-                        android:id="@+id/btn_age_2"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_rounded_high"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:includeFontPadding="false"
-                        android:minHeight="0dp"
-                        android:backgroundTint="#fde9cb"
-                        android:paddingTop="0dp"
-                        android:text="@string/age3"
-                        android:textColor="#827717" />
+                    android:fontFamily="@font/nscjk_medium"
+                    android:includeFontPadding="false"
+                    android:text="모두"
+                    android:textColor="#987949" />
 
-                    <Button
-                        android:id="@+id/btn_age_3"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#fde9cb"
-                        android:background="@drawable/button_rounded_high"
-                        android:fontFamily="@font/nscjk_medium"
-                        android:includeFontPadding="false"
-                        android:minHeight="0dp"
-                        android:paddingTop="0dp"
-                        android:text="@string/age4"
-                        android:textColor="#827717" />
+                <Button
+                    android:id="@+id/btn_sex_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_rounded_high_unclicked"
 
-                </LinearLayout>
+                    android:fontFamily="@font/nscjk_medium"
+                    android:includeFontPadding="false"
+                    android:text="남자"
+                    android:textColor="#987949" />
 
+                <Button
+                    android:id="@+id/btn_sex_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_rounded_high_unclicked"
+
+                    android:fontFamily="@font/nscjk_medium"
+                    android:includeFontPadding="false"
+                    android:text="여자"
+                    android:textColor="#987949" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nscjk_medium"
+                    android:includeFontPadding="false"
+                    android:text="선호 나이"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/btn_age_random"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/button_rounded_high_unclicked"
+
+                    android:fontFamily="@font/nscjk_medium"
+                    android:includeFontPadding="false"
+                    android:text="랜덤"
+                    android:textColor="#987949" />
+
+                <Button
+                    android:id="@+id/btn_age_1"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_rounded_high_unclicked"
+
+                    android:fontFamily="@font/nscjk_medium"
+                    android:includeFontPadding="false"
+                    android:text="20~25세"
+                    android:textColor="#987949" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nscjk_medium"
+                    android:includeFontPadding="false"
+                    android:text="선호 나이"
+                    android:textColor="@android:color/transparent" />
+
+                <Button
+                    android:id="@+id/btn_age_2"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/button_rounded_high_unclicked"
+                    android:fontFamily="@font/nscjk_medium"
+                    android:includeFontPadding="false"
+                    android:text="26~30세"
+                    android:textColor="#987949" />
+
+                <Button
+                    android:id="@+id/btn_age_3"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_rounded_high_unclicked"
+
+                    android:fontFamily="@font/nscjk_medium"
+                    android:includeFontPadding="false"
+                    android:text="30세 이상"
+                    android:textColor="#987949" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
