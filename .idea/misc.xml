@@ -18,6 +18,9 @@
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/layout_background.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/layout_background2.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/round.xml" value="0.275" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/shadow.xml" value="0.2734375" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/slide_background.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/slide_bar.xml" value="0.2609375" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/textviewbackground.xml" value="0.25104166666666666" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/font/nscjk.xml" value="0.10833333333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/font/nscjk_bold.xml" value="0.23489583333333333" />
@@ -32,6 +35,7 @@
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/dialog.xml" value="0.33" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/fragment_first.xml" value="0.23385416666666667" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/fragment_second.xml" value="0.23385416666666667" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/slide_bar.xml" value="0.24479166666666666" />
       </map>
     </option>
   </component>

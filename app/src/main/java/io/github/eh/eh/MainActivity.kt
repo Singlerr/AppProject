@@ -49,14 +49,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var bundle = intent.getBundleExtra("user")!!
-        user = bundle.getSerializable("user") as User
-        wrapper = UserWrapper.getInstance(user, object : MatchingCallback {
-            override fun onMatched(userWrapper: UserWrapper?, targetUser: User?) {
-                TODO("Not yet implemented")
-            }
 
-        }, DesiredTarget())
+        if(intent.hasExtra("user")){
+            var bundle = intent.getBundleExtra("user")!!
+            user = bundle.getSerializable("user") as User
+            wrapper = UserWrapper.getInstance(user, object : MatchingCallback {
+                override fun onMatched(userWrapper: UserWrapper?, targetUser: User?) {
+                    TODO("Not yet implemented")
+                }
+
+            }, DesiredTarget())
+        }
         btn_startMatching.setOnClickListener {
             startAnimation()
             var bootstrap = MatchingClientBootstrap.getInstance(Env.MATCHING_POOL_URL, Env.PORT)

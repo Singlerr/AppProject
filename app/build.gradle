@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.sothree.slidinguppanel:library:3.4.0'
     implementation "com.fasterxml.jackson.core:jackson-databind:2.11.1"
     implementation "io.netty:netty-all:4.1.65.Final"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

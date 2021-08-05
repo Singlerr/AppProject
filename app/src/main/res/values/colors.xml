@@ -11,4 +11,5 @@
     <color name="mainColor">#f9b447</color>
     <color name="mainColor_unfocused">#fde9cb</color>
     <color name="textColor">#999999</color>
+    <color name="gray">#b2b2b2</color>
 </resources>
