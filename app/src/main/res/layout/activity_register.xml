@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".Register">
+    tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/tv_registerTitle1"
@@ -58,7 +58,7 @@
         android:background="@drawable/input"
         android:ems="10"
         android:hint="휴대폰 번호"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textColor="@color/textColor"

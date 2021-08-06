@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                     .port(1300)
                     .host(Env.API_URL)
                     .streamHandler(object : StreamHandler {
-                        override fun onWrite(outputStream: HTTPContext?) {
+                        override fun onWrite(outputStream: HTTPContext) {
                             val user = User()
                             user.userId = id
                             user.password = password
@@ -81,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
                 .streamHandler(object : StreamHandler {
 
 
-                    override fun onWrite(outputStream: HTTPContext?) {
+                    override fun onWrite(outputStream: HTTPContext) {
                         val user = User()
                         user.userId = id
                         user.password = pw

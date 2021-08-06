@@ -1,3 +1,7 @@
 package io.github.eh.eh.http.bundle
 
-class ResponseBundle(val responseCode: Int, val response: String)
+class ResponseBundle(){
+    var responseCode: Int = 400
+    lateinit var response: String
+
+}

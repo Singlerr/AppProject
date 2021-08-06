@@ -37,6 +37,7 @@ public class HTTPBootstrap {
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         //con.setConnectTimeout(timeOut);
         con.setDoOutput(true);
+        con.addRequestProperty("Content-Type","application/json");
         OutputStream stream = con.getOutputStream();
         HTTPContext httpCtx = HTTPContext.getInstance(stream);
 
@@ -44,7 +45,7 @@ public class HTTPBootstrap {
 
         stream.flush();
         stream.close();
-
+        int resp = con.getResponseCode();
         InputStream inputStream = con.getInputStream();
 
         ObjectMapper mapper = new ObjectMapper();

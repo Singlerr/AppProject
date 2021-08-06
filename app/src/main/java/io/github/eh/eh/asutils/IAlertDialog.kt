@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Looper
 import android.view.View
 import android.view.Window
 import android.widget.Button
@@ -20,8 +21,8 @@ class IAlertDialog(private val context: Context?) {
             dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog!!.setCancelable(true)
             dialog!!.setContentView(R.layout.dialog)
-            //dialog!!.findViewById<Button>(R.id.yes).isVisible = false
-            //dialog!!.findViewById<Button>(R.id.no).isVisible = false
+            dialog!!.findViewById<Button>(R.id.yes).isVisible = false
+            dialog!!.findViewById<Button>(R.id.no).isVisible = false
             dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         }

@@ -4,6 +4,7 @@ import android.util.Base64
 import io.github.eh.eh.ioutils.IOUtils
 import java.io.IOException
 import java.io.InputStream
+import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 import java.security.InvalidAlgorithmParameterException
 import java.security.InvalidKeyException
@@ -59,8 +60,7 @@ class CipherBase private constructor() {
                 )
             )
         )
-        val encoded = Base64.decode(data, Base64.DEFAULT)
-        return cipher.doFinal(encoded)
+        return cipher.doFinal(data)
     }
 
     @Throws(
@@ -73,7 +73,7 @@ class CipherBase private constructor() {
         BadPaddingException::class
     )
     fun decode(inputStream: InputStream?): InputStream {
-        val secretKey: SecretKey = SecretKeySpec(IOUtils.readAllBytes(inputStream), "AES")
+        val secretKey: SecretKey = SecretKeySpec(PRIVATE_KEY.toByteArray(Charset.forName("UTF8")), "AES")
         val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
         cipher.init(
             Cipher.DECRYPT_MODE, secretKey, IvParameterSpec(

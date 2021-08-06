@@ -1,10 +1,11 @@
 package io.github.eh.eh.serverside
 
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.Serializable
 import java.sql.Date
-
 class User : Serializable {
     /**
      * A user id
@@ -29,7 +30,7 @@ class User : Serializable {
     /**
      * A set of friends.
      */
-    val friends: List<User>? = null
+    val friends: List<String>? = null
 
     /**
      * A birth day of a user.
@@ -81,10 +82,10 @@ class User : Serializable {
      * It contains responseCode from server when register/login operation occurred.
      */
     val responseCode = 0
-
+    @JsonIgnore
     var sexType: Sex? = null
         get() = Sex.valueOf(sex!!)
-
+    @JsonIgnore
     var parseInterest: JSONObject? = null
         get() = try {
             JSONObject(interests)
