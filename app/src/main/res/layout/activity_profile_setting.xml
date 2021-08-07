@@ -7,20 +7,39 @@
     android:background="#FFFEFE"
     tools:context=".ProfileSettingActivity">
 
+    <Button
+        android:id="@+id/btn_previousPage"
+        android:layout_width="225dp"
+        android:layout_height="64dp"
+        android:background="#00FFFFFF"
+        android:drawableStart="@drawable/ic_back_icon"
+        android:gravity="left|center"
+        android:text="가입하기"
+        android:textColor="#0E0E0E"
+        android:textSize="20dp"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
     <TextView
         android:id="@+id/tv_profileSettingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/nscjk_regular"
         android:text="프로필 설정"
         android:textColor="#FFC107"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <TextView
         android:id="@+id/tv_insertPictureExplain1"
@@ -29,6 +48,7 @@
         android:text="업로드한 사진은 승인 후 설정됩니다. 얼굴이 잘 보이는 사진을\n등록해주세요. 다음과 같은 사진은 승인되지 않으니 주의해 주세요."
         android:textColor="#3C3B3B"
         android:textSize="10sp"
+        android:fontFamily="@font/nscjk_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.748"
@@ -43,6 +63,7 @@
         android:text="- 얼굴이 보이지 않는 사진.\n- 마스크, 선글라스 등 착용 사진.\n- 선명하지 않거나 흐린 사진"
         android:textColor="#888888"
         android:textSize="10sp"
+        android:fontFamily="@font/nscjk_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.383"
@@ -57,6 +78,7 @@
         android:text="사진"
         android:textColor="#070707"
         android:textSize="20sp"
+        android:fontFamily="@font/nscjk_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.173"
@@ -71,6 +93,8 @@
         android:text="닉네임"
         android:textColor="#0E0E0E"
         android:textSize="20sp"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/nscjk_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.122"
@@ -85,6 +109,8 @@
         android:text=" 생년월일"
         android:textColor="#0E0E0E"
         android:textSize="20sp"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.066"
@@ -96,15 +122,17 @@
         android:id="@+id/tv_profileSettingText4"
         android:layout_width="39dp"
         android:layout_height="35dp"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
         android:text="성별"
         android:textColor="#0E0E0E"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintEnd_toStartOf="@+id/btn_profileSettingMale"
+        app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain2"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintVertical_bias="0.451" />
 
     <EditText
         android:id="@+id/etv_profileSettingNickName"
@@ -114,10 +142,13 @@
         android:ems="10"
         android:hint="  닉네임을 입력해주세요"
         android:inputType="textPersonName"
+        android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textColorHint="#C8C4C4"
         android:textCursorDrawable="@drawable/color_cursor"
         android:textColor="@color/textColor"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
@@ -131,18 +162,21 @@
         android:layout_height="40dp"
         android:background="@drawable/input"
         android:ems="10"
+        android:fontFamily="@font/nscjk_regular"
         android:hint="  2000/00/00"
+        android:includeFontPadding="false"
         android:inputType="textPersonName"
+        android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:textColor="@color/textColor"
         android:textColorHint="#C8C4C4"
         android:textCursorDrawable="@drawable/color_cursor"
-        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toEndOf="@+id/tv_profileSettingText2"
         app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain2"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.261" />
 
     <TextView
         android:id="@+id/tv_profileSettingText5"
@@ -150,6 +184,8 @@
         android:layout_height="wrap_content"
         android:text="사진을 제외한 기본정보는 가입 후 변경이 불가능합니다."
         android:textColor="#121111"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
@@ -161,11 +197,14 @@
         android:id="@+id/btn_moveToInterestSetting"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:background="#C8C4C4"
+        android:backgroundTint="#C8C4C4"
+        android:background="@drawable/button_rounded_medium"
         android:text="확인"
         android:textColor="#F6F4F4"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -173,7 +212,8 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_profileSettingText5"
         app:layout_constraintVertical_bias="0.466" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/img_profileSettingImage"
         android:layout_width="124dp"
         android:layout_height="120dp"
@@ -193,26 +233,30 @@
         android:layout_width="125dp"
         android:layout_height="40dp"
         android:background="@drawable/button_rounded_medium"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
         android:text="남"
         app:layout_constraintBottom_toTopOf="@+id/tv_profileSettingText5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.374"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etv_profileSettingBirth"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.253" />
 
     <Button
         android:id="@+id/btn_profileSettingFemale"
         android:layout_width="125dp"
         android:layout_height="40dp"
         android:background="@drawable/button_rounded_medium"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
         android:text="여"
         app:layout_constraintBottom_toTopOf="@+id/tv_profileSettingText5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toEndOf="@+id/btn_profileSettingMale"
         app:layout_constraintTop_toBottomOf="@+id/etv_profileSettingBirth"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.253" />
 
     <Button
         android:id="@+id/btn_changeImg"
@@ -232,7 +276,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/plusSign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:foregroundGravity="center"
@@ -245,4 +289,20 @@
         app:layout_constraintStart_toStartOf="@+id/img_profileSettingImage"
         app:layout_constraintTop_toTopOf="@+id/img_profileSettingImage" />
 
+    <TextView
+        android:id="@+id/errorMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nscjk_regular"
+        android:gravity="left"
+        android:text=""
+        android:textAlignment="gravity"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_profileSettingText5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_profileSettingText4"
+        app:layout_constraintVertical_bias="0.661" />
 </androidx.constraintlayout.widget.ConstraintLayout>

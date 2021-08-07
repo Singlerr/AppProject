@@ -7,6 +7,24 @@
     android:background="#FFFFFF"
     tools:context=".RegisterActivity">
 
+    <Button
+        android:id="@+id/btn_previousPage"
+        android:layout_width="225dp"
+        android:layout_height="64dp"
+        android:background="#00FFFFFF"
+        android:drawableStart="@drawable/ic_back_icon"
+        android:gravity="left|center"
+        android:text="회원가입"
+        android:textColor="#0E0E0E"
+        android:textSize="20dp"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
     <TextView
         android:id="@+id/tv_registerTitle1"
         android:layout_width="wrap_content"

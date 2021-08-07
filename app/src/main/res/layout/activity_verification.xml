@@ -63,6 +63,7 @@
         android:enabled="false"
         android:hint="ex)01012341234"
         android:textColor="@color/textColor"
+        android:paddingStart="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_reRequest"
         app:layout_constraintHorizontal_bias="0.2"
@@ -78,16 +79,17 @@
         android:ems="10"
         android:hint="6자리 인증 코드(3분 내로 입력)"
         android:inputType="phone"
+        android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:textColor="@color/textColor"
         android:textColorHint="#C8C4C4"
         android:textCursorDrawable="@drawable/color_cursor"
-        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.377"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etv_verificationPhoneNumber"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <Button
         android:id="@+id/btn_moveToProfileSetting"
