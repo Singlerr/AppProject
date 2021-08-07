@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.addListener
 import io.github.eh.eh.asutils.ScreenSizeClassifier
+import io.github.eh.eh.asutils.Utils
+import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_intro.*
 
 class IntroActivity : AppCompatActivity() {
@@ -46,9 +48,9 @@ class IntroActivity : AppCompatActivity() {
 
     private fun startActivity() {
         var intent = Intent(this, ProfileSettingActivity::class.java)
-        var bundle = Bundle()
-        bundle.putString("className", this::class.qualifiedName)
-        intent.putExtra("classInfo", bundle)
+        var user = User()
+        user.phoneNumber = "01048728361"
+        Utils.setEssentialData(intent,user,this::class.qualifiedName!!)
         startActivity(
             intent,
             ActivityOptions.makeSceneTransitionAnimation(this).toBundle()

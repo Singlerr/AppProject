@@ -11,6 +11,7 @@ import android.view.Window
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.asutils.IAlertDialog
+import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
 import io.github.eh.eh.http.StreamHandler
@@ -34,7 +35,7 @@ class VerificationActivity : AppCompatActivity() {
             exitTransition = Slide(Gravity.RIGHT)
         }
         setContentView(R.layout.activity_verification)
-        user = intent.extras!!.getSerializable("user") as User
+        user = Utils.getUser(intent)!!
         etv_verificationPhoneNumber.setText(user.phoneNumber, TextView.BufferType.EDITABLE)
         startTimer()
 
@@ -104,15 +105,7 @@ class VerificationActivity : AppCompatActivity() {
                                                 this@VerificationActivity,
                                                 ProfileSettingActivity::class.java
                                             )
-                                            var bundle = Bundle()
-                                            bundle.putSerializable(
-                                                "className",
-                                                this::class.qualifiedName
-                                            )
-                                            var userBundle = Bundle()
-                                            userBundle.putSerializable("user", user)
-                                            intent.putExtra("classInfo", bundle)
-                                            intent.putExtra("user", userBundle)
+                                            Utils.setEssentialData(intent,user,this::class.qualifiedName!!)
                                             startActivity(intent)
                                         }.create()
                                     dialog.show()

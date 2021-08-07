@@ -5,20 +5,28 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.transition.Slide
+import android.util.Log
 import android.view.Gravity
 import android.view.Window
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
+import androidx.core.widget.addTextChangedListener
 import io.github.eh.eh.serverside.Sex
 import kotlinx.android.synthetic.main.activity_profile_setting.*
 
 class ProfileSettingActivity : AppCompatActivity() {
-    private val GET_GALLERY_IMAGE = 200
-    private var sex:Sex? = null
-    private var imageUri:Uri? = null
+    private var sex: Sex? = null
+    private var imageUri: Uri? = null
+
+
+    private var stateSex = 0
+    private var stateImg = 0
+    private var stateNickName = 0
+    private var stateBirthDay = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,11 +38,14 @@ class ProfileSettingActivity : AppCompatActivity() {
                 img_profileSettingImage.setImageURI(imageUri)
                 btn_changeImg.isInvisible = false
                 plusSign.isInvisible = true
+                stateImg = 1
+                checkConditions()
             }
         }
         with(window) {
             requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
             enterTransition = Slide(Gravity.RIGHT)
+            exitTransition = Slide(Gravity.RIGHT)
         }
         setContentView(R.layout.activity_profile_setting)
         btn_changeImg.isInvisible = true
@@ -43,12 +54,16 @@ class ProfileSettingActivity : AppCompatActivity() {
             findViewById<Button>(R.id.btn_profileSettingMale).setBackgroundResource(R.drawable.button_rounded_medium)
             //Set sex of user to male
             sex = Sex.MALE
+            stateSex = 1
+            checkConditions()
         }
         btn_profileSettingFemale.setOnClickListener {
             findViewById<Button>(R.id.btn_profileSettingMale).setBackgroundResource(R.drawable.button_rounded_medium_unclicked)
             findViewById<Button>(R.id.btn_profileSettingFemale).setBackgroundResource(R.drawable.button_rounded_medium)
             //Set sex of user to female
             sex = Sex.FEMALE
+            stateSex = 1
+            checkConditions()
         }
         img_profileSettingImage.setOnClickListener {
             var intent = Intent(Intent.ACTION_PICK)
@@ -60,25 +75,82 @@ class ProfileSettingActivity : AppCompatActivity() {
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
             launcher.launch(intent)
         }
+        etv_profileSettingBirth.addTextChangedListener {
+            if (it!!.toString().matches(Regex("\\d{8}"))) {
+                stateBirthDay = 1
+                etv_profileSettingBirth.setTextColor(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.textColor
+                    )
+                )
+            } else {
+                stateBirthDay = 0
+                etv_profileSettingBirth.setTextColor(
+                    ContextCompat.getColor(
+                        this,
+                        android.R.color.holo_red_light
+                    )
+                )
+            }
+            checkConditions()
+        }
+        etv_profileSettingNickName.addTextChangedListener {
+            stateNickName = if (it!!.toString().length in 1..8) {
+                etv_profileSettingNickName.setTextColor(
+                    ContextCompat.getColor(
+                        this,
+                        R.color.textColor
+                    )
+                )
+                1
+            } else {
+                etv_profileSettingNickName.setTextColor(
+                    ContextCompat.getColor(
+                        this,
+                        android.R.color.holo_red_light
+                    )
+                )
+                0
+            }
+            checkConditions()
+        }
         btn_moveToInterestSetting.setOnClickListener {
-            if(etv_profileSettingNickName.text.isEmpty()){
-                errorMsg.text = "닉네임을 입력해주세요."
-                return@setOnClickListener
+            if (checkConditions()) {
+                if (etv_profileSettingNickName.text.isEmpty()) {
+                    errorMsg.text = "닉네임을 입력해주세요."
+                    return@setOnClickListener
+                }
+                if (!etv_profileSettingBirth.text.toString().matches(Regex("\\d{8}"))) {
+                    errorMsg.text = "생년월일을 정확하게 입력해주세요. (예: 20020111)"
+                    return@setOnClickListener
+                }
+                if (sex == null) {
+                    errorMsg.text = "성별을 선택해주세요."
+                    return@setOnClickListener
+                }
+                if (imageUri == null) {
+                    errorMsg.text = "프로필 이미지를 선택해주세요."
+                    return@setOnClickListener
+                }
+                var intent = Intent(this, InterestListActivity::class.java)
+                startActivity(intent)
             }
-            if(! etv_profileSettingBirth.text.toString().matches(Regex("\\d{8}"))){
-                errorMsg.text = "생년월일을 정확하게 입력해주세요. (예: 20020111)"
-                return@setOnClickListener
-            }
-            if(sex == null){
-                errorMsg.text = "성별을 선택해주세요."
-                return@setOnClickListener
-            }
-            if(imageUri == null){
-                errorMsg.text = "프로필 이미지를 선택해주세요."
-                return@setOnClickListener
-            }
-            var intent = Intent(this,InterestListActivity::class.java)
-            startActivity(intent)
+        }
+        btn_previousPage.setOnClickListener {
+            finish()
+        }
+
+    }
+
+    private fun checkConditions(): Boolean {
+        var stateSum = stateBirthDay + stateImg + stateNickName + stateSex
+        return if (stateSum == 4) {
+            btn_moveToInterestSetting.setBackgroundResource(R.drawable.button_rounded_medium)
+            true
+        } else {
+            btn_moveToInterestSetting.setBackgroundResource(R.drawable.button_rounded_medium_disabled)
+            false
         }
     }
 }

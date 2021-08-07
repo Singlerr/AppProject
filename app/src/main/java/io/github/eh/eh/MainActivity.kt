@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.TranslateAnimation
 import androidx.appcompat.app.AppCompatActivity
+import io.github.eh.eh.Env.Bundle.BUNDLE_NAME
+import io.github.eh.eh.Env.Bundle.USER_BUNDLE
 import io.github.eh.eh.netty.MatchingCallback
 import io.github.eh.eh.netty.MatchingClientBootstrap
 import io.github.eh.eh.netty.UserWrapper
@@ -50,9 +52,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (intent.hasExtra("user")) {
-            var bundle = intent.getBundleExtra("user")!!
-            user = bundle.getSerializable("user") as User
+        if (intent.hasExtra(BUNDLE_NAME)) {
+            var bundle = intent.getBundleExtra(BUNDLE_NAME)!!
+            user = bundle.getSerializable(USER_BUNDLE) as User
             wrapper = UserWrapper.getInstance(user, object : MatchingCallback {
                 override fun onMatched(userWrapper: UserWrapper?, targetUser: User?) {
                     TODO("Not yet implemented")

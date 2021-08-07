@@ -8,4 +8,9 @@ public class Env {
     public static final int PORT = 1300;
     public static final int VERIFICATION_TIME_OUT = 110 * 1000;
     public static final int HTTP_PORT = 8080;
+    public static class Bundle{
+        public static final String BUNDLE_NAME = "passableResources";
+        public static final String USER_BUNDLE = "user";
+        public static final String CLASS_BUNDLE = "className";
+    }
 }

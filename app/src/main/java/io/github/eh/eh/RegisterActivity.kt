@@ -7,6 +7,7 @@ import android.view.Gravity
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.asutils.IAlertDialog
+import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
 import io.github.eh.eh.http.StreamHandler
@@ -27,10 +28,12 @@ class RegisterActivity : AppCompatActivity() {
             exitTransition = Slide(Gravity.RIGHT)
         }
         setContentView(R.layout.activity_register)
-        var user: User? = null
+        var user = User()
+        btn_previousPage.setOnClickListener {
+            finish()
+        }
         btn_moveToVerification.setOnClickListener {
             var phoneNumber = etv_registerPhoneNumber.text.toString()
-
             if (!phoneNumber.matches(Regex("\\d{11}"))) {
                 var dialog = IAlertDialog.Builder(this)
                     .message("휴대폰 번호 형식에 맞춰 입력해주세요(예: 01012345678)")
@@ -45,8 +48,7 @@ class RegisterActivity : AppCompatActivity() {
                 .port(Env.HTTP_PORT)
                 .streamHandler(object : StreamHandler {
                     override fun onWrite(outputStream: HTTPContext) {
-                        user = User()
-                        user!!.phoneNumber = phoneNumber
+                        user.phoneNumber = phoneNumber
                         outputStream.write(user)
                     }
 
@@ -55,9 +57,7 @@ class RegisterActivity : AppCompatActivity() {
                             if (obj.responseCode == 200) {
                                 var intent =
                                     Intent(this@RegisterActivity, VerificationActivity::class.java)
-                                var bundle = Bundle()
-                                bundle.putSerializable("user", user)
-                                intent.putExtras(bundle)
+                                Utils.setEssentialData(intent, user, this::class.qualifiedName!!)
                                 startActivity(intent)
                             } else {
                                 CoroutineScope(Dispatchers.Main).launch {
