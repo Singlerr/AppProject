@@ -1,10 +1,9 @@
-package io.github.eh.eh.asutils;
+package io.github.eh.eh.asutils
 
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Looper
 import android.view.View
 import android.view.Window
 import android.widget.Button

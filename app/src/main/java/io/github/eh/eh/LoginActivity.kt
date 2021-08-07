@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
                             val user = User()
                             user.userId = id
                             user.password = password
-                            outputStream!!.write(user)
+                            outputStream.write(user)
                         }
 
                         override fun onRead(obj: Any?) {
@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
                         val user = User()
                         user.userId = id
                         user.password = pw
-                        outputStream!!.write(user)
+                        outputStream.write(user)
                     }
 
                     override fun onRead(obj: Any?) {

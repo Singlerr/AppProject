@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if(intent.hasExtra("user")){
+        if (intent.hasExtra("user")) {
             var bundle = intent.getBundleExtra("user")!!
             user = bundle.getSerializable("user") as User
             wrapper = UserWrapper.getInstance(user, object : MatchingCallback {
@@ -71,19 +71,19 @@ class MainActivity : AppCompatActivity() {
             btn_sex_all.setBackgroundResource(R.drawable.button_rounded_high)
             btn_sex_female.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_sex_male.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
-            setSexScope(wrapper.desiredTarget!!, SexScope.SCOPE_ALL)
+            setSexScope(wrapper.desiredTarget, SexScope.SCOPE_ALL)
         }
         btn_sex_male.setOnClickListener {
             btn_sex_all.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_sex_female.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_sex_male.setBackgroundResource(R.drawable.button_rounded_high)
-            setSexScope(wrapper.desiredTarget!!, SexScope.SCOPE_MALE)
+            setSexScope(wrapper.desiredTarget, SexScope.SCOPE_MALE)
         }
         btn_sex_female.setOnClickListener {
             btn_sex_all.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_sex_female.setBackgroundResource(R.drawable.button_rounded_high)
             btn_sex_male.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
-            setSexScope(wrapper.desiredTarget!!, SexScope.SCOPE_FEMALE)
+            setSexScope(wrapper.desiredTarget, SexScope.SCOPE_FEMALE)
         }
 
         btn_age_random.setOnClickListener {
@@ -91,28 +91,28 @@ class MainActivity : AppCompatActivity() {
             btn_age_1.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_age_2.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_age_3.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
-            setAgeScope(wrapper.desiredTarget!!, AgeScope.SCOPE_RANDOM)
+            setAgeScope(wrapper.desiredTarget, AgeScope.SCOPE_RANDOM)
         }
         btn_age_1.setOnClickListener {
             btn_age_random.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_age_1.setBackgroundResource(R.drawable.button_rounded_high)
             btn_age_2.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_age_3.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
-            setAgeScope(wrapper.desiredTarget!!, AgeScope.SCOPE_20_25)
+            setAgeScope(wrapper.desiredTarget, AgeScope.SCOPE_20_25)
         }
         btn_age_2.setOnClickListener {
             btn_age_random.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_age_1.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_age_2.setBackgroundResource(R.drawable.button_rounded_high)
             btn_age_3.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
-            setAgeScope(wrapper.desiredTarget!!, AgeScope.SCOPE_26_30)
+            setAgeScope(wrapper.desiredTarget, AgeScope.SCOPE_26_30)
         }
         btn_age_3.setOnClickListener {
             btn_age_random.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_age_1.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_age_2.setBackgroundResource(R.drawable.button_rounded_high_unclicked)
             btn_age_3.setBackgroundResource(R.drawable.button_rounded_high)
-            setAgeScope(wrapper.desiredTarget!!, AgeScope.SCOPE_31)
+            setAgeScope(wrapper.desiredTarget, AgeScope.SCOPE_31)
         }
 
     }

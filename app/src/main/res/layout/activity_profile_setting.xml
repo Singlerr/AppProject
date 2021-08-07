@@ -22,20 +22,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.137" />
 
-    <Button
-        android:id="@+id/btn_openGallery"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:background="#00C8C4C4"
-        android:backgroundTint="#D6D6D6"
-        android:textSize="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.605"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
-
     <TextView
         android:id="@+id/tv_insertPictureExplain1"
         android:layout_width="wrap_content"
@@ -45,10 +31,10 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.748"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_openGallery"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.446" />
 
     <TextView
         android:id="@+id/tv_insertPictureExplain2"
@@ -59,7 +45,7 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.408"
+        app:layout_constraintHorizontal_bias="0.383"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain1"
         app:layout_constraintVertical_bias="0.0" />
@@ -76,7 +62,7 @@
         app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_profileSettingTitle"
-        app:layout_constraintVertical_bias="0.072" />
+        app:layout_constraintVertical_bias="0.074" />
 
     <TextView
         android:id="@+id/tv_profileSettingText2"
@@ -90,7 +76,7 @@
         app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_insertPictureExplain2"
-        app:layout_constraintVertical_bias="0.074" />
+        app:layout_constraintVertical_bias="0.075" />
 
     <TextView
         android:id="@+id/tv_profileSettingText3"
@@ -128,9 +114,10 @@
         android:ems="10"
         android:hint="  닉네임을 입력해주세요"
         android:inputType="textPersonName"
-        android:textColor="@color/textColor"
-        android:textColorHighlight="#C8C4C4"
+        android:paddingEnd="12dp"
         android:textColorHint="#C8C4C4"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
@@ -146,7 +133,9 @@
         android:ems="10"
         android:hint="  2000/00/00"
         android:inputType="textPersonName"
+        android:paddingEnd="12dp"
         android:textColorHint="#C8C4C4"
+        android:textCursorDrawable="@drawable/color_cursor"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +152,7 @@
         android:textColor="#121111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.584"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.88" />
@@ -186,18 +175,18 @@
 
     <ImageView
         android:id="@+id/img_profileSettingImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="124dp"
+        android:layout_height="120dp"
         android:background="@drawable/imgbutton_circle"
         android:clipToOutline="true"
+        android:elevation="1dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/tv_insertPictureExplain1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.605"
+        app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.878"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.814" />
 
     <Button
         android:id="@+id/btn_profileSettingMale"
@@ -224,5 +213,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etv_profileSettingBirth"
         app:layout_constraintVertical_bias="0.26" />
+
+    <Button
+        android:id="@+id/btn_changeImg"
+        android:layout_width="47dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/button_img_add"
+        android:includeFontPadding="false"
+        android:text="+"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_insertPictureExplain1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.752"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:text="+"
+        android:textColor="#707070"
+        android:textSize="50dp"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_profileSettingImage"
+        app:layout_constraintEnd_toEndOf="@+id/img_profileSettingImage"
+        app:layout_constraintStart_toStartOf="@+id/img_profileSettingImage"
+        app:layout_constraintTop_toTopOf="@+id/img_profileSettingImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

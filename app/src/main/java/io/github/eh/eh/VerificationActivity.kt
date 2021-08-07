@@ -4,16 +4,12 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
 import android.transition.Slide
 import android.util.Log
 import android.view.Gravity
 import android.view.Window
-import android.widget.EditText
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.set
 import io.github.eh.eh.asutils.IAlertDialog
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
@@ -25,24 +21,21 @@ import kotlinx.android.synthetic.main.activity_verification.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.LocalDate
 import java.time.LocalTime
 import java.util.*
 
 class VerificationActivity : AppCompatActivity() {
-    private lateinit var user:User
-    private var timer:CountDownTimer? = null
+    private lateinit var user: User
+    private var timer: CountDownTimer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         with(window) {
             requestWindowFeature(Window.FEATURE_CONTENT_TRANSITIONS)
             exitTransition = Slide(Gravity.RIGHT)
         }
-        setContentView(R.layout.activity_verification);
+        setContentView(R.layout.activity_verification)
         user = intent.extras!!.getSerializable("user") as User
-        etv_verificationPhoneNumber.setText(user.phoneNumber,TextView.BufferType.EDITABLE)
+        etv_verificationPhoneNumber.setText(user.phoneNumber, TextView.BufferType.EDITABLE)
         startTimer()
 
         btn_reRequest.setOnClickListener {
@@ -53,11 +46,23 @@ class VerificationActivity : AppCompatActivity() {
                 .streamHandler(object : StreamHandler {
                     override fun onWrite(outputStream: HTTPContext) {
                         outputStream.write(user)
-
                     }
+
                     override fun onRead(obj: Any?) {
-                        if(obj is ResponseBundle){
-                            if(obj.responseCode != 200){
+                        if (obj is ResponseBundle) {
+                            if (obj.responseCode != 200) {
+                                CoroutineScope(Dispatchers.Main).launch {
+                                    var dialog = IAlertDialog.Builder(this@VerificationActivity)
+                                        .title("확인")
+                                        .message("인증에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.")
+                                        .positiveButton("확인") {
+                                            finish()
+                                        }.create()
+                                    dialog.show()
+                                }
+                            } else {
+                                resetTimer()
+                                startTimer()
                             }
                         }
                     }
@@ -68,11 +73,11 @@ class VerificationActivity : AppCompatActivity() {
         }
         btn_moveToProfileSetting.setOnClickListener {
             var code = etv_verificationCode.text.toString()
-            if(! code.matches(Regex("\\d{5}"))){
+            if (!code.matches(Regex("\\d{5}"))) {
                 var dialog = IAlertDialog.Builder(this)
                     .message("인증번호 형식에 맞춰 입력해주세요(예: 12345)")
                     .title("확인")
-                    .positiveButton("확인"){
+                    .positiveButton("확인") {
                     }.create()
                 dialog.show()
                 return@setOnClickListener
@@ -81,23 +86,29 @@ class VerificationActivity : AppCompatActivity() {
             var http = HTTPBootstrap.builder()
                 .port(Env.HTTP_PORT)
                 .host(Env.AUTH_CHK_API_URL)
-                .streamHandler(object : StreamHandler{
+                .streamHandler(object : StreamHandler {
                     override fun onWrite(outputStream: HTTPContext) {
-                        var bundle = VerificationBundle(user.phoneNumber!!,code)
+                        var bundle = VerificationBundle(user.phoneNumber!!, code)
                         outputStream.write(bundle)
                     }
 
                     override fun onRead(obj: Any?) {
-                        if(obj is ResponseBundle){
-                            if(obj.responseCode == 200){
+                        if (obj is ResponseBundle) {
+                            if (obj.responseCode == 200) {
                                 CoroutineScope(Dispatchers.Main).launch {
                                     var dialog = IAlertDialog.Builder(this@VerificationActivity)
                                         .title("확인")
                                         .message("인증이 완료되었습니다.")
-                                        .positiveButton("확인"){
-                                            var intent = Intent(this@VerificationActivity, ProfileSettingActivity::class.java)
+                                        .positiveButton("확인") {
+                                            var intent = Intent(
+                                                this@VerificationActivity,
+                                                ProfileSettingActivity::class.java
+                                            )
                                             var bundle = Bundle()
-                                            bundle.putSerializable("className", this::class.qualifiedName)
+                                            bundle.putSerializable(
+                                                "className",
+                                                this::class.qualifiedName
+                                            )
                                             var userBundle = Bundle()
                                             userBundle.putSerializable("user", user)
                                             intent.putExtra("classInfo", bundle)
@@ -106,8 +117,43 @@ class VerificationActivity : AppCompatActivity() {
                                         }.create()
                                     dialog.show()
                                 }
-                            }else{
-                                Log.e("Error",obj.response)
+                            } else {
+                                when {
+                                    obj.response!! == "VERIFICATION_NOT_FOUND" -> {
+                                        CoroutineScope(Dispatchers.Main).launch {
+                                            var dialog = IAlertDialog.Builder(this@VerificationActivity)
+                                                .title("확인")
+                                                .message("인증에 실패했습니다. 제한 시간 내에 인증을 완료해주세요.")
+                                                .positiveButton("확인") {
+                                                    finish()
+                                                }.create()
+                                            dialog.show()
+                                        }
+                                    }
+                                    obj.response!! == "CODE_MISMATCH" -> {
+                                        CoroutineScope(Dispatchers.Main).launch {
+                                            var dialog = IAlertDialog.Builder(this@VerificationActivity)
+                                                .title("확인")
+                                                .message("인증에 실패했습니다.")
+                                                .positiveButton("확인") {
+                                                    finish()
+                                                }.create()
+                                            dialog.show()
+                                        }
+                                    }
+                                    else -> {
+                                        CoroutineScope(Dispatchers.Main).launch {
+                                            var dialog = IAlertDialog.Builder(this@VerificationActivity)
+                                                .title("확인")
+                                                .message("인증에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.")
+                                                .positiveButton("확인") {
+                                                    finish()
+                                                }.create()
+                                            dialog.show()
+                                        }
+                                    }
+                                }
+
                             }
                         }
                     }
@@ -119,7 +165,8 @@ class VerificationActivity : AppCompatActivity() {
 
         }
     }
-    private fun resetTimer(){
+
+    private fun resetTimer() {
         timer = object :
             CountDownTimer(Env.VERIFICATION_TIME_OUT.toLong(), 1000) {
             override fun onTick(p0: Long) {
@@ -137,7 +184,7 @@ class VerificationActivity : AppCompatActivity() {
                 var dialog = IAlertDialog.Builder(this@VerificationActivity)
                     .title("시간 초과")
                     .message("인증 시간이 초과되었습니다. 다시 시도하세요.")
-                    .positiveButton("확인"){
+                    .positiveButton("확인") {
                     }
                 dialog.create().show()
                 timeLeft.text = ""
@@ -146,8 +193,9 @@ class VerificationActivity : AppCompatActivity() {
         }
         timeLeft.text = ""
     }
-    private fun startTimer(){
-        if(timer == null){
+
+    private fun startTimer() {
+        if (timer == null) {
             timer = object :
                 CountDownTimer(Env.VERIFICATION_TIME_OUT.toLong(), 1000) {
                 override fun onTick(p0: Long) {
@@ -157,8 +205,8 @@ class VerificationActivity : AppCompatActivity() {
                     } else {
                         second
                     }
-                    Log.e("Error",second.toString())
-                    Log.e("Errr",date.toString())
+                    Log.e("Error", second.toString())
+                    Log.e("Errr", date.toString())
                     timeLeft.text = date.toString()
 
                 }
@@ -167,19 +215,20 @@ class VerificationActivity : AppCompatActivity() {
                     var dialog = IAlertDialog.Builder(this@VerificationActivity)
                         .title("시간 초과")
                         .message("인증 시간이 초과되었습니다. 다시 시도하세요.")
-                        .positiveButton("확인"){
+                        .positiveButton("확인") {
                         }
                     dialog.create().show()
                     timeLeft.text = ""
                 }
             }
             timer!!.start()
-        }else{
+        } else {
             timer!!.start()
         }
     }
-    private fun stopTimer(){
-        if(timer != null)
+
+    private fun stopTimer() {
+        if (timer != null)
             timer!!.cancel()
     }
 }

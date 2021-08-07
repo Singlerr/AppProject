@@ -22,39 +22,39 @@ class InterestListActivity : AppCompatActivity() {
     private var user: User? = null
 
     //체크했을 때 체크박스를 문자열에 저장하기 위한 함수 생성
-    private fun setFood(array1: String,isChecked:Boolean) {
+    private fun setFood(array1: String, isChecked: Boolean) {
         var parentJson = user!!.parseInterest!!
         var json = parentJson.getJSONArray("food")
-        if(isChecked){
+        if (isChecked) {
             if (Utils.hasValue(json, array1))
-                json.remove(Utils.indexOf(json,array1))
-        }else{
+                json.remove(Utils.indexOf(json, array1))
+        } else {
             if (!Utils.hasValue(json, array1))
                 json.put(array1)
         }
         user!!.setInterests(parentJson)
     }
 
-    private fun setHobby(array1: String,isChecked: Boolean) {
+    private fun setHobby(array1: String, isChecked: Boolean) {
         var parentJson = user!!.parseInterest!!
         var json = parentJson.getJSONArray("hobby")
-        if(isChecked){
+        if (isChecked) {
             if (Utils.hasValue(json, array1))
-                json.remove(Utils.indexOf(json,array1))
-        }else{
+                json.remove(Utils.indexOf(json, array1))
+        } else {
             if (!Utils.hasValue(json, array1))
                 json.put(array1)
         }
         user!!.setInterests(parentJson)
     }
 
-    private fun setPlace(array1: String,isChecked: Boolean) {
+    private fun setPlace(array1: String, isChecked: Boolean) {
         var parentJson = user!!.parseInterest!!
         var json = parentJson.getJSONArray("place")
-        if(isChecked){
+        if (isChecked) {
             if (Utils.hasValue(json, array1))
-                json.remove(Utils.indexOf(json,array1))
-        }else{
+                json.remove(Utils.indexOf(json, array1))
+        } else {
             if (!Utils.hasValue(json, array1))
                 json.put(array1)
         }
@@ -69,34 +69,34 @@ class InterestListActivity : AppCompatActivity() {
     private val listener by lazy {
         CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             when (buttonView.id) {
-                R.id.checkHansik -> setFood("한식",isChecked)
-                R.id.checkYangsik -> setFood("양식",isChecked)
-                R.id.checkJunsik -> setFood("중식",isChecked)
-                R.id.checkIlsik -> setFood("일식",isChecked)
-                R.id.checkAsian -> setFood("아시아음식",isChecked)
-                R.id.checkDessert -> setFood("디저트",isChecked)
-                R.id.checkDrink -> setFood("술",isChecked)
-                R.id.checkVeg -> setFood("비건",isChecked)
-                R.id.checkWorkout -> setHobby("헬스",isChecked)
-                R.id.checkReading -> setHobby("독서",isChecked)
-                R.id.checkMusic -> setHobby("음악",isChecked)
-                R.id.checkMovie -> setHobby("영화",isChecked)
-                R.id.checkSwimming -> setHobby("수영",isChecked)
-                R.id.checkBicycle -> setHobby("자전거",isChecked)
-                R.id.checkTennis -> setHobby("테니스",isChecked)
-                R.id.checkSoccer -> setHobby("축구",isChecked)
-                R.id.checkMedi -> setHobby("명상",isChecked)
-                R.id.checkStudy -> setHobby("공부",isChecked)
-                R.id.checkPicture -> setHobby("사진",isChecked)
-                R.id.checkGolf -> setHobby("골프",isChecked)
-                R.id.checkKorea -> setPlace("한국",isChecked)
-                R.id.checkBri -> setPlace("영국",isChecked)
-                R.id.checkFra -> setPlace("프랑스",isChecked)
-                R.id.checkChi -> setPlace("중국",isChecked)
-                R.id.checkJap -> setPlace("일본",isChecked)
-                R.id.checkAmer -> setPlace("미국",isChecked)
-                R.id.checkAust -> setPlace("호주",isChecked)
-                R.id.checkHonk -> setPlace("홍콩",isChecked)
+                R.id.checkHansik -> setFood("한식", isChecked)
+                R.id.checkYangsik -> setFood("양식", isChecked)
+                R.id.checkJunsik -> setFood("중식", isChecked)
+                R.id.checkIlsik -> setFood("일식", isChecked)
+                R.id.checkAsian -> setFood("아시아음식", isChecked)
+                R.id.checkDessert -> setFood("디저트", isChecked)
+                R.id.checkDrink -> setFood("술", isChecked)
+                R.id.checkVeg -> setFood("비건", isChecked)
+                R.id.checkWorkout -> setHobby("헬스", isChecked)
+                R.id.checkReading -> setHobby("독서", isChecked)
+                R.id.checkMusic -> setHobby("음악", isChecked)
+                R.id.checkMovie -> setHobby("영화", isChecked)
+                R.id.checkSwimming -> setHobby("수영", isChecked)
+                R.id.checkBicycle -> setHobby("자전거", isChecked)
+                R.id.checkTennis -> setHobby("테니스", isChecked)
+                R.id.checkSoccer -> setHobby("축구", isChecked)
+                R.id.checkMedi -> setHobby("명상", isChecked)
+                R.id.checkStudy -> setHobby("공부", isChecked)
+                R.id.checkPicture -> setHobby("사진", isChecked)
+                R.id.checkGolf -> setHobby("골프", isChecked)
+                R.id.checkKorea -> setPlace("한국", isChecked)
+                R.id.checkBri -> setPlace("영국", isChecked)
+                R.id.checkFra -> setPlace("프랑스", isChecked)
+                R.id.checkChi -> setPlace("중국", isChecked)
+                R.id.checkJap -> setPlace("일본", isChecked)
+                R.id.checkAmer -> setPlace("미국", isChecked)
+                R.id.checkAust -> setPlace("호주", isChecked)
+                R.id.checkHonk -> setPlace("홍콩", isChecked)
             }
         }
     }
@@ -130,7 +130,7 @@ class InterestListActivity : AppCompatActivity() {
             }
         }
         // binding.complete.setOnClickListener { startActivity(intent) }
-        backspace.setOnClickListener { startActivity(intent2)}
+        backspace.setOnClickListener { startActivity(intent2) }
 
         //체크박스
         /**

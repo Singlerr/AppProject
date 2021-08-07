@@ -10,9 +10,10 @@ object Utils {
                 return true
         return false
     }
-    fun indexOf(array: JSONArray,value: Any): Int{
-        for(i in 0 until array.length())
-            if(array.get(i) == value)
+
+    fun indexOf(array: JSONArray, value: Any): Int {
+        for (i in 0 until array.length())
+            if (array.get(i) == value)
                 return i
         return -1
     }

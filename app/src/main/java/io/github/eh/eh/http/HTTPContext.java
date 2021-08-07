@@ -17,7 +17,7 @@ import io.github.eh.eh.http.cipher.CipherBase;
 public class HTTPContext {
 
     private final ObjectMapper objectMapper;
-    private OutputStream outputStream;
+    private final OutputStream outputStream;
 
     private HTTPContext(OutputStream outputStream) {
         this.objectMapper = new ObjectMapper();

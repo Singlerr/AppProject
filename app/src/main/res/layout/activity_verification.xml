@@ -77,7 +77,10 @@
         android:background="@drawable/input"
         android:ems="10"
         android:hint="6자리 인증 코드(3분 내로 입력)"
-        android:inputType="textPersonName"
+        android:inputType="phone"
+        android:paddingEnd="12dp"
+        android:textColorHint="#C8C4C4"
+        android:textCursorDrawable="@drawable/color_cursor"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +117,7 @@
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/etv_verificationPhoneNumber"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.448" />
+        app:layout_constraintVertical_bias="0.441" />
 
     <TextView
         android:id="@+id/timeLeft"
