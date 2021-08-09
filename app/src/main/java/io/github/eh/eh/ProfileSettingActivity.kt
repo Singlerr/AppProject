@@ -37,7 +37,7 @@ class ProfileSettingActivity : AppCompatActivity() {
                 imageUri = result.data!!.data
                 img_profileSettingImage.setImageURI(imageUri)
                 btn_changeImg.isInvisible = false
-                plusSign.isInvisible = true
+                //plusSign.isInvisible = true
                 stateImg = 1
                 checkConditions()
             }
@@ -70,11 +70,10 @@ class ProfileSettingActivity : AppCompatActivity() {
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
             launcher.launch(intent)
         }
-        btn_changeImg.setOnClickListener {
-            var intent = Intent(Intent.ACTION_PICK)
-            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
-            launcher.launch(intent)
-        }
+        /**
+         *
+         */
+
         etv_profileSettingBirth.addTextChangedListener {
             if (it!!.toString().matches(Regex("\\d{8}"))) {
                 stateBirthDay = 1

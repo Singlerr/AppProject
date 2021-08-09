@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="colorPrimary">@color/purple_500</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="mainColor">#f9b447</color>
+    <color name="mainColor">#efb75c</color>
     <color name="mainColor_unfocused">#fde9cb</color>
     <color name="textColor">#999999</color>
     <color name="gray">#b2b2b2</color>
