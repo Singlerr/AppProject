@@ -11,7 +11,9 @@
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/button_rounded_high.xml" value="0.3" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/button_rounded_high_unclicked.xml" value="0.3770833333333333" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/button_rounded_medium_disabled.xml" value="0.309375" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/button_rounded_medium_interest_disabled.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/button_rounded_medium_unclicked.xml" value="0.3770833333333333" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/checkbox.xml" value="0.12407407407407407" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/dialogdrawable.xml" value="0.25104166666666666" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/ic_back_icon.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/ic_clip.xml" value="0.38229166666666664" />
@@ -26,7 +28,7 @@
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/textviewbackground.xml" value="0.25104166666666666" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/font/nscjk.xml" value="0.10833333333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/font/nscjk_bold.xml" value="0.23489583333333333" />
-        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_interest_list.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_interest_list.xml" value="0.33" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_intro.xml" value="0.17046605876393112" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_main.xml" value="0.33" />

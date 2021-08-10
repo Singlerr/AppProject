@@ -3,10 +3,12 @@ package io.github.eh.eh.netty
 import io.github.eh.eh.netty.MatchingClientHandler.Companion.getInstance
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel.ChannelInitializer
+import io.netty.channel.ChannelOption
 import io.netty.channel.EventLoopGroup
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioServerSocketChannel
+import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.handler.codec.serialization.ClassResolvers
 import io.netty.handler.codec.serialization.ObjectDecoder
 import io.netty.handler.codec.serialization.ObjectEncoder
@@ -20,8 +22,9 @@ class MatchingClientBootstrap private constructor(private val host: String, priv
         val handler = getInstance(user!!)
         try {
             bootstrap.group(group)
-                .channel(NioServerSocketChannel::class.java)
+                .channel(NioSocketChannel::class.java)
                 .handler(LoggingHandler(LogLevel.INFO))
+                .option(ChannelOption.SO_KEEPALIVE, true)
                 .handler(object : ChannelInitializer<SocketChannel>() {
                     @Throws(Exception::class)
                     override fun initChannel(ch: SocketChannel) {

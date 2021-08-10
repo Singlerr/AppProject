@@ -65,13 +65,6 @@ class User : Serializable {
     /**
      * It is not saved to a database.
      * It is basically null when an instance of user is created.
-     * You should set gps data manually to a gps data from rest api.
-     */
-    var gpsData: GPSData? = null
-
-    /**
-     * It is not saved to a database.
-     * It is basically null when an instance of user is created.
      * It contains result message from server when register/login operation occurred.
      */
     val result: String? = null
@@ -94,7 +87,9 @@ class User : Serializable {
         } catch (e: JSONException) {
             null
         }
-
+    fun setSex(sexType:Sex){
+        sex = sexType.name
+    }
     fun setInterests(json: JSONObject?) {
         interests = json?.toString() ?: ""
     }

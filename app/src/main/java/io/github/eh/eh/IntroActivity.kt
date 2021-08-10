@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.addListener
 import io.github.eh.eh.asutils.ScreenSizeClassifier
 import io.github.eh.eh.asutils.Utils
+import io.github.eh.eh.serverside.Sex
 import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_intro.*
 
@@ -47,9 +48,10 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun startActivity() {
-        var intent = Intent(this, ProfileSettingActivity::class.java)
+        var intent = Intent(this, MainActivity::class.java)
         var user = User()
         user.phoneNumber = "01048728361"
+        user.setSex(Sex.MALE)
         Utils.setEssentialData(intent,user,this::class.qualifiedName!!)
         startActivity(
             intent,

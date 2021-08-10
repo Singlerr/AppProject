@@ -87,95 +87,128 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="35dp"
+                    android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkHansik"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/nscjk_medium"
                         android:text="@string/subject1_1"
                         android:textColor="#000000"
-                        android:fontFamily="@font/nscjk_medium"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkYangsik"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
                         android:text="@string/subject1_2"
                         android:textColor="#000000"
                         android:fontFamily="@font/nscjk_medium"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkJunsik"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
                         android:text="@string/subject1_3"
                         android:textColor="#000000"
                         android:fontFamily="@font/nscjk_medium"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkIlsik"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
                         android:text="@string/subject1_4"
                         android:textColor="#000000"
                         android:fontFamily="@font/nscjk_medium"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="35dp"
+                    android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkAsian"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
+                        android:fontFamily="@font/nscjk_regular"
+                        android:includeFontPadding="false"
                         android:text="@string/subject1_5"
                         android:textColor="#000000"
-                        android:fontFamily="@font/nscjk_regular"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkDessert"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
                         android:text="@string/subject1_6"
                         android:textColor="#000000"
                         android:fontFamily="@font/nscjk_regular"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkDrink"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
                         android:text="@string/subject1_7"
                         android:textColor="#000000"
                         android:fontFamily="@font/nscjk_regular"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkVeg"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
                         android:text="@string/subject1_8"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
                 </LinearLayout>
             </LinearLayout>
@@ -202,40 +235,48 @@
                     android:layout_marginRight="35dp"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkWorkout"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_1"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkReading"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_2"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkMusic"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_3"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkMovie"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_4"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
                 </LinearLayout>
 
@@ -246,40 +287,48 @@
                     android:layout_marginRight="35dp"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkSwimming"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_5"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkBicycle"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_6"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkTennis"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_7"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkSoccer"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_8"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
                 </LinearLayout>
 
@@ -290,40 +339,48 @@
                     android:layout_marginRight="35dp"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkMedi"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_9"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkStudy"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_10"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkPicture"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_11"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkGolf"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject2_13"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
                 </LinearLayout>
@@ -351,40 +408,48 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkKorea"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_1"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkBri"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_2"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkFra"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_3"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkChi"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_4"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
                 </LinearLayout>
 
@@ -393,40 +458,48 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkJap"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_5"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkAmer"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_6"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkAust"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_7"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
 
-                    <CheckBox
+                    <Button
                         android:id="@+id/checkHonk"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:text="@string/subject3_8"
                         android:textColor="#000000"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/button_rounded_medium_interest_disabled"
                         app:buttonTint="@color/mainColor" />
                 </LinearLayout>
             </LinearLayout>
