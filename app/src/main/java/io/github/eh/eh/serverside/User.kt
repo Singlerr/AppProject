@@ -1,10 +1,12 @@
 package io.github.eh.eh.serverside
 
+import android.net.Uri
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.Serializable
 import java.sql.Date
+import java.time.LocalDate
 
 class User : Serializable {
     /**
@@ -35,7 +37,12 @@ class User : Serializable {
     /**
      * A birth day of a user.
      **/
-    var birthDay: Date? = null
+    var birthDay: LocalDate? = null
+
+    /**
+     * A age of a user.
+     */
+    var age: Int? = null
 
     /**
      * A sex of a user. It can be parsed as enum.
@@ -48,7 +55,7 @@ class User : Serializable {
      * A image of a profile of user.
      * It is saved with type "Blob"
      */
-    var image: ByteArray? = null
+    var image: Uri? = null
 
     /**
      * A json of interests that a user has.

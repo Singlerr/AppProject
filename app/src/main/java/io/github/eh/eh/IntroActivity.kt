@@ -50,7 +50,7 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun startActivity() {
-        var intent = Intent(this, InterestListActivity::class.java)
+        var intent = Intent(this, ProfileSettingActivity::class.java)
         var user = User()
         user.phoneNumber = "01048728361"
         user.setSex(Sex.MALE)

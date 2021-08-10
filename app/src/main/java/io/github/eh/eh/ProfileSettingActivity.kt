@@ -1,7 +1,9 @@
 package io.github.eh.eh
 
 import android.content.Intent
+import android.icu.util.Calendar
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.transition.Slide
@@ -14,8 +16,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
+import io.github.eh.eh.http.HTTPBootstrap
+import io.github.eh.eh.http.HTTPContext
+import io.github.eh.eh.http.StreamHandler
 import io.github.eh.eh.serverside.Sex
+import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_profile_setting.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
+import java.util.*
+
 
 class ProfileSettingActivity : AppCompatActivity() {
     private var sex: Sex? = null
@@ -70,9 +81,6 @@ class ProfileSettingActivity : AppCompatActivity() {
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
             launcher.launch(intent)
         }
-        /**
-         *
-         */
 
         etv_profileSettingBirth.addTextChangedListener {
             if (it!!.toString().matches(Regex("\\d{8}"))) {
@@ -132,14 +140,66 @@ class ProfileSettingActivity : AppCompatActivity() {
                     errorMsg.text = "프로필 이미지를 선택해주세요."
                     return@setOnClickListener
                 }
-                var intent = Intent(this, InterestListActivity::class.java)
-                startActivity(intent)
+
+
+                val nickName = etv_profileSettingNickName.text.toString()
+                val birthDay = etv_profileSettingBirth.text.toString()
+                var todayDate = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    Calendar.getInstance()
+                } else {
+                    TODO("VERSION.SDK_INT < N")
+                }
+                val thisYear = todayDate.get(Calendar.YEAR).toString().toInt()
+
+                val dateBirthDay = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    LocalDate.parse(birthDay, DateTimeFormatter.ofPattern("yyyyMMdd"))
+                } else {
+                    TODO("VERSION.SDK_INT < N")
+                }
+                val birthYear: Int = dateBirthDay.getYear()
+                var age: Int = thisYear - birthYear + 1
+
+
+
+
+                val bootstrap: HTTPBootstrap = HTTPBootstrap.builder()
+                    .port(1300)
+                    .host(Env.API_URL)
+                    .streamHandler(object : StreamHandler {
+
+                        override fun onWrite(outputStream: HTTPContext) {
+                            val user = User()
+                            user.nickName = nickName
+                            user.birthDay = dateBirthDay
+                            user.sex = sex.toString()
+                            user.age = age
+                            user.image = imageUri
+                            outputStream.write(user)
+                        }
+
+                        override fun onRead(obj: Any?) {
+                            ToInterestListIntent(obj as User?)
+                        }
+
+                    }).build()
+                bootstrap.submit()
+
             }
         }
+
+
         btn_previousPage.setOnClickListener {
             finish()
         }
 
+    }
+
+    private fun ToInterestListIntent(user: User?) {
+        val toInterestListIntent = Intent(this, InterestListActivity::class.java)
+        var bundle: Bundle = Bundle()
+        bundle.putSerializable("user", user)
+        toInterestListIntent.putExtra("user", bundle)
+        startActivity(toInterestListIntent)
     }
 
     private fun checkConditions(): Boolean {
