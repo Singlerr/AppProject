@@ -12,6 +12,7 @@ import android.view.Gravity
 import android.view.Window
 import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
@@ -38,6 +39,8 @@ class ProfileSettingActivity : AppCompatActivity() {
     private var stateNickName = 0
     private var stateBirthDay = 0
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -144,18 +147,10 @@ class ProfileSettingActivity : AppCompatActivity() {
 
                 val nickName = etv_profileSettingNickName.text.toString()
                 val birthDay = etv_profileSettingBirth.text.toString()
-                var todayDate = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    Calendar.getInstance()
-                } else {
-                    TODO("VERSION.SDK_INT < N")
-                }
+                var todayDate = Calendar.getInstance()
                 val thisYear = todayDate.get(Calendar.YEAR).toString().toInt()
 
-                val dateBirthDay = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    LocalDate.parse(birthDay, DateTimeFormatter.ofPattern("yyyyMMdd"))
-                } else {
-                    TODO("VERSION.SDK_INT < N")
-                }
+                val dateBirthDay = LocalDate.parse(birthDay, DateTimeFormatter.ofPattern("yyyyMMdd"))
                 val birthYear: Int = dateBirthDay.getYear()
                 var age: Int = thisYear - birthYear + 1
 

@@ -3,7 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_blacklist.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_chat_room.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_chatting_list.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_find_password.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_friends.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_input_review.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_interest_list.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_intro.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_logout.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_match.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_matched_status.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_matching_decision.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_new_restaurant.xml" value="0.4036458333333333" />
         <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_profile_setting.xml" value="0.4" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_register.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_rest_pic_change.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_restaurant.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_restaurant_list.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_search_restaurant.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_setting.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_terms.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_verification.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/content_main.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/dialog.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/fragment_first.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/Good Day/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/fragment_second.xml" value="0.4036458333333333" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable-v24/button_rounded_high_disabled.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/button.xml" value="0.2515625" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/button_background.xml" value="0.2515625" />
