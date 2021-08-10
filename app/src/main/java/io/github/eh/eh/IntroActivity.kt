@@ -16,6 +16,8 @@ import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.serverside.Sex
 import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_intro.*
+import org.json.JSONArray
+import org.json.JSONObject
 
 class IntroActivity : AppCompatActivity() {
     @SuppressLint("ResourceType")
@@ -48,10 +50,15 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun startActivity() {
-        var intent = Intent(this, MainActivity::class.java)
+        var intent = Intent(this, InterestListActivity::class.java)
         var user = User()
         user.phoneNumber = "01048728361"
         user.setSex(Sex.MALE)
+        var obj = JSONObject()
+        obj.put("food", JSONArray())
+        obj.put("hobby", JSONArray())
+        obj.put("place", JSONArray())
+        user.setInterests(obj)
         Utils.setEssentialData(intent,user,this::class.qualifiedName!!)
         startActivity(
             intent,
