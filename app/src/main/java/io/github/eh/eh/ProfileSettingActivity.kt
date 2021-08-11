@@ -144,41 +144,25 @@ class ProfileSettingActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-
                 val nickName = etv_profileSettingNickName.text.toString()
                 val birthDay = etv_profileSettingBirth.text.toString()
                 var todayDate = Calendar.getInstance()
                 val thisYear = todayDate.get(Calendar.YEAR).toString().toInt()
-
                 val dateBirthDay = LocalDate.parse(birthDay, DateTimeFormatter.ofPattern("yyyyMMdd"))
                 val birthYear: Int = dateBirthDay.getYear()
                 var age: Int = thisYear - birthYear + 1
 
-
-
-
-                val bootstrap: HTTPBootstrap = HTTPBootstrap.builder()
-                    .port(1300)
-                    .host(Env.API_URL)
-                    .streamHandler(object : StreamHandler {
-
-                        override fun onWrite(outputStream: HTTPContext) {
-                            val user = User()
-                            user.nickName = nickName
-                            user.birthDay = dateBirthDay
-                            user.sex = sex.toString()
-                            user.age = age
-                            user.image = imageUri
-                            outputStream.write(user)
-                        }
-
-                        override fun onRead(obj: Any?) {
-                            ToInterestListIntent(obj as User?)
-                        }
-
-                    }).build()
-                bootstrap.submit()
-
+                val user = User()
+                user.nickName = nickName
+                user.birthDay = dateBirthDay
+                user.sex = sex.toString()
+                user.age = age
+                user.image = imageUri
+                val toInterestListIntent = Intent(this, InterestListActivity::class.java)
+                var bundle: Bundle = Bundle()
+                bundle.putSerializable("user", user)
+                toInterestListIntent.putExtra("user", bundle)
+                startActivity(toInterestListIntent)
             }
         }
 
@@ -187,14 +171,6 @@ class ProfileSettingActivity : AppCompatActivity() {
             finish()
         }
 
-    }
-
-    private fun ToInterestListIntent(user: User?) {
-        val toInterestListIntent = Intent(this, InterestListActivity::class.java)
-        var bundle: Bundle = Bundle()
-        bundle.putSerializable("user", user)
-        toInterestListIntent.putExtra("user", bundle)
-        startActivity(toInterestListIntent)
     }
 
     private fun checkConditions(): Boolean {
