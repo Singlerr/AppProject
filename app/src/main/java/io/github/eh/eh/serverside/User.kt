@@ -64,6 +64,21 @@ class User : Serializable {
     var interests: String? = null
 
     /**
+     * A interests in food of user.
+     */
+    var foodInterests: MutableSet<String>? = null
+
+    /**
+     * A interests in hobby of user.
+     */
+    var hobbyInterests: MutableSet<String>? = null
+
+    /**
+     * A interests in hobby of user.
+     */
+    var placeInterests: MutableSet<String>? = null
+
+    /**
      * A form of this is not set.
      * TODO("Set a form of phone number")
      */
