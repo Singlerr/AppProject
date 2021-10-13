@@ -4,6 +4,7 @@
     package="io.github.eh.eh">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,10 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
-        android:theme="@style/Theme.EscapeHonbab">
+        <activity
+            android:name=".AuthActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:exported="true" />
         <activity
             android:name=".FriendsActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".RestaurantAddressActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -88,10 +92,10 @@
         <activity
             android:name=".IntroActivity"
             android:exported="true"
-
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

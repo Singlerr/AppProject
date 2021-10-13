@@ -1,5 +1,7 @@
 package io.github.eh.eh.serverside
 
-enum class Sex {
+import java.io.Serializable
+
+enum class Sex : Serializable {
     MALE, FEMALE
 }

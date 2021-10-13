@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.Window
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.asutils.IAlertDialog
 import io.github.eh.eh.asutils.Utils
@@ -105,43 +106,50 @@ class VerificationActivity : AppCompatActivity() {
                                                 this@VerificationActivity,
                                                 ProfileSettingActivity::class.java
                                             )
-                                            Utils.setEssentialData(intent,user,this::class.qualifiedName!!)
+                                            Utils.setEssentialData(
+                                                intent,
+                                                user,
+                                                this::class.qualifiedName!!
+                                            )
                                             startActivity(intent)
                                         }.create()
                                     dialog.show()
                                 }
                             } else {
                                 when {
-                                    obj.response!! == "VERIFICATION_NOT_FOUND" -> {
+                                    obj.response == "VERIFICATION_NOT_FOUND" -> {
                                         CoroutineScope(Dispatchers.Main).launch {
-                                            var dialog = IAlertDialog.Builder(this@VerificationActivity)
-                                                .title("확인")
-                                                .message("인증에 실패했습니다. 제한 시간 내에 인증을 완료해주세요.")
-                                                .positiveButton("확인") {
-                                                    finish()
-                                                }.create()
+                                            var dialog =
+                                                IAlertDialog.Builder(this@VerificationActivity)
+                                                    .title("확인")
+                                                    .message("인증에 실패했습니다. 제한 시간 내에 인증을 완료해주세요.")
+                                                    .positiveButton("확인") {
+                                                        finish()
+                                                    }.create()
                                             dialog.show()
                                         }
                                     }
-                                    obj.response!! == "CODE_MISMATCH" -> {
+                                    obj.response == "CODE_MISMATCH" -> {
                                         CoroutineScope(Dispatchers.Main).launch {
-                                            var dialog = IAlertDialog.Builder(this@VerificationActivity)
-                                                .title("확인")
-                                                .message("인증에 실패했습니다.")
-                                                .positiveButton("확인") {
-                                                    finish()
-                                                }.create()
+                                            var dialog =
+                                                IAlertDialog.Builder(this@VerificationActivity)
+                                                    .title("확인")
+                                                    .message("인증에 실패했습니다.")
+                                                    .positiveButton("확인") {
+                                                        finish()
+                                                    }.create()
                                             dialog.show()
                                         }
                                     }
                                     else -> {
                                         CoroutineScope(Dispatchers.Main).launch {
-                                            var dialog = IAlertDialog.Builder(this@VerificationActivity)
-                                                .title("확인")
-                                                .message("인증에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.")
-                                                .positiveButton("확인") {
-                                                    finish()
-                                                }.create()
+                                            var dialog =
+                                                IAlertDialog.Builder(this@VerificationActivity)
+                                                    .title("확인")
+                                                    .message("인증에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.")
+                                                    .positiveButton("확인") {
+                                                        finish()
+                                                    }.create()
                                             dialog.show()
                                         }
                                     }
@@ -162,13 +170,10 @@ class VerificationActivity : AppCompatActivity() {
     private fun resetTimer() {
         timer = object :
             CountDownTimer(Env.VERIFICATION_TIME_OUT.toLong(), 1000) {
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun onTick(p0: Long) {
                 var second = p0 / 1000
-                var date = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    LocalTime.ofSecondOfDay(second)
-                } else {
-                    second
-                }
+                var date = LocalTime.ofSecondOfDay(second)
                 timeLeft.text = date.toString()
 
             }
@@ -191,13 +196,10 @@ class VerificationActivity : AppCompatActivity() {
         if (timer == null) {
             timer = object :
                 CountDownTimer(Env.VERIFICATION_TIME_OUT.toLong(), 1000) {
+                @RequiresApi(Build.VERSION_CODES.O)
                 override fun onTick(p0: Long) {
                     var second = p0 / 1000
-                    var date = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        LocalTime.ofSecondOfDay(second)
-                    } else {
-                        second
-                    }
+                    var date = LocalTime.ofSecondOfDay(second)
                     Log.e("Error", second.toString())
                     Log.e("Errr", date.toString())
                     timeLeft.text = date.toString()

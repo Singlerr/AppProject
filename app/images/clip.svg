@@ -1,10 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #efb75c;
-      }
-    </style>
-  </defs>
-  <path id="패스_7677" data-name="패스 7677" class="cls-1" d="M404.617-168.1h-8v12l4-2,4,2Z" transform="translate(-396.617 168.102)"/>
+<svg height="12" viewBox="0 0 8 12" width="8" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            .cls-1 {
+            fill: #efb75c;
+            }
+        </style>
+    </defs>
+    <path class="cls-1" d="M404.617-168.1h-8v12l4-2,4,2Z" data-name="패스 7677" id="패스_7677"
+        transform="translate(-396.617 168.102)" />
 </svg>

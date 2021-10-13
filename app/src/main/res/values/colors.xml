@@ -14,4 +14,6 @@
     <color name="gray">#b2b2b2</color>
     <color name="disabledColor">#d3d3d3</color>
     <color name="interestDisabledColor">#f1f1f5</color>
+    <color name="chatColor_black">#191919</color>
+    <color name="chatColor_white">@color/white</color>
 </resources>

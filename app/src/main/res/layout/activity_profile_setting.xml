@@ -246,8 +246,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:button="@drawable/checkbox"
         android:layout_marginBottom="10dp"
+        android:button="@drawable/checkbox"
         android:text="사진을 제외한 기본정보는 가입 후 변경이 불가능 합니다"
         android:textColor="#000000" />
 

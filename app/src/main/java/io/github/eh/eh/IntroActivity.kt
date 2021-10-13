@@ -11,6 +11,7 @@ import android.view.animation.AccelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.addListener
+import io.github.eh.eh.asutils.MatchedDialog
 import io.github.eh.eh.asutils.ScreenSizeClassifier
 import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.serverside.Sex
@@ -42,7 +43,21 @@ class IntroActivity : AppCompatActivity() {
         animator.duration = 1000
         animator.interpolator = AccelerateInterpolator()
         animator.addListener({
-            startActivity()
+            //startActivity()
+
+            var intent = Intent(this,MainActivity::class.java)
+            var user = User()
+            var obj = JSONObject()
+            obj.put("food", JSONArray())
+            obj.put("hobby", JSONArray())
+            obj.put("place", JSONArray())
+            user.setInterests(obj)
+            user.setSex(Sex.MALE)
+            user.age = 20
+            user.name = "dd"
+            user.nickName = "dd"
+            Utils.setEssentialData(intent,user,this::class.qualifiedName!!)
+            startActivity(intent)
         })
 
         animator.start()
@@ -50,16 +65,14 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun startActivity() {
-        var intent = Intent(this, ProfileSettingActivity::class.java)
+        var intent = Intent(this, LoginActivity::class.java)
         var user = User()
-        user.phoneNumber = "01048728361"
-        user.setSex(Sex.MALE)
         var obj = JSONObject()
         obj.put("food", JSONArray())
         obj.put("hobby", JSONArray())
         obj.put("place", JSONArray())
         user.setInterests(obj)
-        Utils.setEssentialData(intent,user,this::class.qualifiedName!!)
+        Utils.setEssentialData(intent, user, this::class.qualifiedName!!)
         startActivity(
             intent,
             ActivityOptions.makeSceneTransitionAnimation(this).toBundle()

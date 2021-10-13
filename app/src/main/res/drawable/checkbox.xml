@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="false"
-        android:drawable="@drawable/checkbox_xxhdpi">
-    </item>
+    <item android:drawable="@drawable/checkbox_xxhdpi" android:state_checked="false"></item>
 
-    <item android:state_checked="true"
-        android:drawable="@drawable/checkbox_xxhdpi_checked">
-    </item>
+    <item android:drawable="@drawable/checkbox_xxhdpi_checked" android:state_checked="true"></item>
 </selector>

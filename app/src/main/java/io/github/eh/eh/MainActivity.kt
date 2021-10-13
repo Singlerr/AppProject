@@ -1,20 +1,28 @@
 package io.github.eh.eh
 
 import android.animation.ValueAnimator
+import android.content.Context
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.Env.Bundle.BUNDLE_NAME
 import io.github.eh.eh.Env.Bundle.USER_BUNDLE
+import io.github.eh.eh.asutils.MatchedDialog
+import io.github.eh.eh.http.HTTPBootstrap
+import io.github.eh.eh.http.HTTPContext
+import io.github.eh.eh.http.StreamHandler
+import io.github.eh.eh.misc.Restaurant
+import io.github.eh.eh.misc.RestaurantList
 import io.github.eh.eh.netty.MatchingCallback
 import io.github.eh.eh.netty.MatchingClientBootstrap
 import io.github.eh.eh.netty.UserWrapper
-import io.github.eh.eh.serverside.AgeScope
-import io.github.eh.eh.serverside.DesiredTarget
-import io.github.eh.eh.serverside.SexScope
-import io.github.eh.eh.serverside.User
+import io.github.eh.eh.serverside.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -55,12 +63,24 @@ class MainActivity : AppCompatActivity() {
         if (intent.hasExtra(BUNDLE_NAME)) {
             var bundle = intent.getBundleExtra(BUNDLE_NAME)!!
             user = bundle.getSerializable(USER_BUNDLE) as User
+
+            var desiredTarget = DesiredTarget()
+            desiredTarget.user = user
+            desiredTarget.gpsData = GPSData()
             wrapper = UserWrapper.getInstance(user, object : MatchingCallback {
                 override fun onMatched(userWrapper: UserWrapper?, targetUser: User?) {
-                    TODO("Not yet implemented")
+                    stopAnimation()
+                    var dialog = MatchedDialog.Builder(this@MainActivity)
+                        .name(targetUser!!.nickName)
+                        .info(targetUser)
+                        .positiveButton("수락") {
+                            //수락했을 때
+                        }
+                        .create()
+                    dialog.show()
                 }
 
-            }, DesiredTarget())
+            }, desiredTarget)
         }
         btn_startMatching.setOnClickListener {
             startAnimation()
@@ -116,7 +136,7 @@ class MainActivity : AppCompatActivity() {
             btn_age_3.setBackgroundResource(R.drawable.button_rounded_high)
             setAgeScope(wrapper.desiredTarget, AgeScope.SCOPE_31)
         }
-
+        initializeRestaurantList()
     }
 
     private fun startAnimation() {
@@ -151,10 +171,80 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun initializeRestaurantList() {
+        val bootstrap = HTTPBootstrap.builder()
+            .host(Env.REQ_RESTAURANT_LIST_URL)
+            .port(Env.HTTP_PORT)
+            .streamHandler(object : StreamHandler {
+                override fun onWrite(outputStream: HTTPContext) {
+                    //Nothing to write
+                }
+
+                override fun onRead(obj: Any?) {
+                    if (obj is RestaurantList) {
+                        val rstView = findViewById<ListView>(R.id.rstView)
+                        var restaurantViewAdapter = RestaurantViewAdapter(applicationContext)
+                        restaurantViewAdapter.addAll(obj.restaurants)
+                        rstView.adapter = restaurantViewAdapter
+                    }
+                }
+
+            })
+            .build()
+        bootstrap.submit()
+    }
+
     private fun stopAnimation() {
         currentAnimations.forEach {
             it.value.first.cancel()
             it.value.second.cancel()
         }
+    }
+
+    class RestaurantViewAdapter(val context: Context) : BaseAdapter() {
+
+        private var restaurants: Stack<Restaurant> = Stack()
+
+        override fun getCount(): Int {
+            return restaurants.size
+        }
+
+        override fun getItem(pos: Int): Any {
+            return restaurants[pos]
+        }
+
+        override fun getItemId(pos: Int): Long {
+            return 0
+        }
+
+        fun addRestaurant(restaurant: Restaurant) {
+            restaurants.add(restaurant)
+        }
+
+        fun addAll(col: Collection<Restaurant>) {
+            restaurants.addAll(col)
+        }
+
+        override fun getView(pos: Int, view: View?, parent: ViewGroup?): View {
+            val current = restaurants[pos]
+            val view = LayoutInflater.from(context).inflate(R.layout.adapter_restaurant, null)
+            val rstImage = view.findViewById<ImageView>(R.id.restImage)
+            val rstName = view.findViewById<TextView>(R.id.restName)
+            val rstAddress = view.findViewById<TextView>(R.id.restAddress)
+            val rstRate = view.findViewById<TextView>(R.id.restRate)
+
+
+            var bitmap = BitmapFactory.decodeByteArray(current.image, 0, current.image.size)
+            rstImage.setImageBitmap(bitmap)
+
+            rstName.text = current.name
+
+            rstAddress.text = current.address
+
+            rstRate.text = current.rate.toString()
+
+            return view
+        }
+
     }
 }

@@ -1,11 +1,9 @@
 package io.github.eh.eh.serverside
 
-import android.net.Uri
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.Serializable
-import java.sql.Date
 import java.time.LocalDate
 
 class User : Serializable {
@@ -55,7 +53,7 @@ class User : Serializable {
      * A image of a profile of user.
      * It is saved with type "Blob"
      */
-    var image: Uri? = null
+    var image: ByteArray? = null
 
     /**
      * A json of interests that a user has.
@@ -109,9 +107,11 @@ class User : Serializable {
         } catch (e: JSONException) {
             null
         }
-    fun setSex(sexType:Sex){
+
+    fun setSex(sexType: Sex) {
         sex = sexType.name
     }
+
     fun setInterests(json: JSONObject?) {
         interests = json?.toString() ?: ""
     }
