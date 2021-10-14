@@ -1,3 +1,5 @@
 package io.github.eh.eh.misc
 
-class RestaurantList(var restaurants: List<Restaurant>)
+import java.io.Serializable
+
+class RestaurantList(var restaurants: List<Restaurant>) : Serializable

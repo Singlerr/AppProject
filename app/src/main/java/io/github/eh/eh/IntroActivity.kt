@@ -11,7 +11,6 @@ import android.view.animation.AccelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.addListener
-import io.github.eh.eh.asutils.MatchedDialog
 import io.github.eh.eh.asutils.ScreenSizeClassifier
 import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.serverside.Sex
@@ -45,7 +44,7 @@ class IntroActivity : AppCompatActivity() {
         animator.addListener({
             //startActivity()
 
-            var intent = Intent(this,MainActivity::class.java)
+            var intent = Intent(this, MainActivity::class.java)
             var user = User()
             var obj = JSONObject()
             obj.put("food", JSONArray())
@@ -56,7 +55,7 @@ class IntroActivity : AppCompatActivity() {
             user.age = 20
             user.name = "dd"
             user.nickName = "dd"
-            Utils.setEssentialData(intent,user,this::class.qualifiedName!!)
+            Utils.setEssentialData(intent, user, this::class.qualifiedName!!)
             startActivity(intent)
         })
 

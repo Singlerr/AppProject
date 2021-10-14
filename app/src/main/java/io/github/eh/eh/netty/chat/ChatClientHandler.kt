@@ -5,9 +5,12 @@ import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
 
 class ChatClientHandler : ChannelInboundHandlerAdapter {
-    private var chatContext: ChatContext? = null
+    var chatContext: ChatContext? = null
+        get() {
+            return chatContext
+        }
 
-    private var context: ChannelHandlerContext? = null
+    var context: ChannelHandlerContext? = null
         get() {
             return context
         }
@@ -29,7 +32,7 @@ class ChatClientHandler : ChannelInboundHandlerAdapter {
 
     @Throws(Exception::class)
     override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
-        if (msg is MessageBundle) messageHandler!!.onMessageReceived(chatContext, msg)
+        if (msg is MessageBundle) messageHandler!!.onMessageReceived(chatContext!!, msg)
     }
 
     companion object {

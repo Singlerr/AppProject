@@ -22,6 +22,8 @@ class ChatClientBootstrap private constructor(host: String, port: Int) {
     private val port = 0
     private var future: ChannelFuture? = null
 
+    var chatContext: ChatContext? = null
+
     @Throws(InterruptedException::class)
     fun startConnection(msgHandler: MessageHandler) {
         messageHandler = ChatClientHandler.getInstance(msgHandler)
@@ -45,6 +47,7 @@ class ChatClientBootstrap private constructor(host: String, port: Int) {
             })
         future = bootstrap.connect(host, port).sync()
         future!!.channel().closeFuture().sync()
+        chatContext = messageHandler!!.chatContext
     }
 
     fun closeConnection() {

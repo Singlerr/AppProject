@@ -6,7 +6,7 @@ import io.netty.channel.ChannelHandlerContext
 
 class ChatContext private constructor(private val context: ChannelHandlerContext) {
     fun sendMessage(msg: String, targetUserId: String, user: User) {
-        val bundle: MessageBundle = MessageBundle.Companion.createMessage(msg, targetUserId, user)
+        val bundle: MessageBundle = MessageBundle.createMessage(msg, targetUserId, user, true)
         context.writeAndFlush(bundle)
     }
 

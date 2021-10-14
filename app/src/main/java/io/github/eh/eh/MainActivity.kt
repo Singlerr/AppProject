@@ -219,10 +219,12 @@ class MainActivity : AppCompatActivity() {
 
         fun addRestaurant(restaurant: Restaurant) {
             restaurants.add(restaurant)
+            notifyDataSetChanged()
         }
 
         fun addAll(col: Collection<Restaurant>) {
             restaurants.addAll(col)
+            notifyDataSetChanged()
         }
 
         override fun getView(pos: Int, view: View?, parent: ViewGroup?): View {

@@ -5,6 +5,8 @@ import android.os.Bundle
 import io.github.eh.eh.Env
 import io.github.eh.eh.serverside.User
 import org.json.JSONArray
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Utils {
 
@@ -38,5 +40,17 @@ object Utils {
     fun getUser(intent: Intent): User? {
         return if (intent.hasExtra(Env.Bundle.BUNDLE_NAME)) intent.getBundleExtra(Env.Bundle.BUNDLE_NAME)!!
             .getSerializable(Env.Bundle.USER_BUNDLE) as User else null
+    }
+
+    //시간 형태: yyyy-MM-dd HH:mm
+    fun getTimeString(time: String): String {
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm")
+        val exportFormat = SimpleDateFormat("HH:mm")
+        val now = Calendar.getInstance().time
+        val date = format.parse(time)
+        val diff = now.time - date.time
+
+        val m = diff / 60000
+        return if (m in 0..60) exportFormat.format(date) else format.format(date)
     }
 }

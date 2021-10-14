@@ -53,6 +53,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:background="@drawable/layout_background2"
-        android:orientation="vertical"></LinearLayout>
+        android:background="@drawable/chat_layout_background"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/chat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <!--  메시지 입력란 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textMsg"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/send"/>
+    </LinearLayout>
 </LinearLayout>

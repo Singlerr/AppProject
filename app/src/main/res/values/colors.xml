@@ -16,4 +16,5 @@
     <color name="interestDisabledColor">#f1f1f5</color>
     <color name="chatColor_black">#191919</color>
     <color name="chatColor_white">@color/white</color>
+    <color name="defaultColor">#767676</color>
 </resources>
