@@ -12,8 +12,6 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.asutils.Utils
-import io.github.eh.eh.http.HTTPBootstrap
-import io.github.eh.eh.misc.Restaurant
 import io.github.eh.eh.netty.chat.ChatClientBootstrap
 import io.github.eh.eh.netty.chat.ChatContext
 import io.github.eh.eh.netty.chat.MessageHandler
@@ -35,17 +33,18 @@ class ChatRoomActivity : AppCompatActivity() {
         var adapter = ChatViewAdapter(applicationContext)
         chatView.adapter = adapter
         var chatClientBootstrap = ChatClientBootstrap.getInstance(Env.CHAT_POOL_URL, Env.CHAT_PORT)
-        chatClientBootstrap.startConnection(object : MessageHandler {
+        var chId = chatClientBootstrap.startConnection(object : MessageHandler {
             override fun onMessageReceived(context: ChatContext, bundle: MessageBundle?) {
                 if (!bundle!!.me) {
-                    adapter.addMessage(bundle!!)
+                    adapter.addMessage(bundle)
                 }
             }
         })
         send.setOnClickListener {
             var msg = textMsg.text.toString()
-            chatClientBootstrap.chatContext!!.sendMessage(msg,targetUserId,user)
-            adapter.addMessage(MessageBundle.createMessage(msg,targetUserId,user,true))
+            var bundle = ChatContext.newMessage(msg, targetUserId, user)
+            chatClientBootstrap.channels.find(chId).writeAndFlush(bundle)
+            adapter.addMessage(MessageBundle.createMessage(msg, targetUserId, user, true))
         }
     }
 

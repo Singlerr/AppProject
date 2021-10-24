@@ -1,7 +1,5 @@
 package io.github.eh.eh.netty.utils;
 
-import android.util.Log;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.ByteArrayInputStream;
@@ -15,6 +13,10 @@ import io.netty.buffer.Unpooled;
 
 public class ObjectSerializer {
     private static final ObjectMapper mapper = new ObjectMapper();
+
+    public static ObjectMapper getMapper() {
+        return mapper;
+    }
 
     public static ByteBuf writeAsByteBuf(Object object) throws Exception {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -31,19 +33,18 @@ public class ObjectSerializer {
 
     public static ByteBuf writeJsonAsByteBuf(Object object) throws Exception {
         byte[] bs = mapper.writeValueAsBytes(object);
-        Log.i("d", mapper.writeValueAsString(object));
         ByteBuf byteBuf = Unpooled.directBuffer();
         byteBuf.writeBytes(bs);
         return byteBuf;
     }
 
-    public static Object readJsonByteBufAsObject(ByteBuf byteBuf) throws IOException {
+    public static Object readJsonByteBufAsObject(ByteBuf byteBuf, Class<?> classType) throws IOException {
         int len = byteBuf.readableBytes();
         byte[] read = new byte[len];
         for (int i = 0; i < len; i++) {
             read[i] = byteBuf.getByte(i);
         }
-        return mapper.readValue(read, Object.class);
+        return mapper.readValue(read, classType);
     }
 
     public static Object readAsObject(ByteBuf byteBuf) throws Exception {

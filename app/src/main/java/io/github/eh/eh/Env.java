@@ -1,15 +1,29 @@
 package io.github.eh.eh;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.Getter;
+
 public class Env {
+
+
+    private static ObjectMapper mapper = new ObjectMapper();
+
+    public static ObjectMapper getMapper() {
+        return mapper;
+    }
+
     public static final String API_URL = "http://10.0.2.2:8080/api/v1/user/login";
-    public static final String AUTH_REQ_API_URL = "http://10.0.2.2:8080/api/v1/auth/msg";
+    public static final String AUTH_LOGIN_API_URL = "http://10.0.2.2:8080/api/v1/user/login";
     public static final String AUTH_CHK_API_URL = "http://10.0.2.2:8080/api/v1/auth/verify";
+    public static final String AUTH_REGISTER_API_URL = "http://10.0.2.2:8080/api/v1/user/register";
+
 
     public static final String REQ_RESTAURANT_LIST_URL = "http://10.0.2.2:8080/api/v1/misc/restaurant";
 
-    public static final String REQ_FRIEND_LIST_URL = "http://10.0.2.2:8080/api/v1/misc/friend";
+    public static final String REQ_FRIEND_LIST_URL = "http://10.0.2.2:8080/api/v1/chat/friend";
 
-    public static final String REQ_MATCHED_LIST_URL = "http://10.0.2.2:8080/api/v1/misc/matched";
+    public static final String REQ_MATCHED_LIST_URL = "http://10.0.2.2:8080/api/v1/chat/matched";
 
     public static final String CHAT_POOL_URL = "10.0.2.2";
 
@@ -20,6 +34,7 @@ public class Env {
     public static final int HTTP_PORT = 8080;
 
     public static class Bundle {
+
         public static final String BUNDLE_NAME = "passableResources";
         public static final String USER_BUNDLE = "user";
         public static final String CLASS_BUNDLE = "className";

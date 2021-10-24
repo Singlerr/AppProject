@@ -60,6 +60,7 @@
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/layout_background2.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/matched_button_focused.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/matched_list_button_focused.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/plus.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/round.xml" value="0.275" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/shadow.xml" value="0.2734375" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/drawable/slide_background.xml" value="0.2755208333333333" />
@@ -72,7 +73,7 @@
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_find_password.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_friends.xml" value="0.5" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_input_review.xml" value="0.20104166666666667" />
-        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_interest_list.xml" value="0.10508474576271186" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_interest_list.xml" value="0.33" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_intro.xml" value="0.17046605876393112" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/activity_main.xml" value="0.33" />
@@ -89,12 +90,14 @@
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/adapter_chat_me.xml" value="0.33" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/adapter_chat_you.xml" value="0.25" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/adapter_matched_or_friend.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/adapter_menu_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/adapter_restaurant.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/content_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/dialog.xml" value="0.5" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/fragment_first.xml" value="0.23385416666666667" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/fragment_second.xml" value="0.23385416666666667" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/friend_matched.xml" value="0.33" />
+        <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/menu_dialog.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Singlerr/AndroidStudioProjects/EscapeHonbab/app/src/main/res/layout/slide_bar.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/User/Desktop/EscapeHonbab/app/src/main/res/layout/activity_profile_setting.xml" value="0.5" />
       </map>

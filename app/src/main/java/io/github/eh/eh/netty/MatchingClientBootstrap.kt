@@ -1,6 +1,8 @@
 package io.github.eh.eh.netty
 
 import io.github.eh.eh.netty.MatchingClientHandler.Companion.getInstance
+import io.github.eh.eh.serverside.DesiredTarget
+import io.github.eh.eh.serverside.User
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.ChannelOption
@@ -27,8 +29,13 @@ class MatchingClientBootstrap private constructor(private val host: String, priv
                     override fun initChannel(ch: SocketChannel) {
                         ch.pipeline().addLast(IdleStateHandler(60, 30, 0))
                         ch.pipeline().addLast(
-                            /**ObjectDecoder(ClassResolvers.softCachingResolver(ClassLoader.getSystemClassLoader())),
-                            ObjectEncoder(),**/
+                            MessageDecoder(
+                                arrayListOf(
+                                    DesiredTarget::class.java,
+                                    User::class.java
+                                )
+                            ),
+                            MessageEncoder(),
                             handler
                         )
                     }

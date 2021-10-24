@@ -12,8 +12,16 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.asutils.Utils
+import io.github.eh.eh.http.HTTPBootstrap
+import io.github.eh.eh.http.HTTPContext
+import io.github.eh.eh.http.StreamHandler
+import io.github.eh.eh.http.bundle.RequestBundle
+import io.github.eh.eh.http.bundle.ResponseBundle
 import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_interest_list.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class InterestListActivity : AppCompatActivity() {
@@ -73,6 +81,37 @@ class InterestListActivity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_interest_list)
         user = Utils.getUser(intent)
+
+
+
+        complete.setOnClickListener {
+            var bootstrap = HTTPBootstrap.builder()
+                .host(Env.AUTH_REGISTER_API_URL)
+                .port(Env.HTTP_PORT)
+                .streamHandler(object : StreamHandler{
+                    override fun onWrite(outputStream: HTTPContext) {
+                        var req = RequestBundle()
+                        req.setMessage(req)
+                        outputStream.write(req)
+                    }
+
+                    override fun onRead(obj: Any?) {
+                        if(obj is ResponseBundle){
+                            if(obj.responseCode == 200){
+                                user!!.password = obj.response;
+                                var intent = Intent(this@InterestListActivity,MainActivity::class.java)
+                                Utils.setEssentialData(intent=intent,user=user!!,this@InterestListActivity::class.java.name)
+                                startActivity(intent)
+                            }
+                        }
+                    }
+
+                }).build()
+            CoroutineScope(Dispatchers.IO).launch {
+                bootstrap.submit()
+            }
+        }
+
         //이전 액티비티에서 그 액티비티의 클래스 이름을 가져옵니다. 반드시 모든 액티비티는 새로운 액티비티를 실행할 때 자신의 클래스 정보를 전달해야합니다.
         var lastActivityClass = Class.forName(Utils.getClassName(intent))
 

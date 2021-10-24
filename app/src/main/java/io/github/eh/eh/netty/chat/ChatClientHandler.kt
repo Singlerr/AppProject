@@ -3,31 +3,32 @@ package io.github.eh.eh.netty.chat
 import io.github.eh.eh.netty.chat.bundle.MessageBundle
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
+import io.netty.channel.group.ChannelGroup
+import java.nio.channels.Channels
 
 class ChatClientHandler : ChannelInboundHandlerAdapter {
-    var chatContext: ChatContext? = null
+
+    private var channelGroup:ChannelGroup? = null
+
+    private var chatContext: ChatContext? = null
         get() {
             return chatContext
         }
 
-    var context: ChannelHandlerContext? = null
-        get() {
-            return context
-        }
     private var messageHandler: MessageHandler? = null
 
     private constructor(context: ChatContext) {
         chatContext = context
     }
 
-    private constructor(messageHandler: MessageHandler) {
+    private constructor(messageHandler: MessageHandler,channels: ChannelGroup) {
         this.messageHandler = messageHandler
+        this.channelGroup = channels
     }
 
     @Throws(Exception::class)
     override fun channelActive(ctx: ChannelHandlerContext) {
-        context = ctx
-        chatContext = ChatContext.getInstance(ctx)
+        chatContext = ChatContext.getInstance(channelGroup!!,ctx.channel().id())
     }
 
     @Throws(Exception::class)
@@ -40,8 +41,8 @@ class ChatClientHandler : ChannelInboundHandlerAdapter {
             return ChatClientHandler(context)
         }
 
-        fun getInstance(messageHandler: MessageHandler): ChatClientHandler {
-            return ChatClientHandler(messageHandler)
+        fun getInstance(messageHandler: MessageHandler,channels: ChannelGroup): ChatClientHandler {
+            return ChatClientHandler(messageHandler,channels)
         }
     }
 }

@@ -189,7 +189,7 @@ class ProfileSettingActivity : AppCompatActivity() {
 
     private fun ToInterestListIntent(user: User?) {
         val toInterestListIntent = Intent(this, InterestListActivity::class.java)
-        Utils.setEssentialData(toInterestListIntent,user,this::class.qualifiedName!!)
+        Utils.setEssentialData(toInterestListIntent, user, this::class.qualifiedName!!)
         startActivity(toInterestListIntent)
     }
 

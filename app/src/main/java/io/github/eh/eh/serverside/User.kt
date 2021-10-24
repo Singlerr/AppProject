@@ -1,11 +1,13 @@
 package io.github.eh.eh.serverside
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.Serializable
 import java.time.LocalDate
 
+@JsonTypeInfo(include = JsonTypeInfo.As.EXTERNAL_PROPERTY, use = JsonTypeInfo.Id.NAME)
 class User : Serializable {
     /**
      * A user id
@@ -30,7 +32,9 @@ class User : Serializable {
     /**
      * A set of friends.
      */
-    val friends: List<String>? = null
+    val friends: List<String> = ArrayList()
+
+    val blackList:Set<String> = HashSet()
 
     /**
      * A birth day of a user.
@@ -61,20 +65,6 @@ class User : Serializable {
      */
     var interests: String? = null
 
-    /**
-     * A interests in food of user.
-     */
-    var foodInterests: MutableSet<String>? = null
-
-    /**
-     * A interests in hobby of user.
-     */
-    var hobbyInterests: MutableSet<String>? = null
-
-    /**
-     * A interests in hobby of user.
-     */
-    var placeInterests: MutableSet<String>? = null
 
     /**
      * A form of this is not set.

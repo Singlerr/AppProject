@@ -3,20 +3,24 @@ package io.github.eh.eh
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import io.github.eh.eh.asutils.MenuDialog
+import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
 import io.github.eh.eh.http.StreamHandler
 import io.github.eh.eh.misc.FriendChatInfo
 import io.github.eh.eh.misc.FriendChatInfoList
+import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_friends.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 
 class FriendsActivity : AppCompatActivity() {
@@ -29,9 +33,12 @@ class FriendsActivity : AppCompatActivity() {
 
         var listView = findViewById<ListView>(R.id.frd_mtd_list)
 
+        var user = Utils.getUser(intent)
+
         var frdBootstrap = HTTPBootstrap.builder()
             .port(Env.HTTP_PORT)
             .host(Env.REQ_FRIEND_LIST_URL)
+            .token(user!!.password)
             .streamHandler(object : StreamHandler {
                 override fun onWrite(outputStream: HTTPContext) {
                     TODO("Not yet implemented")
@@ -41,7 +48,8 @@ class FriendsActivity : AppCompatActivity() {
                     if (obj is FriendChatInfoList) {
                         friendAdapter = FriendChatViewAdapter(
                             applicationContext,
-                            R.layout.adapter_matched_or_friend
+                            R.layout.adapter_matched_or_friend,
+                            user
                         )
                         friendAdapter!!.addAll(obj.list)
                         listView.adapter = friendAdapter!!
@@ -51,6 +59,7 @@ class FriendsActivity : AppCompatActivity() {
         var mtdBootstrap = HTTPBootstrap.builder()
             .port(Env.HTTP_PORT)
             .host(Env.REQ_MATCHED_LIST_URL)
+            .token(user!!.password)
             .streamHandler(object : StreamHandler {
                 override fun onWrite(outputStream: HTTPContext) {
                     TODO("Not yet implemented")
@@ -60,15 +69,18 @@ class FriendsActivity : AppCompatActivity() {
                     if (obj is FriendChatInfoList) {
                         matchedAdapter = FriendChatViewAdapter(
                             applicationContext,
-                            R.layout.adapter_matched_or_friend
+                            R.layout.adapter_matched_or_friend,
+                            user
                         )
                         matchedAdapter!!.addAll(obj.list)
                     }
                 }
 
             }).build()
-        frdBootstrap.submit()
-        mtdBootstrap.submit()
+        CoroutineScope(Dispatchers.IO).launch {
+            frdBootstrap.submit()
+            mtdBootstrap.submit()
+        }
 
         show_friend.setOnClickListener {
             if (!friendView) {
@@ -86,9 +98,10 @@ class FriendsActivity : AppCompatActivity() {
                 friendView = true
             }
         }
+
     }
 
-    class FriendChatViewAdapter(val context: Context, val layout: Int) : BaseAdapter() {
+    class FriendChatViewAdapter(val context: Context, val layout: Int,val user:User) : BaseAdapter() {
 
         private var friendChatInfo: Stack<FriendChatInfo> = Stack()
 
@@ -123,6 +136,55 @@ class FriendsActivity : AppCompatActivity() {
             val frdTime = view.findViewById<TextView>(R.id.frd_time)
 
             var bitmap = BitmapFactory.decodeByteArray(current.img, 0, current.img.size)
+
+            var gestureDetector = GestureDetector(context, object: GestureDetector.OnGestureListener{
+                override fun onDown(p0: MotionEvent?): Boolean {
+                    return false
+                }
+
+                override fun onShowPress(p0: MotionEvent?) {
+                }
+
+                override fun onSingleTapUp(p0: MotionEvent?): Boolean {
+                    return false
+                }
+
+                override fun onScroll(
+                    p0: MotionEvent?,
+                    p1: MotionEvent?,
+                    p2: Float,
+                    p3: Float
+                ): Boolean {
+                    return false
+                }
+
+                override fun onLongPress(e: MotionEvent?) {
+                    //TODO("길게 탭 했을 때 메뉴 띄우기")
+                    var dialog = MenuDialog.Builder(context)
+                        .menuItems(MenuDialog.MenuItem("차단"){
+                            //블랙리스트에 저장
+                            user.blackList.plus(current.id)
+                            var bootstrap = HTTPBootstrap.builder()
+                                .token(user.password)
+                                .port(Env.HTTP_PORT)
+                                .build()
+                        }).create()
+                    dialog.show()
+                }
+
+                override fun onFling(
+                    p0: MotionEvent?,
+                    p1: MotionEvent?,
+                    p2: Float,
+                    p3: Float
+                ): Boolean {
+                    return false
+                }
+
+            })
+
+            view.setOnTouchListener { view, motionEvent -> gestureDetector.onTouchEvent(motionEvent)
+            }
 
             frdImage.setImageBitmap(bitmap)
             frdName.text = current.name

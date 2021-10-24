@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -136,7 +137,9 @@ class MainActivity : AppCompatActivity() {
             btn_age_3.setBackgroundResource(R.drawable.button_rounded_high)
             setAgeScope(wrapper.desiredTarget, AgeScope.SCOPE_31)
         }
-        initializeRestaurantList()
+        CoroutineScope(Dispatchers.IO).launch {
+            //initializeRestaurantList()
+        }
     }
 
     private fun startAnimation() {

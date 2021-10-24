@@ -28,6 +28,8 @@ public class HTTPBootstrap {
     private String host;
     private int port;
 
+    private String token;
+
     public static Builder builder() {
         return new Builder();
     }
@@ -38,6 +40,10 @@ public class HTTPBootstrap {
         //con.setConnectTimeout(timeOut);
         con.setDoOutput(true);
         con.addRequestProperty("Content-Type", "application/json");
+
+        if(token != null && ! token.isEmpty())
+            con.setRequestProperty("Authorization","Bearer "+token);
+
         OutputStream stream = con.getOutputStream();
         HTTPContext httpCtx = HTTPContext.getInstance(stream);
 
@@ -77,6 +83,11 @@ public class HTTPBootstrap {
 
         public Builder streamHandler(StreamHandler handler) {
             bootstrap.handler = handler;
+            return this;
+        }
+
+        public Builder token(String token){
+            bootstrap.token = token;
             return this;
         }
 

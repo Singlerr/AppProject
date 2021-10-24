@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/time"
-            android:layout_marginLeftt="10dp"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/nscjk_regular"
             android:layout_gravity="center_vertical"
             android:text="time" />

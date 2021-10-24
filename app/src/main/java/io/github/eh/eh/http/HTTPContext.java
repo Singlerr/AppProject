@@ -12,11 +12,11 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
+import io.github.eh.eh.Env;
 import io.github.eh.eh.http.cipher.CipherBase;
 
 public class HTTPContext {
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
     private final OutputStream outputStream;
 
     private HTTPContext(OutputStream outputStream) {
@@ -28,7 +28,7 @@ public class HTTPContext {
     }
 
     public void write(Object o) throws IOException, NoSuchPaddingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
-        outputStream.write(CipherBase.getInstance().encode(objectMapper.writeValueAsBytes(o)));
+        outputStream.write(CipherBase.getInstance().encode(Env.getMapper().writeValueAsBytes(o)));
     }
 
     public void write(byte[] data, boolean encrypted) throws IOException, NoSuchPaddingException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {

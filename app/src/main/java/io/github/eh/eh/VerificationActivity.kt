@@ -43,7 +43,7 @@ class VerificationActivity : AppCompatActivity() {
         btn_reRequest.setOnClickListener {
             resetTimer()
             var http = HTTPBootstrap.builder()
-                .host(Env.AUTH_REQ_API_URL)
+                .host(Env.AUTH_CHK_API_URL)
                 .port(Env.HTTP_PORT)
                 .streamHandler(object : StreamHandler {
                     override fun onWrite(outputStream: HTTPContext) {

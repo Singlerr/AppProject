@@ -8,10 +8,13 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.database.getStringOrNull
 import io.github.eh.eh.asutils.IAlertDialog
+import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.db.LoginDatabase
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
 import io.github.eh.eh.http.StreamHandler
+import io.github.eh.eh.http.bundle.RequestBundle
+import io.github.eh.eh.http.bundle.ResponseBundle
 import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineScope
@@ -38,25 +41,30 @@ class LoginActivity : AppCompatActivity() {
             var password = cursor.getStringOrNull(cursor.getColumnIndexOrThrow("password"))
             if (id != null && password != null) {
                 val bootstrap: HTTPBootstrap = HTTPBootstrap.builder()
-                    .port(1300)
+                    .port(Env.HTTP_PORT)
                     .host(Env.API_URL)
                     .streamHandler(object : StreamHandler {
                         override fun onWrite(outputStream: HTTPContext) {
                             val user = User()
                             user.userId = id
                             user.password = password
-                            outputStream.write(user)
+                            var req = RequestBundle()
+                            req.setMessage(user)
+                            outputStream.write(req)
                         }
 
                         override fun onRead(obj: Any?) {
-                            if (obj is User) {
-                                if (obj.result == "SUCCESS_TRANSACTION") {
-                                    IntentSupport(obj)
-                                } else if (obj.result == "ERROR_TRANSACTION") {
-                                    loginFailed()
+                            if (obj is ResponseBundle) {
+                                if(obj.responseCode == 200){
+                                    val token = obj.response;
+                                    databaseHelper.insertOrUpdate(id, password)
+                                    var user = User()
+                                    user.userId = id;
+                                    user.password = token
+                                    intentSupport(user)
+                                }else{
+                                    loginFailed();
                                 }
-                            } else {
-                                loginFailed()
                             }
                         }
 
@@ -76,28 +84,30 @@ class LoginActivity : AppCompatActivity() {
             val id = etv_id.text.toString()
             val pw = etv_password.text.toString()
             val bootstrap: HTTPBootstrap = HTTPBootstrap.builder()
-                .port(1300)
+                .port(Env.HTTP_PORT)
                 .host(Env.API_URL)
                 .streamHandler(object : StreamHandler {
-
-
                     override fun onWrite(outputStream: HTTPContext) {
                         val user = User()
                         user.userId = id
                         user.password = pw
-                        outputStream.write(user)
+                        var req = RequestBundle()
+                        req.setMessage(user)
+                        outputStream.write(req)
                     }
 
                     override fun onRead(obj: Any?) {
-                        if (obj is User) {
-                            if (obj.result == "SUCCESS_TRANSACTION") {
-                                databaseHelper.insertOrUpdate(obj.userId, obj.password)
-                                IntentSupport(obj)
-                            } else if (obj.result == "ERROR_TRANSACTION") {
-                                loginFailed()
+                        if (obj is ResponseBundle) {
+                            if(obj.responseCode == 200){
+                                val token = obj.response;
+                                databaseHelper.insertOrUpdate(id, pw)
+                                var user = User()
+                                user.userId = id;
+                                user.password = token
+                                intentSupport(user)
+                            }else{
+                                loginFailed();
                             }
-                        } else {
-                            loginFailed()
                         }
                     }
 
@@ -138,11 +148,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     //go to MainActivity
-    private fun IntentSupport(user: User?) {
+    private fun intentSupport(user: User?) {
         val tomainintent = Intent(this, MainActivity::class.java)
-        var bundle: Bundle = Bundle()
-        bundle.putSerializable("user", user)
-        tomainintent.putExtra("user", bundle)
+        Utils.setEssentialData(intent=tomainintent,user = user,className = this::class.java.name)
         startActivity(tomainintent)
     }
 
