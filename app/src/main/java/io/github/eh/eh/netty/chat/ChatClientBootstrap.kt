@@ -5,6 +5,8 @@ import io.netty.channel.ChannelFuture
 import io.netty.channel.ChannelId
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.EventLoopGroup
+import io.netty.channel.group.ChannelGroup
+import io.netty.channel.group.DefaultChannelGroup
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioServerSocketChannel
@@ -15,12 +17,6 @@ import io.netty.handler.logging.LogLevel
 import io.netty.handler.logging.LoggingHandler
 import io.netty.util.concurrent.GlobalEventExecutor
 
-import io.netty.channel.group.DefaultChannelGroup
-
-import io.netty.channel.group.ChannelGroup
-
-
-
 
 class ChatClientBootstrap private constructor(host: String, port: Int) {
     private var messageHandler: ChatClientHandler? = null
@@ -30,13 +26,13 @@ class ChatClientBootstrap private constructor(host: String, port: Int) {
     private val host: String? = null
     private val port = 0
     private var future: ChannelFuture? = null
-    var channels:ChannelGroup = DefaultChannelGroup(GlobalEventExecutor.INSTANCE)
+    var channels: ChannelGroup = DefaultChannelGroup(GlobalEventExecutor.INSTANCE)
 
     @Throws(InterruptedException::class)
-    fun startConnection(msgHandler: MessageHandler) : ChannelId {
-        var chId:ChannelId? = null
+    fun startConnection(msgHandler: MessageHandler): ChannelId {
+        var chId: ChannelId? = null
         channels = DefaultChannelGroup(GlobalEventExecutor.INSTANCE)
-        messageHandler = ChatClientHandler.getInstance(msgHandler,channels)
+        messageHandler = ChatClientHandler.getInstance(msgHandler, channels)
         val bootstrap = Bootstrap()
         val group: EventLoopGroup = NioEventLoopGroup(3)
         bootstrap.group(group)

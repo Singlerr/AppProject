@@ -2,9 +2,9 @@ package io.github.eh.eh.asutils
 
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
@@ -36,18 +36,22 @@ class IAlertDialog(private val context: Context?) {
             return this
         }
 
-        fun positiveButton(text: String, listener: View.OnClickListener): Builder {
+        fun positiveButton(text: String, listener: DialogInterface.OnClickListener): Builder {
             var b = dialog!!.findViewById<Button>(R.id.yes)
             b.text = text
-            b.setOnClickListener(listener)
+            b.setOnClickListener {
+                listener.onClick(dialog, DialogInterface.BUTTON_POSITIVE)
+            }
             b.isVisible = true
             return this
         }
 
-        fun negativeButton(text: String, listener: View.OnClickListener): Builder {
+        fun negativeButton(text: String, listener: DialogInterface.OnClickListener): Builder {
             var b = dialog!!.findViewById<Button>(R.id.no)
             b.text = text
-            b.setOnClickListener(listener)
+            b.setOnClickListener {
+                listener.onClick(dialog, DialogInterface.BUTTON_NEGATIVE)
+            }
             b.isVisible = true
             return this
         }

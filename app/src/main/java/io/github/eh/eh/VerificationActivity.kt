@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.transition.Slide
-import android.util.Log
 import android.view.Gravity
 import android.view.Window
 import android.widget.TextView
@@ -16,6 +15,7 @@ import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
 import io.github.eh.eh.http.StreamHandler
+import io.github.eh.eh.http.bundle.RequestBundle
 import io.github.eh.eh.http.bundle.ResponseBundle
 import io.github.eh.eh.http.bundle.VerificationBundle
 import io.github.eh.eh.serverside.User
@@ -43,28 +43,30 @@ class VerificationActivity : AppCompatActivity() {
         btn_reRequest.setOnClickListener {
             resetTimer()
             var http = HTTPBootstrap.builder()
-                .host(Env.AUTH_CHK_API_URL)
+                .host(Env.REQ_AUTH_CODE_API)
                 .port(Env.HTTP_PORT)
                 .streamHandler(object : StreamHandler {
                     override fun onWrite(outputStream: HTTPContext) {
-                        outputStream.write(user)
+                        var reqBundle = RequestBundle()
+                        reqBundle.setMessage(user)
+                        outputStream.write(reqBundle)
                     }
 
                     override fun onRead(obj: Any?) {
                         if (obj is ResponseBundle) {
-                            if (obj.responseCode != 200) {
+                            if (obj.responseCode == 200) {
+                                var intent =
+                                    Intent(applicationContext, VerificationActivity::class.java)
+                                Utils.setEssentialData(intent, user, this::class.java.name)
+                                startActivity(intent)
+                            } else {
                                 CoroutineScope(Dispatchers.Main).launch {
-                                    var dialog = IAlertDialog.Builder(this@VerificationActivity)
+                                    var dialog = IAlertDialog.Builder(applicationContext)
                                         .title("확인")
                                         .message("인증에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.")
-                                        .positiveButton("확인") {
-                                            finish()
-                                        }.create()
+                                        .positiveButton("확인") { _, _ -> finish() }.create()
                                     dialog.show()
                                 }
-                            } else {
-                                resetTimer()
-                                startTimer()
                             }
                         }
                     }
@@ -79,7 +81,8 @@ class VerificationActivity : AppCompatActivity() {
                 var dialog = IAlertDialog.Builder(this)
                     .message("인증번호 형식에 맞춰 입력해주세요(예: 12345)")
                     .title("확인")
-                    .positiveButton("확인") {
+                    .positiveButton("확인") { dialog, _ ->
+                        dialog.dismiss()
                     }.create()
                 dialog.show()
                 return@setOnClickListener
@@ -101,15 +104,16 @@ class VerificationActivity : AppCompatActivity() {
                                     var dialog = IAlertDialog.Builder(this@VerificationActivity)
                                         .title("확인")
                                         .message("인증이 완료되었습니다.")
-                                        .positiveButton("확인") {
+                                        .positiveButton("확인") { _, _ ->
                                             var intent = Intent(
                                                 this@VerificationActivity,
                                                 ProfileSettingActivity::class.java
                                             )
+                                            user.userId = user.phoneNumber
                                             Utils.setEssentialData(
                                                 intent,
                                                 user,
-                                                this::class.qualifiedName!!
+                                                this::class.java.name
                                             )
                                             startActivity(intent)
                                         }.create()
@@ -123,7 +127,8 @@ class VerificationActivity : AppCompatActivity() {
                                                 IAlertDialog.Builder(this@VerificationActivity)
                                                     .title("확인")
                                                     .message("인증에 실패했습니다. 제한 시간 내에 인증을 완료해주세요.")
-                                                    .positiveButton("확인") {
+                                                    .positiveButton("확인") { dialog, _ ->
+                                                        dialog.dismiss()
                                                         finish()
                                                     }.create()
                                             dialog.show()
@@ -135,7 +140,8 @@ class VerificationActivity : AppCompatActivity() {
                                                 IAlertDialog.Builder(this@VerificationActivity)
                                                     .title("확인")
                                                     .message("인증에 실패했습니다.")
-                                                    .positiveButton("확인") {
+                                                    .positiveButton("확인") { dialog, _ ->
+                                                        dialog.dismiss()
                                                         finish()
                                                     }.create()
                                             dialog.show()
@@ -147,7 +153,7 @@ class VerificationActivity : AppCompatActivity() {
                                                 IAlertDialog.Builder(this@VerificationActivity)
                                                     .title("확인")
                                                     .message("인증에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.")
-                                                    .positiveButton("확인") {
+                                                    .positiveButton("확인") { _, _ ->
                                                         finish()
                                                     }.create()
                                             dialog.show()
@@ -182,7 +188,9 @@ class VerificationActivity : AppCompatActivity() {
                 var dialog = IAlertDialog.Builder(this@VerificationActivity)
                     .title("시간 초과")
                     .message("인증 시간이 초과되었습니다. 다시 시도하세요.")
-                    .positiveButton("확인") {
+                    .positiveButton("확인") { dialog, _ ->
+                        dialog.dismiss()
+                        finish()
                     }
                 dialog.create().show()
                 timeLeft.text = ""
@@ -200,8 +208,6 @@ class VerificationActivity : AppCompatActivity() {
                 override fun onTick(p0: Long) {
                     var second = p0 / 1000
                     var date = LocalTime.ofSecondOfDay(second)
-                    Log.e("Error", second.toString())
-                    Log.e("Errr", date.toString())
                     timeLeft.text = date.toString()
 
                 }
@@ -210,7 +216,9 @@ class VerificationActivity : AppCompatActivity() {
                     var dialog = IAlertDialog.Builder(this@VerificationActivity)
                         .title("시간 초과")
                         .message("인증 시간이 초과되었습니다. 다시 시도하세요.")
-                        .positiveButton("확인") {
+                        .positiveButton("확인") { dialog, _ ->
+                            dialog.dismiss()
+                            finish()
                         }
                     dialog.create().show()
                     timeLeft.text = ""

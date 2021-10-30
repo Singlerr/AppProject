@@ -2,30 +2,27 @@ package io.github.eh.eh.netty.chat
 
 import io.github.eh.eh.netty.chat.bundle.MessageBundle
 import io.github.eh.eh.serverside.User
-import io.netty.channel.Channel
-import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelId
 import io.netty.channel.group.ChannelGroup
-import java.nio.channels.Channels
 
-class ChatContext{
+class ChatContext {
 
-    private var channelGroup:ChannelGroup? = null
-    private var channelId:ChannelId? = null
+    private var channelGroup: ChannelGroup? = null
+    private var channelId: ChannelId? = null
 
-    private constructor(channels:ChannelGroup,id:ChannelId){
+    private constructor(channels: ChannelGroup, id: ChannelId) {
         this.channelGroup = channels
         this.channelId = id
     }
 
-    fun writeAndFlush(o:Any){
+    fun writeAndFlush(o: Any) {
         channelGroup!!.find(channelId!!).writeAndFlush(o)
     }
 
-    companion object{
+    companion object {
 
-        fun getInstance(channelGroup: ChannelGroup,id:ChannelId) : ChatContext{
-            return ChatContext(channelGroup,id)
+        fun getInstance(channelGroup: ChannelGroup, id: ChannelId): ChatContext {
+            return ChatContext(channelGroup, id)
         }
 
         fun newMessage(msg: String, targetUserId: String, user: User): MessageBundle {

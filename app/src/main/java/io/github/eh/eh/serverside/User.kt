@@ -32,9 +32,9 @@ class User : Serializable {
     /**
      * A set of friends.
      */
-    val friends: List<String> = ArrayList()
+    var friends: List<String> = ArrayList()
 
-    val blackList:Set<String> = HashSet()
+    var blackList: Set<String> = HashSet()
 
     /**
      * A birth day of a user.
@@ -104,5 +104,21 @@ class User : Serializable {
 
     fun setInterests(json: JSONObject?) {
         interests = json?.toString() ?: ""
+    }
+
+    fun clone(): User {
+        var user = User()
+        user.userId = userId
+        user.phoneNumber = phoneNumber
+        user.name = name
+        user.password = password
+        user.interests = interests
+        user.image = image
+        user.age = age
+        user.birthDay = birthDay
+        user.blackList = HashSet(blackList)
+        user.sex = sex
+        user.friends = ArrayList(friends)
+        return user
     }
 }

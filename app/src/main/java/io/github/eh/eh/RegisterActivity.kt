@@ -11,6 +11,7 @@ import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
 import io.github.eh.eh.http.StreamHandler
+import io.github.eh.eh.http.bundle.RequestBundle
 import io.github.eh.eh.http.bundle.ResponseBundle
 import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_register.*
@@ -38,35 +39,36 @@ class RegisterActivity : AppCompatActivity() {
                 var dialog = IAlertDialog.Builder(this)
                     .message("휴대폰 번호 형식에 맞춰 입력해주세요(예: 01012345678)")
                     .title("확인")
-                    .positiveButton("확인") {
-                    }.create()
+                    .positiveButton(
+                        "확인"
+                    ) { dialog, _ -> dialog!!.dismiss() }.create()
                 dialog.show()
                 return@setOnClickListener
             }
             var http = HTTPBootstrap.builder()
-                .host(Env.AUTH_LOGIN_API_URL)
+                .host(Env.REQ_AUTH_CODE_API)
                 .port(Env.HTTP_PORT)
                 .streamHandler(object : StreamHandler {
                     override fun onWrite(outputStream: HTTPContext) {
+                        var reqBundle = RequestBundle()
                         user.phoneNumber = phoneNumber
-                        outputStream.write(user)
+                        reqBundle.setMessage(user)
+                        outputStream.write(reqBundle)
                     }
 
                     override fun onRead(obj: Any?) {
                         if (obj is ResponseBundle) {
                             if (obj.responseCode == 200) {
                                 var intent =
-                                    Intent(this@RegisterActivity, VerificationActivity::class.java)
-                                Utils.setEssentialData(intent, user, this::class.qualifiedName!!)
+                                    Intent(applicationContext, VerificationActivity::class.java)
+                                Utils.setEssentialData(intent, user, this::class.java.name)
                                 startActivity(intent)
                             } else {
                                 CoroutineScope(Dispatchers.Main).launch {
-                                    var dialog = IAlertDialog.Builder(this@RegisterActivity)
+                                    var dialog = IAlertDialog.Builder(applicationContext)
                                         .title("확인")
                                         .message("인증에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.")
-                                        .positiveButton("확인") {
-                                            finish()
-                                        }.create()
+                                        .positiveButton("확인") { _, _ -> finish() }.create()
                                     dialog.show()
                                 }
                             }

@@ -59,7 +59,7 @@ class FriendsActivity : AppCompatActivity() {
         var mtdBootstrap = HTTPBootstrap.builder()
             .port(Env.HTTP_PORT)
             .host(Env.REQ_MATCHED_LIST_URL)
-            .token(user!!.password)
+            .token(user.password)
             .streamHandler(object : StreamHandler {
                 override fun onWrite(outputStream: HTTPContext) {
                     TODO("Not yet implemented")
@@ -101,7 +101,8 @@ class FriendsActivity : AppCompatActivity() {
 
     }
 
-    class FriendChatViewAdapter(val context: Context, val layout: Int,val user:User) : BaseAdapter() {
+    class FriendChatViewAdapter(val context: Context, val layout: Int, val user: User) :
+        BaseAdapter() {
 
         private var friendChatInfo: Stack<FriendChatInfo> = Stack()
 
@@ -137,53 +138,55 @@ class FriendsActivity : AppCompatActivity() {
 
             var bitmap = BitmapFactory.decodeByteArray(current.img, 0, current.img.size)
 
-            var gestureDetector = GestureDetector(context, object: GestureDetector.OnGestureListener{
-                override fun onDown(p0: MotionEvent?): Boolean {
-                    return false
-                }
+            var gestureDetector =
+                GestureDetector(context, object : GestureDetector.OnGestureListener {
+                    override fun onDown(p0: MotionEvent?): Boolean {
+                        return false
+                    }
 
-                override fun onShowPress(p0: MotionEvent?) {
-                }
+                    override fun onShowPress(p0: MotionEvent?) {
+                    }
 
-                override fun onSingleTapUp(p0: MotionEvent?): Boolean {
-                    return false
-                }
+                    override fun onSingleTapUp(p0: MotionEvent?): Boolean {
+                        return false
+                    }
 
-                override fun onScroll(
-                    p0: MotionEvent?,
-                    p1: MotionEvent?,
-                    p2: Float,
-                    p3: Float
-                ): Boolean {
-                    return false
-                }
+                    override fun onScroll(
+                        p0: MotionEvent?,
+                        p1: MotionEvent?,
+                        p2: Float,
+                        p3: Float
+                    ): Boolean {
+                        return false
+                    }
 
-                override fun onLongPress(e: MotionEvent?) {
-                    //TODO("길게 탭 했을 때 메뉴 띄우기")
-                    var dialog = MenuDialog.Builder(context)
-                        .menuItems(MenuDialog.MenuItem("차단"){
-                            //블랙리스트에 저장
-                            user.blackList.plus(current.id)
-                            var bootstrap = HTTPBootstrap.builder()
-                                .token(user.password)
-                                .port(Env.HTTP_PORT)
-                                .build()
-                        }).create()
-                    dialog.show()
-                }
+                    override fun onLongPress(e: MotionEvent?) {
+                        //TODO("길게 탭 했을 때 메뉴 띄우기")
+                        var dialog = MenuDialog.Builder(context)
+                            .menuItems(MenuDialog.MenuItem("차단") {
+                                //블랙리스트에 저장
+                                user.blackList.plus(current.id)
+                                var bootstrap = HTTPBootstrap.builder()
+                                    .token(user.password)
+                                    .port(Env.HTTP_PORT)
+                                    .build()
+                            }).create()
+                        dialog.show()
+                    }
 
-                override fun onFling(
-                    p0: MotionEvent?,
-                    p1: MotionEvent?,
-                    p2: Float,
-                    p3: Float
-                ): Boolean {
-                    return false
-                }
+                    override fun onFling(
+                        p0: MotionEvent?,
+                        p1: MotionEvent?,
+                        p2: Float,
+                        p3: Float
+                    ): Boolean {
+                        return false
+                    }
 
-            })
+                })
 
-            view.setOnTouchListener { view, motionEvent -> gestureDetector.onTouchEvent(motionEvent)
+            view.setOnTouchListener { view, motionEvent ->
+                gestureDetector.onTouchEvent(motionEvent)
             }
 
             frdImage.setImageBitmap(bitmap)

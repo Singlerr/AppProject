@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.transition.Slide
-import android.util.Log
 import android.view.Gravity
 import android.view.Window
 import android.widget.Button
@@ -88,19 +87,24 @@ class InterestListActivity : AppCompatActivity() {
             var bootstrap = HTTPBootstrap.builder()
                 .host(Env.AUTH_REGISTER_API_URL)
                 .port(Env.HTTP_PORT)
-                .streamHandler(object : StreamHandler{
+                .streamHandler(object : StreamHandler {
                     override fun onWrite(outputStream: HTTPContext) {
                         var req = RequestBundle()
-                        req.setMessage(req)
+                        req.setMessage(user)
                         outputStream.write(req)
                     }
 
                     override fun onRead(obj: Any?) {
-                        if(obj is ResponseBundle){
-                            if(obj.responseCode == 200){
-                                user!!.password = obj.response;
-                                var intent = Intent(this@InterestListActivity,MainActivity::class.java)
-                                Utils.setEssentialData(intent=intent,user=user!!,this@InterestListActivity::class.java.name)
+                        if (obj is ResponseBundle) {
+                            if (obj.responseCode == 200) {
+                                user!!.password = obj.response
+                                var intent =
+                                    Intent(this@InterestListActivity, MainActivity::class.java)
+                                Utils.setEssentialData(
+                                    intent = intent,
+                                    user = user!!,
+                                    this@InterestListActivity::class.java.name
+                                )
                                 startActivity(intent)
                             }
                         }
@@ -124,7 +128,6 @@ class InterestListActivity : AppCompatActivity() {
             if (foodLayout.getChildAt(i) !is LinearLayout)
                 continue
             var childLayout = foodLayout.getChildAt(i) as LinearLayout
-            Log.e("size", childLayout.childCount.toString())
             for (j in 0..childLayout.childCount) {
                 var elem = childLayout.getChildAt(i)
                 if (elem is Button) {
@@ -191,7 +194,7 @@ class InterestListActivity : AppCompatActivity() {
             }
         }
         // binding.complete.setOnClickListener { startActivity(intent) }
-        backspace.setOnClickListener { startActivity(intent2) }
+        backspace.setOnClickListener { finish() }
 
         //체크박스
         /**

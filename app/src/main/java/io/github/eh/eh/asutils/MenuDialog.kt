@@ -4,7 +4,10 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.TextView
@@ -14,8 +17,9 @@ import io.github.eh.eh.R
 class MenuDialog(private val context: Context?) {
     class Builder(private val context: Context?) {
         private var dialog: Dialog? = null
-        private var list:List<MenuItem>
-        private  var adapter:MenuItemAdapter
+        private var list: List<MenuItem>
+        private var adapter: MenuItemAdapter
+
         init {
             dialog = Dialog(context!!)
             dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -27,29 +31,35 @@ class MenuDialog(private val context: Context?) {
             list = ArrayList()
             adapter = MenuItemAdapter(context)
         }
-        fun menuItems(vararg items: MenuItem): Builder{
+
+        fun menuItems(vararg items: MenuItem): Builder {
             list = items.toList()
             return this
         }
+
         fun create(): Dialog {
             adapter.set(list)
             return dialog!!
         }
     }
-    class MenuItem(val name:String, val listener:View.OnClickListener)
 
-    class MenuItemAdapter(val context:Context) : BaseAdapter(){
-        private var items:ArrayList<MenuItem> = ArrayList()
+    class MenuItem(val name: String, val listener: View.OnClickListener)
 
-        fun addAll(i:Collection<MenuItem>){
+    class MenuItemAdapter(val context: Context) : BaseAdapter() {
+        private var items: ArrayList<MenuItem> = ArrayList()
+
+        fun addAll(i: Collection<MenuItem>) {
             items.addAll(i)
         }
-        fun add(item:MenuItem){
+
+        fun add(item: MenuItem) {
             items.add(item)
         }
-        fun set(i:List<MenuItem>){
+
+        fun set(i: List<MenuItem>) {
             items = ArrayList(i)
         }
+
         override fun getCount(): Int {
             return items.size
         }
@@ -66,7 +76,7 @@ class MenuDialog(private val context: Context?) {
 
             var item = items[pos]
 
-            var view = LayoutInflater.from(context).inflate(R.layout.adapter_menu_item,vg)
+            var view = LayoutInflater.from(context).inflate(R.layout.adapter_menu_item, vg)
             var name = view.findViewById<TextView>(R.id.menu_name)
 
             name.text = item.name

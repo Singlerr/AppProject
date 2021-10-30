@@ -94,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="1dp"
         android:orientation="vertical">
 
         <TextView
@@ -118,11 +118,45 @@
             android:textColor="#888888"
             android:textSize="10sp" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_profileSettingText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/nscjk_regular"
+            android:includeFontPadding="false"
+            android:text="이름"
+            android:textColor="#0E0E0E"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etv_profileSettingName"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/input"
+            android:ems="10"
+            android:fontFamily="@font/nscjk_regular"
+            android:hint="  닉네임을 입력해주세요"
+            android:includeFontPadding="false"
+            android:inputType="textPersonName"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/textColor"
+            android:textColorHint="#C8C4C4"
+            android:textCursorDrawable="@drawable/color_cursor" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -157,7 +191,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -193,7 +227,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -223,7 +257,7 @@
             android:layout_width="125dp"
             android:layout_height="40dp"
             android:layout_marginLeft="22dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="2dp"
             android:background="@drawable/button_rounded_medium_unclicked"
             android:fontFamily="@font/nscjk_regular"
             android:includeFontPadding="false"
@@ -236,10 +270,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/nscjk_regular"
-        android:text=""
         android:textAlignment="center"
         android:textColor="@android:color/holo_red_light"
-        android:textSize="16dp" />
+        android:textSize="13dp" />
 
     <CheckBox
         android:id="@+id/cb_profileSettings"
@@ -248,12 +281,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:button="@drawable/checkbox"
+        android:paddingStart="10dp"
         android:text="사진을 제외한 기본정보는 가입 후 변경이 불가능 합니다"
         android:textColor="#000000" />
 
 
     <Button
-        android:id="@+id/btn_moveToInterestSetting"
+        android:id="@+id/btn_moveToPassword"
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:layout_gravity="center_horizontal"

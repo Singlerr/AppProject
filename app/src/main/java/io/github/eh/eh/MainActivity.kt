@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,11 +63,12 @@ class MainActivity : AppCompatActivity() {
         if (intent.hasExtra(BUNDLE_NAME)) {
             var bundle = intent.getBundleExtra(BUNDLE_NAME)!!
             user = bundle.getSerializable(USER_BUNDLE) as User
-
+            var clone = user.clone()
+            clone.image = null
             var desiredTarget = DesiredTarget()
-            desiredTarget.user = user
+            desiredTarget.user = clone
             desiredTarget.gpsData = GPSData()
-            wrapper = UserWrapper.getInstance(user, object : MatchingCallback {
+            wrapper = UserWrapper.getInstance(clone, object : MatchingCallback {
                 override fun onMatched(userWrapper: UserWrapper?, targetUser: User?) {
                     stopAnimation()
                     var dialog = MatchedDialog.Builder(this@MainActivity)

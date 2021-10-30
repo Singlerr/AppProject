@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
         databaseHelper = LoginDatabase(this, "session", null, 1)
         if (databaseHelper.sessionExists()) {
             var cursor = databaseHelper.select()
+            cursor.moveToFirst()
             var id = cursor.getStringOrNull(cursor.getColumnIndexOrThrow("id"))
             var password = cursor.getStringOrNull(cursor.getColumnIndexOrThrow("password"))
             if (id != null && password != null) {
@@ -55,15 +56,12 @@ class LoginActivity : AppCompatActivity() {
 
                         override fun onRead(obj: Any?) {
                             if (obj is ResponseBundle) {
-                                if(obj.responseCode == 200){
-                                    val token = obj.response;
-                                    databaseHelper.insertOrUpdate(id, password)
-                                    var user = User()
-                                    user.userId = id;
-                                    user.password = token
+                                if (obj.responseCode == 200) {
+                                    var user = obj.getMessage(User::class.java)
                                     intentSupport(user)
-                                }else{
-                                    loginFailed();
+                                } else {
+
+                                    loginFailed()
                                 }
                             }
                         }
@@ -73,6 +71,7 @@ class LoginActivity : AppCompatActivity() {
                     try {
                         bootstrap.submit()
                     } catch (e: Exception) {
+                        e.printStackTrace()
                         loginFailedIO()
                     }
                 }
@@ -98,15 +97,10 @@ class LoginActivity : AppCompatActivity() {
 
                     override fun onRead(obj: Any?) {
                         if (obj is ResponseBundle) {
-                            if(obj.responseCode == 200){
-                                val token = obj.response;
+                            if (obj.responseCode == 200) {
                                 databaseHelper.insertOrUpdate(id, pw)
-                                var user = User()
-                                user.userId = id;
-                                user.password = token
-                                intentSupport(user)
-                            }else{
-                                loginFailed();
+                            } else {
+                                loginFailed()
                             }
                         }
                     }
@@ -135,11 +129,13 @@ class LoginActivity : AppCompatActivity() {
             var dialog = IAlertDialog.Builder(instance)
                 .message("정말로 앱을 종료하시겠습니까?")
                 .title("확인")
-                .positiveButton("종료") {
-                    finishAndRemoveTask()
-                    exitProcess(0)
+                .positiveButton("종료") { _, _ ->
+                    run {
+                        finishAndRemoveTask()
+                        exitProcess(0)
+                    }
                 }
-                .negativeButton("취소") {
+                .negativeButton("취소") { _, _ -> //TODO
 
                 }.create()
             dialog.show()
@@ -150,7 +146,11 @@ class LoginActivity : AppCompatActivity() {
     //go to MainActivity
     private fun intentSupport(user: User?) {
         val tomainintent = Intent(this, MainActivity::class.java)
-        Utils.setEssentialData(intent=tomainintent,user = user,className = this::class.java.name)
+        Utils.setEssentialData(
+            intent = tomainintent,
+            user = user,
+            className = this::class.java.name
+        )
         startActivity(tomainintent)
     }
 

@@ -1,6 +1,6 @@
 package io.github.eh.eh.netty
 
-import io.github.eh.eh.netty.utils.ObjectSerializer
+import io.github.eh.eh.Env
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.ByteToMessageDecoder
@@ -22,7 +22,7 @@ class MessageDecoder(private val registeredClasses: List<Class<*>>) : ByteToMess
         val clsName = obj.getString("@type")
         for (cls in registeredClasses) {
             if (cls.name.equals(clsName, ignoreCase = true)) {
-                val o = ObjectSerializer.getMapper().readValue(read, cls)
+                val o = Env.getMapper().readValue(read, cls)
                 list.add(o)
                 break
             }

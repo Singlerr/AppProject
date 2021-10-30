@@ -13,7 +13,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.addListener
 import io.github.eh.eh.asutils.ScreenSizeClassifier
 import io.github.eh.eh.asutils.Utils
-import io.github.eh.eh.serverside.Sex
 import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_intro.*
 import org.json.JSONArray
@@ -43,8 +42,8 @@ class IntroActivity : AppCompatActivity() {
         animator.interpolator = AccelerateInterpolator()
         animator.addListener({
             //startActivity()
-
-            var intent = Intent(this, MainActivity::class.java)
+            var intent = Intent(this, LoginActivity::class.java)
+            /**
             var user = User()
             var obj = JSONObject()
             obj.put("food", JSONArray())
@@ -54,8 +53,9 @@ class IntroActivity : AppCompatActivity() {
             user.setSex(Sex.MALE)
             user.age = 20
             user.name = "dd"
-            user.nickName = "dd"
+            user.nickName = "dd"*
             Utils.setEssentialData(intent, user, this::class.qualifiedName!!)
+             **/
             startActivity(intent)
         })
 

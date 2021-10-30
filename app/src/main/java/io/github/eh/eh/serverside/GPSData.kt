@@ -1,6 +1,5 @@
 package io.github.eh.eh.serverside
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo
 import java.io.Serializable
 
 

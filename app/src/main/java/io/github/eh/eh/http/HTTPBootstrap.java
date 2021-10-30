@@ -39,10 +39,11 @@ public class HTTPBootstrap {
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         //con.setConnectTimeout(timeOut);
         con.setDoOutput(true);
+        con.setReadTimeout(2000);
         con.addRequestProperty("Content-Type", "application/json");
 
-        if(token != null && ! token.isEmpty())
-            con.setRequestProperty("Authorization","Bearer "+token);
+        if (token != null && !token.isEmpty())
+            con.setRequestProperty("Authorization", "Bearer " + token);
 
         OutputStream stream = con.getOutputStream();
         HTTPContext httpCtx = HTTPContext.getInstance(stream);
@@ -53,7 +54,6 @@ public class HTTPBootstrap {
         stream.close();
         int resp = con.getResponseCode();
         InputStream inputStream = con.getInputStream();
-
         ObjectMapper mapper = new ObjectMapper();
 
         ResponseBundle responseBundle = mapper.readValue(CipherBase.getInstance().decode(inputStream), ResponseBundle.class);
@@ -86,7 +86,7 @@ public class HTTPBootstrap {
             return this;
         }
 
-        public Builder token(String token){
+        public Builder token(String token) {
             bootstrap.token = token;
             return this;
         }

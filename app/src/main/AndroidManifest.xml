@@ -13,9 +13,11 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".PasswordActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
             android:name=".AuthActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-            android:exported="true" />
         <activity
             android:name=".FriendsActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -42,9 +44,6 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".ChatRoomActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".ChattingListActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".BlacklistActivity"
