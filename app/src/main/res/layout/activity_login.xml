@@ -65,7 +65,7 @@
         android:background="@drawable/input"
         android:ems="10"
         android:hint="비밀번호"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textColor="@color/textColor"

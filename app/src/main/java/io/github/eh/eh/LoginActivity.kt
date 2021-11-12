@@ -12,6 +12,7 @@ import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.db.LoginDatabase
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
+import io.github.eh.eh.http.HttpStatus
 import io.github.eh.eh.http.StreamHandler
 import io.github.eh.eh.http.bundle.RequestBundle
 import io.github.eh.eh.http.bundle.ResponseBundle
@@ -56,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
 
                         override fun onRead(obj: Any?) {
                             if (obj is ResponseBundle) {
-                                if (obj.responseCode == 200) {
+                                if (obj.responseCode == HttpStatus.SC_OK) {
                                     var user = obj.getMessage(User::class.java)
                                     intentSupport(user)
                                 } else {
@@ -97,7 +98,9 @@ class LoginActivity : AppCompatActivity() {
 
                     override fun onRead(obj: Any?) {
                         if (obj is ResponseBundle) {
-                            if (obj.responseCode == 200) {
+                            if (obj.responseCode == HttpStatus.SC_OK) {
+                                var user = obj.getMessage(User::class.java)
+                                intentSupport(user)
                                 databaseHelper.insertOrUpdate(id, pw)
                             } else {
                                 loginFailed()

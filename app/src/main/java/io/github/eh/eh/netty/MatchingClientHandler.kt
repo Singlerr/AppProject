@@ -1,11 +1,17 @@
 package io.github.eh.eh.netty
 
-import android.util.Log
+import android.util.Base64
+import io.github.eh.eh.Env
+import io.github.eh.eh.http.HttpStatus
+import io.github.eh.eh.http.bundle.ResponseBundle
+import io.github.eh.eh.http.cipher.CipherBase
 import io.github.eh.eh.serverside.User
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
 import io.netty.handler.timeout.IdleState
 import io.netty.handler.timeout.IdleStateEvent
+import java.net.URL
+
 
 class MatchingClientHandler private constructor(private val user: UserWrapper) :
     ChannelInboundHandlerAdapter() {
@@ -16,8 +22,16 @@ class MatchingClientHandler private constructor(private val user: UserWrapper) :
 
     @Throws(Exception::class)
     override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
-        if (msg is User) {
-            user.callback.onMatched(user, msg)
+        if (msg is ResponseBundle) {
+            if (msg.responseCode == HttpStatus.SC_OK) {
+                var u = msg.getMessage(User::class.java)
+                u.image = Base64.decode(
+                    getImage(String.format(Env.REQ_PROFILE_IMAGE, u.result!!)),
+                    Base64.DEFAULT
+                )
+                user.callback.onMatched(user, u)
+                ctx.channel().closeFuture().sync()
+            }
         }
     }
 
@@ -27,13 +41,12 @@ class MatchingClientHandler private constructor(private val user: UserWrapper) :
                 //No connection
                 ctx!!.close()
             } else if (evt.state() == IdleState.WRITER_IDLE) {
-                ctx!!.writeAndFlush("pong")
+                ctx!!.writeAndFlush(PingMessage())
             }
         }
     }
 
     override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
-        Log.e("ERROR", cause!!.toString())
     }
 
     companion object {
@@ -41,5 +54,12 @@ class MatchingClientHandler private constructor(private val user: UserWrapper) :
         fun getInstance(user: UserWrapper): MatchingClientHandler {
             return MatchingClientHandler(user)
         }
+    }
+
+    private fun getImage(url: String): String {
+        var url = URL(url)
+        var preInput = url.openStream()
+        var r = CipherBase.instance!!.decode(preInput).reader().readText()
+        return r
     }
 }

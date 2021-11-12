@@ -1,47 +1,27 @@
 package io.github.eh.eh.netty.chat.bundle
 
-import io.github.eh.eh.serverside.User
+import com.fasterxml.jackson.annotation.JsonTypeInfo
+import lombok.Getter
 
+@JsonTypeInfo(include = JsonTypeInfo.As.EXTERNAL_PROPERTY, use = JsonTypeInfo.Id.NAME)
+@Getter
 class MessageBundle(
-    val image: ByteArray?,
-    val message: String,
-    val targetUser: User?,
-    state: String?,
-    var user: User,
-    val me: Boolean,
-    val time: String?
+    var message: String,
+    var targetUserId: String,
+    var ownerId: String,
+    val time: String
 ) {
-    var targetUserId: String? = null
-
-    constructor(
-        message: String,
-        targetUserId: String,
-        state: String?,
-        user: User,
-        me: Boolean
-    ) : this(null, message, null, null, user, me, null) {
-        this.targetUserId = targetUserId
-    }
+    lateinit var state: String
+    var me: Boolean = false
 
     companion object {
         fun createMessage(
-            image: ByteArray,
-            text: String,
-            targetUser: User,
-            user: User,
-            me: Boolean,
-            time: String
-        ): MessageBundle {
-            return MessageBundle(image, text, targetUser, null, user, me, time)
-        }
-
-        fun createMessage(
             message: String,
             targetUserId: String,
-            user: User,
-            me: Boolean
+            ownerId: String,
+            time: String
         ): MessageBundle {
-            return MessageBundle(message, targetUserId, null, user, me)
+            return MessageBundle(message, targetUserId, ownerId, time)
         }
     }
 }

@@ -1,5 +1,6 @@
 package io.github.eh.eh.netty
 
+import io.github.eh.eh.http.bundle.ResponseBundle
 import io.github.eh.eh.netty.MatchingClientHandler.Companion.getInstance
 import io.github.eh.eh.serverside.DesiredTarget
 import io.github.eh.eh.serverside.User
@@ -32,7 +33,8 @@ class MatchingClientBootstrap private constructor(private val host: String, priv
                             MessageDecoder(
                                 arrayListOf(
                                     DesiredTarget::class.java,
-                                    User::class.java
+                                    User::class.java,
+                                    ResponseBundle::class.java
                                 )
                             ),
                             MessageEncoder(),

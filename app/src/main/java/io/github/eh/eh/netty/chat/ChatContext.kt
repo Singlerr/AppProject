@@ -9,6 +9,7 @@ class ChatContext {
 
     private var channelGroup: ChannelGroup? = null
     private var channelId: ChannelId? = null
+    var chatRoom: ChatRoom? = null
 
     private constructor(channels: ChannelGroup, id: ChannelId) {
         this.channelGroup = channels
@@ -25,9 +26,9 @@ class ChatContext {
             return ChatContext(channelGroup, id)
         }
 
-        fun newMessage(msg: String, targetUserId: String, user: User): MessageBundle {
+        fun newMessage(msg: String, targetUserId: String, user: User, time: String): MessageBundle {
 
-            return MessageBundle.createMessage(msg, targetUserId, user, true)
+            return MessageBundle.createMessage(msg, targetUserId, user.userId!!, time)
         }
     }
 }

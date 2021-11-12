@@ -183,7 +183,11 @@ class ProfileSettingActivity : AppCompatActivity() {
             }
         }
 
-
+        btn_changeImg.setOnClickListener {
+            var intent = Intent(Intent.ACTION_PICK)
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
+            launcher.launch(intent)
+        }
         btn_previousPage.setOnClickListener {
             finish()
         }

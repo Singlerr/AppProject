@@ -14,6 +14,7 @@ import io.github.eh.eh.asutils.IAlertDialog
 import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
+import io.github.eh.eh.http.HttpStatus
 import io.github.eh.eh.http.StreamHandler
 import io.github.eh.eh.http.bundle.RequestBundle
 import io.github.eh.eh.http.bundle.ResponseBundle
@@ -25,6 +26,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalTime
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashSet
 
 class VerificationActivity : AppCompatActivity() {
     private lateinit var user: User
@@ -37,6 +40,8 @@ class VerificationActivity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_verification)
         user = Utils.getUser(intent)!!
+        user.blackList = HashSet()
+        user.friends = ArrayList()
         etv_verificationPhoneNumber.setText(user.phoneNumber, TextView.BufferType.EDITABLE)
         startTimer()
 
@@ -54,7 +59,7 @@ class VerificationActivity : AppCompatActivity() {
 
                     override fun onRead(obj: Any?) {
                         if (obj is ResponseBundle) {
-                            if (obj.responseCode == 200) {
+                            if (obj.responseCode == HttpStatus.SC_OK) {
                                 var intent =
                                     Intent(applicationContext, VerificationActivity::class.java)
                                 Utils.setEssentialData(intent, user, this::class.java.name)
@@ -99,7 +104,7 @@ class VerificationActivity : AppCompatActivity() {
 
                     override fun onRead(obj: Any?) {
                         if (obj is ResponseBundle) {
-                            if (obj.responseCode == 200) {
+                            if (obj.responseCode == HttpStatus.SC_OK) {
                                 CoroutineScope(Dispatchers.Main).launch {
                                     var dialog = IAlertDialog.Builder(this@VerificationActivity)
                                         .title("확인")
@@ -120,21 +125,8 @@ class VerificationActivity : AppCompatActivity() {
                                     dialog.show()
                                 }
                             } else {
-                                when {
-                                    obj.response == "VERIFICATION_NOT_FOUND" -> {
-                                        CoroutineScope(Dispatchers.Main).launch {
-                                            var dialog =
-                                                IAlertDialog.Builder(this@VerificationActivity)
-                                                    .title("확인")
-                                                    .message("인증에 실패했습니다. 제한 시간 내에 인증을 완료해주세요.")
-                                                    .positiveButton("확인") { dialog, _ ->
-                                                        dialog.dismiss()
-                                                        finish()
-                                                    }.create()
-                                            dialog.show()
-                                        }
-                                    }
-                                    obj.response == "CODE_MISMATCH" -> {
+                                when (obj.responseCode) {
+                                    HttpStatus.SC_NOT_FOUND -> {
                                         CoroutineScope(Dispatchers.Main).launch {
                                             var dialog =
                                                 IAlertDialog.Builder(this@VerificationActivity)
@@ -142,7 +134,18 @@ class VerificationActivity : AppCompatActivity() {
                                                     .message("인증에 실패했습니다.")
                                                     .positiveButton("확인") { dialog, _ ->
                                                         dialog.dismiss()
-                                                        finish()
+                                                    }.create()
+                                            dialog.show()
+                                        }
+                                    }
+                                    HttpStatus.SC_BAD_REQUEST -> {
+                                        CoroutineScope(Dispatchers.Main).launch {
+                                            var dialog =
+                                                IAlertDialog.Builder(this@VerificationActivity)
+                                                    .title("확인")
+                                                    .message("인증에 실패했습니다.")
+                                                    .positiveButton("확인") { dialog, _ ->
+                                                        dialog.dismiss()
                                                     }.create()
                                             dialog.show()
                                         }
@@ -194,7 +197,6 @@ class VerificationActivity : AppCompatActivity() {
                     }
                 dialog.create().show()
                 timeLeft.text = ""
-                TODO("Not yet implemented")
             }
         }
         timeLeft.text = ""
@@ -233,5 +235,19 @@ class VerificationActivity : AppCompatActivity() {
     private fun stopTimer() {
         if (timer != null)
             timer!!.cancel()
+    }
+
+    override fun onBackPressed() {
+        IAlertDialog.Builder(this)
+            .title("확인")
+            .message("인증 과정을 취소하시겠습니까?")
+            .positiveButton("네") { dialog, _ ->
+                dialog.dismiss()
+                finish()
+            }
+            .negativeButton("아니오") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create().show()
     }
 }

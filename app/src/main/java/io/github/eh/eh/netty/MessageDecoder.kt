@@ -21,11 +21,11 @@ class MessageDecoder(private val registeredClasses: List<Class<*>>) : ByteToMess
         val obj = JSONObject(String(read))
         val clsName = obj.getString("@type")
         for (cls in registeredClasses) {
-            if (cls.name.equals(clsName, ignoreCase = true)) {
+            if (cls.simpleName.equals(clsName, ignoreCase = true)) {
                 val o = Env.getMapper().readValue(read, cls)
                 list.add(o)
-                break
             }
         }
+        byteBuf.clear()
     }
 }

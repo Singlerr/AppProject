@@ -29,7 +29,7 @@ class ChatClientBootstrap private constructor(host: String, port: Int) {
     var channels: ChannelGroup = DefaultChannelGroup(GlobalEventExecutor.INSTANCE)
 
     @Throws(InterruptedException::class)
-    fun startConnection(msgHandler: MessageHandler): ChannelId {
+    fun startConnection(msgHandler: MessageHandler): ChatContext {
         var chId: ChannelId? = null
         channels = DefaultChannelGroup(GlobalEventExecutor.INSTANCE)
         messageHandler = ChatClientHandler.getInstance(msgHandler, channels)
@@ -50,12 +50,12 @@ class ChatClientBootstrap private constructor(host: String, port: Int) {
                     ch.pipeline().addLast(messageHandler)
                     ch.pipeline().addLast(ObjectEncoder())
                     channels.add(ch)
-                    chId = ch.id()
                 }
             })
         future = bootstrap.connect(host, port).sync()
+        chId = future!!.channel().id()
         future!!.channel().closeFuture().sync()
-        return chId!!
+        return ChatContext.getInstance(channels, chId)
     }
 
     fun closeConnection() {

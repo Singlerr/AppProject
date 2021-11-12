@@ -5,6 +5,7 @@ import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
 import io.netty.channel.group.ChannelGroup
 
+
 class ChatClientHandler : ChannelInboundHandlerAdapter {
 
     private var channelGroup: ChannelGroup? = null

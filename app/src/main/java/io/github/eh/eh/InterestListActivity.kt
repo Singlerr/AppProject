@@ -10,9 +10,12 @@ import android.view.Window
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.forEach
+import io.github.eh.eh.asutils.IAlertDialog
 import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.http.HTTPContext
+import io.github.eh.eh.http.HttpStatus
 import io.github.eh.eh.http.StreamHandler
 import io.github.eh.eh.http.bundle.RequestBundle
 import io.github.eh.eh.http.bundle.ResponseBundle
@@ -84,6 +87,38 @@ class InterestListActivity : AppCompatActivity() {
 
 
         complete.setOnClickListener {
+            var json = user!!.parseInterest!!
+            if (json.getJSONArray("food").length() < 1) {
+                var dialog = IAlertDialog.Builder(this@InterestListActivity)
+                    .title("알림")
+                    .message("'음식' 관심사 중 적어도 하나를 선턱해주세요!")
+                    .positiveButton("확인") { dialog, _ ->
+                        dialog.dismiss()
+                    }.create()
+                dialog.show()
+                return@setOnClickListener
+            }
+            if (json.getJSONArray("place").length() < 1) {
+                var dialog = IAlertDialog.Builder(this@InterestListActivity)
+                    .title("알림")
+                    .message("'장소' 관심사 중 적어도 하나를 선턱해주세요!")
+                    .positiveButton("확인") { dialog, _ ->
+                        dialog.dismiss()
+                    }.create()
+                dialog.show()
+                return@setOnClickListener
+            }
+            if (json.getJSONArray("hobby").length() < 1) {
+                var dialog = IAlertDialog.Builder(this@InterestListActivity)
+                    .title("알림")
+                    .message("'취미' 관심사 중 적어도 하나를 선턱해주세요!")
+                    .positiveButton("확인") { dialog, _ ->
+                        dialog.dismiss()
+                    }.create()
+                dialog.show()
+                return@setOnClickListener
+            }
+
             var bootstrap = HTTPBootstrap.builder()
                 .host(Env.AUTH_REGISTER_API_URL)
                 .port(Env.HTTP_PORT)
@@ -96,7 +131,7 @@ class InterestListActivity : AppCompatActivity() {
 
                     override fun onRead(obj: Any?) {
                         if (obj is ResponseBundle) {
-                            if (obj.responseCode == 200) {
+                            if (obj.responseCode == HttpStatus.SC_OK) {
                                 user!!.password = obj.response
                                 var intent =
                                     Intent(this@InterestListActivity, MainActivity::class.java)
@@ -106,6 +141,44 @@ class InterestListActivity : AppCompatActivity() {
                                     this@InterestListActivity::class.java.name
                                 )
                                 startActivity(intent)
+                            } else {
+                                if (obj.responseCode == HttpStatus.SC_NOT_ACCEPTABLE) {
+                                    var dialog = IAlertDialog.Builder(this@InterestListActivity)
+                                        .title("알림")
+                                        .message("이미 가입되어 있는 사용자입니다.")
+                                        .positiveButton("확인") { dialog, _ ->
+                                            dialog.dismiss()
+                                            var intent = Intent(
+                                                this@InterestListActivity,
+                                                LoginActivity::class.java
+                                            )
+                                            Utils.setEssentialData(
+                                                intent = intent,
+                                                user = User(),
+                                                className = this@InterestListActivity::class.java.name
+                                            )
+                                            startActivity(intent)
+                                        }.create()
+                                    dialog.show()
+                                } else if (obj.responseCode == HttpStatus.SC_INTERNAL_SERVER_ERROR) {
+                                    var dialog = IAlertDialog.Builder(this@InterestListActivity)
+                                        .title("알림")
+                                        .message("가입 중 오류가 발생하였습니다. 잠시 후에 시도하세요.")
+                                        .positiveButton("확인") { dialog, _ ->
+                                            dialog.dismiss()
+                                            var intent = Intent(
+                                                this@InterestListActivity,
+                                                LoginActivity::class.java
+                                            )
+                                            Utils.setEssentialData(
+                                                intent = intent,
+                                                user = User(),
+                                                className = this@InterestListActivity::class.java.name
+                                            )
+                                            startActivity(intent)
+                                        }.create()
+                                    dialog.show()
+                                }
                             }
                         }
                     }
@@ -115,23 +188,15 @@ class InterestListActivity : AppCompatActivity() {
                 bootstrap.submit()
             }
         }
-
-        //이전 액티비티에서 그 액티비티의 클래스 이름을 가져옵니다. 반드시 모든 액티비티는 새로운 액티비티를 실행할 때 자신의 클래스 정보를 전달해야합니다.
-        var lastActivityClass = Class.forName(Utils.getClassName(intent))
-
-        //화면 넘기기(고쳐야됩니다)
-        //val intent = Intent(this, SubActivity::class.java)
-        val intent2 = Intent(this, lastActivityClass)
         //CheckBox Listener 등록을 간소화시켰습니다
-        var foodLayout = findViewById<LinearLayout>(R.id.foods)
-        for (i in 0..foodLayout.childCount) {
-            if (foodLayout.getChildAt(i) !is LinearLayout)
-                continue
-            var childLayout = foodLayout.getChildAt(i) as LinearLayout
-            for (j in 0..childLayout.childCount) {
-                var elem = childLayout.getChildAt(i)
-                if (elem is Button) {
+        var foodLayoutIds = arrayOf(R.id.foods_1, R.id.foods_2)
+        var hobbyLayoutIds = arrayOf(R.id.hobbies_1, R.id.hobbies_2, R.id.hobbies_3)
+        var placeLayoutIds = arrayOf(R.id.places_1, R.id.places_2)
 
+        foodLayoutIds.forEach {
+            var layout = findViewById<LinearLayout>(it)
+            layout.forEach { elem ->
+                if (elem is Button) {
                     elem.tag = false
                     elem.setOnClickListener {
                         var checked = if (elem.tag is Boolean) elem.tag as Boolean else false
@@ -147,13 +212,9 @@ class InterestListActivity : AppCompatActivity() {
                 }
             }
         }
-        var hobbyLayout = findViewById<LinearLayout>(R.id.hobbies)
-        for (i in 0..hobbyLayout.childCount) {
-            if (hobbyLayout.getChildAt(i) !is LinearLayout)
-                continue
-            var childLayout = hobbyLayout.getChildAt(i) as LinearLayout
-            for (j in 0..childLayout.childCount) {
-                var elem = childLayout.getChildAt(i)
+        hobbyLayoutIds.forEach {
+            var layout = findViewById<LinearLayout>(it)
+            layout.forEach { elem ->
                 if (elem is Button) {
                     elem.tag = false
                     elem.setOnClickListener {
@@ -170,13 +231,9 @@ class InterestListActivity : AppCompatActivity() {
                 }
             }
         }
-        var placeLayout = findViewById<LinearLayout>(R.id.places)
-        for (i in 0..placeLayout.childCount) {
-            if (placeLayout.getChildAt(i) !is LinearLayout)
-                continue
-            var childLayout = placeLayout.getChildAt(i) as LinearLayout
-            for (j in 0..childLayout.childCount) {
-                var elem = childLayout.getChildAt(i)
+        placeLayoutIds.forEach {
+            var layout = findViewById<LinearLayout>(it)
+            layout.forEach { elem ->
                 if (elem is Button) {
                     elem.tag = false
                     elem.setOnClickListener {

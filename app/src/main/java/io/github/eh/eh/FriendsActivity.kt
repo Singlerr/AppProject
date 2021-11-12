@@ -12,10 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import io.github.eh.eh.asutils.MenuDialog
 import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
-import io.github.eh.eh.http.HTTPContext
-import io.github.eh.eh.http.StreamHandler
 import io.github.eh.eh.misc.FriendChatInfo
-import io.github.eh.eh.misc.FriendChatInfoList
+import io.github.eh.eh.netty.chat.ChatMessageHandler
 import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_friends.*
 import kotlinx.coroutines.CoroutineScope
@@ -24,8 +22,6 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class FriendsActivity : AppCompatActivity() {
-    private var friendAdapter: FriendChatViewAdapter? = null
-    private var matchedAdapter: FriendChatViewAdapter? = null
     private var friendView = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,55 +29,33 @@ class FriendsActivity : AppCompatActivity() {
 
         var listView = findViewById<ListView>(R.id.frd_mtd_list)
 
-        var user = Utils.getUser(intent)
+        var user = Utils.getUser(intent)!!
 
-        var frdBootstrap = HTTPBootstrap.builder()
-            .port(Env.HTTP_PORT)
-            .host(Env.REQ_FRIEND_LIST_URL)
-            .token(user!!.password)
-            .streamHandler(object : StreamHandler {
-                override fun onWrite(outputStream: HTTPContext) {
-                    TODO("Not yet implemented")
-                }
+        var matchedAdapter = FriendChatViewAdapter(
+            applicationContext,
+            R.layout.adapter_matched_or_friend,
+            user
+        )
 
-                override fun onRead(obj: Any?) {
-                    if (obj is FriendChatInfoList) {
-                        friendAdapter = FriendChatViewAdapter(
-                            applicationContext,
-                            R.layout.adapter_matched_or_friend,
-                            user
-                        )
-                        friendAdapter!!.addAll(obj.list)
-                        listView.adapter = friendAdapter!!
-                    }
-                }
-            }).build()
-        var mtdBootstrap = HTTPBootstrap.builder()
-            .port(Env.HTTP_PORT)
-            .host(Env.REQ_MATCHED_LIST_URL)
-            .token(user.password)
-            .streamHandler(object : StreamHandler {
-                override fun onWrite(outputStream: HTTPContext) {
-                    TODO("Not yet implemented")
-                }
+        var friendAdapter = FriendChatViewAdapter(
+            applicationContext,
+            R.layout.adapter_matched_or_friend,
+            user
+        )
 
-                override fun onRead(obj: Any?) {
-                    if (obj is FriendChatInfoList) {
-                        matchedAdapter = FriendChatViewAdapter(
-                            applicationContext,
-                            R.layout.adapter_matched_or_friend,
-                            user
-                        )
-                        matchedAdapter!!.addAll(obj.list)
-                    }
-                }
+        CoroutineScope(Dispatchers.Main).launch {
+            ChatMessageHandler.getInstance().getAllChatRooms().forEach { chatRoom ->
+                //If a chatroom is friend-chatroom
+                if (user.friends.contains(chatRoom.friendChatInfo.id)) {
+                    friendAdapter.addFriendChatInfo(chatRoom.friendChatInfo)
+                } else {
+                    //Matched chatroom - temporary
+                    matchedAdapter.addFriendChatInfo(chatRoom.friendChatInfo)
 
-            }).build()
-        CoroutineScope(Dispatchers.IO).launch {
-            frdBootstrap.submit()
-            mtdBootstrap.submit()
+                }
+            }
         }
-
+        listView.adapter = friendAdapter
         show_friend.setOnClickListener {
             if (!friendView) {
                 listView.adapter = friendAdapter
@@ -185,10 +159,12 @@ class FriendsActivity : AppCompatActivity() {
 
                 })
 
-            view.setOnTouchListener { view, motionEvent ->
+            view.setOnTouchListener { _, motionEvent ->
                 gestureDetector.onTouchEvent(motionEvent)
             }
+            view.setOnClickListener {
 
+            }
             frdImage.setImageBitmap(bitmap)
             frdName.text = current.name
             frdInfo.text = String.format("%s, %d세", current.sex, current.age)
