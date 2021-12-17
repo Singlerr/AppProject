@@ -32,7 +32,7 @@ class User : Serializable {
     /**
      * A set of friends.
      */
-    var friends: List<String> = ArrayList()
+    var friends: Set<String> = HashSet()
 
     var blackList: Set<String> = HashSet()
 
@@ -118,7 +118,7 @@ class User : Serializable {
         user.birthDay = birthDay
         user.blackList = HashSet(blackList)
         user.sex = sex
-        user.friends = ArrayList(friends)
+        user.friends = HashSet(friends)
         return user
     }
 }

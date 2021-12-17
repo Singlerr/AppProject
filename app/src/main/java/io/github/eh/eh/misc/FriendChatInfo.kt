@@ -9,6 +9,6 @@ class FriendChatInfo(
     val id: String,
     val sex: String,
     val age: Int,
-    val time: String,
+    val time: String?,
     val ownerId: String
 ) : Serializable

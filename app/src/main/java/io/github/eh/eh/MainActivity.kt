@@ -4,12 +4,14 @@ import android.Manifest
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -127,6 +129,11 @@ class MainActivity : AppCompatActivity() {
                         .info(targetUser)
                         .positiveButton("수락") { dialog, _ ->
                             //수락했을 때
+                            var chatRoom = ChatRoom.createChatRoom(user,targetUser!!)
+                            ChatMessageHandler.getInstance().putChatRoom(targetUser.userId!!,chatRoom)
+                            var intent = Intent(this@MainActivity, FriendsActivity::class.java)
+                            Utils.setEssentialData(intent=intent,user=user, className = this::class.java.name)
+                            startActivity(intent)
                             dialog.dismiss()
                         }.negativeButton("거절") { dialog, _ ->
                             dialog.dismiss()
@@ -224,6 +231,7 @@ class MainActivity : AppCompatActivity() {
         var frdBootstrap = HTTPBootstrap.builder()
             .port(Env.HTTP_PORT)
             .host(Env.REQ_FRIEND_LIST_URL)
+            .method(HTTPBootstrap.GET_METHOD)
             .token(user.password)
             .streamHandler(object : StreamHandler {
                 override fun onWrite(outputStream: HTTPContext) {
@@ -278,6 +286,8 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             frdBootstrap.submit()
             loadChatRooms(user)
+        }
+        CoroutineScope(Dispatchers.IO).launch {
             ChatMessageHandler.getInstance().openChatMessageListener()
         }
     }
@@ -294,6 +304,7 @@ class MainActivity : AppCompatActivity() {
         var reqInfoBootstrap = HTTPBootstrap.builder()
             .host(Env.REQ_FRIEND_INFO)
             .port(Env.HTTP_PORT)
+            .method(HTTPBootstrap.GET_METHOD)
             .token(user.password)
             .streamHandler(object : StreamHandler {
                 override fun onWrite(outputStream: HTTPContext) {
@@ -374,6 +385,8 @@ class MainActivity : AppCompatActivity() {
         val bootstrap = HTTPBootstrap.builder()
             .host(Env.REQ_RESTAURANT_LIST_URL)
             .port(Env.HTTP_PORT)
+            .method(HTTPBootstrap.GET_METHOD)
+            .token(user.password)
             .streamHandler(object : StreamHandler {
                 override fun onWrite(outputStream: HTTPContext) {
                     //Nothing to write

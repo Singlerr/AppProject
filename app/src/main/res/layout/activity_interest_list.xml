@@ -74,9 +74,9 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/foods_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/foods_1"
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="35dp"
@@ -141,9 +141,9 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/foods_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/foods_2"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="35dp"
                     android:layout_marginBottom="5dp"
@@ -223,9 +223,9 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/hobbies_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/hobbies_1"
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="35dp"
@@ -287,9 +287,9 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/hobbies_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/hobbies_2"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="35dp"
                     android:layout_marginBottom="5dp"
@@ -349,9 +349,9 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/hobbies_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/hobbies_3"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="35dp"
                     android:layout_marginBottom="5dp"
@@ -432,9 +432,9 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/places_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/places_1"
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 
@@ -492,9 +492,9 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/places_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/places_2"
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 

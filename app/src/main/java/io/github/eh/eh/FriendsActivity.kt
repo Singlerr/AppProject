@@ -1,6 +1,7 @@
 package io.github.eh.eh
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.*
@@ -14,6 +15,7 @@ import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.http.HTTPBootstrap
 import io.github.eh.eh.misc.FriendChatInfo
 import io.github.eh.eh.netty.chat.ChatMessageHandler
+import io.github.eh.eh.serverside.Sex
 import io.github.eh.eh.serverside.User
 import kotlinx.android.synthetic.main.activity_friends.*
 import kotlinx.coroutines.CoroutineScope
@@ -163,11 +165,14 @@ class FriendsActivity : AppCompatActivity() {
                 gestureDetector.onTouchEvent(motionEvent)
             }
             view.setOnClickListener {
-
+                var intent = Intent(context, ChatRoomActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                Utils.setEssentialData(intent = intent, user = user, className = FriendsActivity::class.java.name, targetUserId = current.id)
+                context.startActivity(intent)
             }
             frdImage.setImageBitmap(bitmap)
-            frdName.text = current.name
-            frdInfo.text = String.format("%s, %d세", current.sex, current.age)
+            frdName.text = current.nickName
+            frdInfo.text = String.format("%s, %d세", Sex.Locale.getLocale(current.sex) , current.age)
             frdTime.text = current.time
             return view
         }

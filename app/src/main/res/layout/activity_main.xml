@@ -32,9 +32,8 @@
                 android:id="@+id/profileImg"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_launcher_background"
                 android:layout_marginRight="10dp"
-                />
+                android:src="@drawable/ic_launcher_background" />
 
             <TextView
                 android:id="@+id/textView5"

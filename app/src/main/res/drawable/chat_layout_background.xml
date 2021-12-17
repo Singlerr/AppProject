@@ -8,7 +8,7 @@
                 android:centerColor="@color/white"
                 android:centerY="0.02"
                 android:endColor="@android:color/white"
-                android:startColor="@android:color/darker_gray"/>
+                android:startColor="@android:color/darker_gray" />
         </shape>
     </item>
     <item>
@@ -18,7 +18,7 @@
                 android:centerColor="@color/white"
                 android:centerY="0.02"
                 android:endColor="@android:color/transparent"
-                android:startColor="@android:color/darker_gray"/>
+                android:startColor="@android:color/darker_gray" />
         </shape>
     </item>
 </layer-list>

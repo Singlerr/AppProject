@@ -1,7 +1,11 @@
 package io.github.eh.eh.netty.chat
 
+import android.util.Log
 import io.github.eh.eh.Env
+import io.github.eh.eh.netty.ChannelCallback
 import io.github.eh.eh.netty.chat.bundle.MessageBundle
+import io.netty.channel.Channel
+import io.netty.channel.group.ChannelGroup
 
 class ChatMessageHandler {
 
@@ -49,12 +53,18 @@ class ChatMessageHandler {
     }
 
     fun openChatMessageListener() {
-        context = bootstrap.startConnection(object : MessageHandler {
+        bootstrap.startConnection(object : MessageHandler {
             override fun onMessageReceived(context: ChatContext, bundle: MessageBundle?) {
                 if (chatListeners.containsKey(bundle!!.ownerId) && containsChatRoom(bundle.ownerId)) {
                     context.chatRoom = getChatRoom(bundle.ownerId)
                     chatListeners[bundle.ownerId]!!.onMessageRead(context, bundle)
                 }
+            }
+        }, object: ChannelCallback{
+            override fun onChannelInitialized(channel: Channel, channels: ChannelGroup) {
+                channels.add(channel)
+                context = ChatContext.getInstance(channelGroup = channels, id = channel.id())
+
             }
         })
     }

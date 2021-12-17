@@ -36,7 +36,7 @@ class ChatRoomActivity : AppCompatActivity() {
 
         var chatView = findViewById<ListView>(R.id.chat)
 
-        var chatRoom = ChatMessageHandler.getInstance().getChatRoom(user.userId!!)!!
+        var chatRoom = ChatMessageHandler.getInstance().getChatRoom(targetUserId!!)!!
 
         var adapter = ChatViewAdapter(applicationContext, chatRoom)
 

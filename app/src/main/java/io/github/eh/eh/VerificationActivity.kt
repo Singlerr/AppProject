@@ -26,7 +26,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalTime
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
 
 class VerificationActivity : AppCompatActivity() {
@@ -41,7 +40,7 @@ class VerificationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_verification)
         user = Utils.getUser(intent)!!
         user.blackList = HashSet()
-        user.friends = ArrayList()
+        user.friends = HashSet()
         etv_verificationPhoneNumber.setText(user.phoneNumber, TextView.BufferType.EDITABLE)
         startTimer()
 

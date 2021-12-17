@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="AppTheme" parent="Base.Theme.AppCompat.Light" />
+
     <style name="DialogPopUpAnimation">
         <item name="android:windowEnterAnimation">@anim/pop_enter</item>
         <item name="android:windowExitAnimation">@anim/pop_exit</item>

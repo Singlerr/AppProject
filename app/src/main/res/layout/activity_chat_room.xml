@@ -48,47 +48,48 @@
             android:textStyle="bold"
             app:backgroundTint="#FFFFFF" />
     </LinearLayout>
+
     <ListView
         android:id="@+id/chat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/chat_layout_background"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="@drawable/chat_layout_background" />
 
     <!--  메시지 입력란 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:weightSum="10"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="10">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:padding="15dp"
             android:background="@color/interestDisabledColor"
+            android:padding="15dp"
             android:src="@drawable/ic_plus" />
 
         <EditText
             android:id="@+id/textMsg"
-            android:layout_weight="2"
-            android:textColor="@color/defaultColor"
-            android:fontFamily="@font/nscjk_regular"
-            android:text="메시지를 입력하세요."
-            android:gravity="left|center_vertical"
-            android:paddingStart="20dp"
-            android:includeFontPadding="false"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:fontFamily="@font/nscjk_regular"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:paddingStart="20dp"
+            android:text="메시지를 입력하세요."
+            android:textColor="@color/defaultColor" />
 
         <ImageView
             android:id="@+id/send"
-            android:layout_weight="4"
-            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="4"
             android:background="@color/gray"
+            android:padding="5dp"
             android:src="@drawable/ic_send_black" />
     </LinearLayout>
 </LinearLayout>
