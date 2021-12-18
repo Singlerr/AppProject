@@ -37,7 +37,7 @@ public class Env {
 
     public static Set<Class<?>> REGISTERED_CLASSES = new HashSet<>();
 
-    static{
+    static {
         REGISTERED_CLASSES.add(FriendChatInfoList.class);
         REGISTERED_CLASSES.add(ResponseBundle.class);
         REGISTERED_CLASSES.add(RequestBundle.class);

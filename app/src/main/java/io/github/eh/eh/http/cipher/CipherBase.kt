@@ -85,7 +85,8 @@ class CipherBase private constructor() {
         )
         return CipherInputStream(inputStream, cipher)
     }
-    fun decode(input:String): String {
+
+    fun decode(input: String): String {
         val secretKey: SecretKey =
             SecretKeySpec(PRIVATE_KEY.toByteArray(Charset.forName("UTF8")), "AES")
         val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
@@ -96,9 +97,10 @@ class CipherBase private constructor() {
                 )
             )
         )
-        var de = Base64.decode(input,Base64.DEFAULT)
-        return String(cipher.doFinal(de),Charset.forName("UTF-8"))
+        var de = Base64.decode(input, Base64.DEFAULT)
+        return String(cipher.doFinal(de), Charset.forName("UTF-8"))
     }
+
     companion object {
         @JvmStatic
         var instance: CipherBase? = null

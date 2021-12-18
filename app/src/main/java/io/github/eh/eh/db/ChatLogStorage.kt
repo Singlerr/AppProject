@@ -52,4 +52,13 @@ class ChatLogStorage(
         value.put("me", messageBundle.me)
         writableDatabase.insert(messageBundle.targetUserId, null, value)
     }
+
+    companion object {
+        private var instance: ChatLogStorage? = null
+        fun getInstance(context: Context? = null): ChatLogStorage? {
+            if (instance == null)
+                instance = ChatLogStorage(context, "chat", null, 1)
+            return instance
+        }
+    }
 }

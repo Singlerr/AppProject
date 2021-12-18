@@ -10,25 +10,38 @@ class ChatClientHandler : ChannelInboundHandlerAdapter {
 
     private var channelGroup: ChannelGroup? = null
 
-    private var chatContext: ChatContext? = null
-        get() {
-            return chatContext
-        }
 
+    var chatContext: ChatContext? = null
+
+    private lateinit var ownerId: String
     private var messageHandler: MessageHandler? = null
 
     private constructor(context: ChatContext) {
         chatContext = context
     }
 
-    private constructor(messageHandler: MessageHandler, channels: ChannelGroup) {
+    private constructor(
+        messageHandler: MessageHandler,
+        channels: ChannelGroup,
+        ownerId: String = "none"
+    ) {
         this.messageHandler = messageHandler
         this.channelGroup = channels
+        this.ownerId = ownerId
     }
 
     @Throws(Exception::class)
     override fun channelActive(ctx: ChannelHandlerContext) {
         chatContext = ChatContext.getInstance(channelGroup!!, ctx.channel().id())
+        ctx.writeAndFlush(
+            MessageBundle.createMessage(
+                message = "",
+                targetUserId = "",
+                ownerId = ownerId,
+                time = "",
+                state = "HANDSHAKE"
+            )
+        )
     }
 
     @Throws(Exception::class)
@@ -41,8 +54,12 @@ class ChatClientHandler : ChannelInboundHandlerAdapter {
             return ChatClientHandler(context)
         }
 
-        fun getInstance(messageHandler: MessageHandler, channels: ChannelGroup): ChatClientHandler {
-            return ChatClientHandler(messageHandler, channels)
+        fun getInstance(
+            messageHandler: MessageHandler,
+            channels: ChannelGroup,
+            ownerId: String = "none"
+        ): ChatClientHandler {
+            return ChatClientHandler(messageHandler, channels, ownerId)
         }
     }
 }

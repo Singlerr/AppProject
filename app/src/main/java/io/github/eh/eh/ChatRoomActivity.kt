@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import de.hdodenhof.circleimageview.CircleImageView
 import io.github.eh.eh.asutils.Utils
 import io.github.eh.eh.db.ChatLogStorage
 import io.github.eh.eh.netty.chat.ChatContext
@@ -29,14 +29,15 @@ class ChatRoomActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room)
-        var chatStorage = ChatLogStorage(this, "chat", null, 1)
+        var chatStorage = ChatLogStorage.getInstance()!!
 
         var targetUserId = Utils.getTargetUserId(intent)!!
         var user = Utils.getUser(intent)!!
 
         var chatView = findViewById<ListView>(R.id.chat)
 
-        var chatRoom = ChatMessageHandler.getInstance().getChatRoom(targetUserId!!)!!
+        var chatRoom = ChatMessageHandler.getInstance().getChatRoom(targetUserId)!!
+
 
         var adapter = ChatViewAdapter(applicationContext, chatRoom)
 
@@ -50,25 +51,35 @@ class ChatRoomActivity : AppCompatActivity() {
             .registerChatListener(chatRoom, object : ChatMessageListener {
                 override fun onMessageRead(context: ChatContext, bundle: MessageBundle) {
                     chatRoom.addMessage(bundle)
-                    chatStorage.insert(bundle)
+                    CoroutineScope(Dispatchers.Main).launch {
+                        adapter.addMessage(bundle)
+                    }
+                    CoroutineScope(Dispatchers.IO).launch {
+                        chatStorage.insert(bundle)
+                    }
                 }
             })
+
         send.setOnClickListener {
             var msg = textMsg.text.toString()
             var bundle = MessageBundle.createMessage(
                 msg,
                 targetUserId,
                 user.userId!!,
-                Utils.getCurrentTime()
+                Utils.getCurrentTime(),
+                true
             )
             ChatMessageHandler.getInstance().writeMessage(bundle)
             adapter.addMessage(bundle)
             chatRoom.addMessage(bundle)
-            chatStorage.insert(bundle)
+            CoroutineScope(Dispatchers.IO).launch {
+                chatStorage.insert(bundle)
+            }
+            //chatStorage.insert(bundle)
         }
     }
 
-    class ChatViewAdapter(val context: Context, val chatRoom: ChatRoom) : BaseAdapter() {
+    class ChatViewAdapter(val context: Context, private val chatRoom: ChatRoom) : BaseAdapter() {
 
         private var messages: Stack<MessageBundle> = Stack()
 
@@ -96,9 +107,9 @@ class ChatRoomActivity : AppCompatActivity() {
 
         override fun getView(pos: Int, view: View?, parent: ViewGroup?): View {
             val current = messages[pos]
-            if (current.me) {
-                val view = LayoutInflater.from(context).inflate(R.layout.adapter_chat_me, null)
-                val msgImage = view.findViewById<ImageView>(R.id.prfImage)
+            if (!current.me) {
+                val view = LayoutInflater.from(context).inflate(R.layout.adapter_chat_you, null)
+                val msgImage = view.findViewById<CircleImageView>(R.id.prfImage)
                 val msgName = view.findViewById<TextView>(R.id.oppName)
                 val msg = view.findViewById<TextView>(R.id.chatMsg)
                 val msgTime = view.findViewById<TextView>(R.id.time)
@@ -118,13 +129,9 @@ class ChatRoomActivity : AppCompatActivity() {
                 msgTime.text = Utils.getTimeString(current.time)
                 return view
             } else {
-                val view = LayoutInflater.from(context).inflate(R.layout.adapter_chat_you, null)
-                val msgName = view.findViewById<TextView>(R.id.oppName)
+                val view = LayoutInflater.from(context).inflate(R.layout.adapter_chat_me, null)
                 val msg = view.findViewById<TextView>(R.id.chatMsg)
                 val msgTime = view.findViewById<TextView>(R.id.time)
-
-                msgName.text = chatRoom.friendChatInfo.nickName
-
                 msg.text = current.message
                 msgTime.text = Utils.getTimeString(current.time)
                 return view

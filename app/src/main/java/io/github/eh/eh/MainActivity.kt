@@ -11,7 +11,6 @@ import android.graphics.Color
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -109,7 +108,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         user = Utils.getUser(intent)!!
-        var storage = ChatLogStorage(this@MainActivity, "chat", null, 1)
+
+        var storage = ChatLogStorage.getInstance(this@MainActivity)!!
         var bitmap = BitmapFactory.decodeByteArray(user.image, 0, user.image!!.size)
         profileImg.setImageBitmap(bitmap)
         var clone = user.clone()
@@ -129,10 +129,27 @@ class MainActivity : AppCompatActivity() {
                         .info(targetUser)
                         .positiveButton("수락") { dialog, _ ->
                             //수락했을 때
-                            var chatRoom = ChatRoom.createChatRoom(user,targetUser!!)
-                            ChatMessageHandler.getInstance().putChatRoom(targetUser.userId!!,chatRoom)
+                            var chatRoom = ChatRoom.createChatRoom(user, targetUser)
+                            ChatMessageHandler.getInstance()
+                                .putChatRoom(targetUser.userId!!, chatRoom)
+                            ChatMessageHandler.getInstance()
+                                .registerChatListener(chatRoom, object : ChatMessageListener {
+                                    override fun onMessageRead(
+                                        context: ChatContext,
+                                        bundle: MessageBundle
+                                    ) {
+                                        chatRoom.addMessage(bundle)
+                                        CoroutineScope(Dispatchers.IO).launch {
+                                            storage.insert(bundle)
+                                        }
+                                    }
+                                })
                             var intent = Intent(this@MainActivity, FriendsActivity::class.java)
-                            Utils.setEssentialData(intent=intent,user=user, className = this::class.java.name)
+                            Utils.setEssentialData(
+                                intent = intent,
+                                user = user,
+                                className = this::class.java.name
+                            )
                             startActivity(intent)
                             dialog.dismiss()
                         }.negativeButton("거절") { dialog, _ ->
@@ -245,9 +262,9 @@ class MainActivity : AppCompatActivity() {
                         var list = obj.list
                         list.forEach {
                             var chatRoom = ChatRoom(it, ArrayList())
-                            ChatMessageHandler.getInstance()
+                            ChatMessageHandler.getInstance(user.userId!!)
                                 .putChatRoom(
-                                    chatRoom.friendChatInfo.ownerId,
+                                    chatRoom.friendChatInfo.id,
                                     chatRoom,
                                     object : ChatMessageListener {
                                         override fun onMessageRead(
@@ -288,7 +305,7 @@ class MainActivity : AppCompatActivity() {
             loadChatRooms(user)
         }
         CoroutineScope(Dispatchers.IO).launch {
-            ChatMessageHandler.getInstance().openChatMessageListener()
+            ChatMessageHandler.getInstance(user.userId!!).openChatMessageListener()
         }
     }
 

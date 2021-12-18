@@ -18,14 +18,16 @@ public class IOUtils {
 
         return buffer.toByteArray();
     }
+
     public static void transferTo(InputStream inputStream, ByteArrayOutputStream bos) throws IOException {
         byte[] buffer = new byte[4096];
         int len;
-        while ((len = inputStream.read(buffer)) > -1){
-            bos.write(buffer,0,len);
+        while ((len = inputStream.read(buffer)) > -1) {
+            bos.write(buffer, 0, len);
         }
         bos.flush();
     }
+
     public static String readText(InputStream inputStream) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         StringBuilder builder = new StringBuilder();

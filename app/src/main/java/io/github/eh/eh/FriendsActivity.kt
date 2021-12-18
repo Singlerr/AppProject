@@ -167,12 +167,17 @@ class FriendsActivity : AppCompatActivity() {
             view.setOnClickListener {
                 var intent = Intent(context, ChatRoomActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                Utils.setEssentialData(intent = intent, user = user, className = FriendsActivity::class.java.name, targetUserId = current.id)
+                Utils.setEssentialData(
+                    intent = intent,
+                    user = user,
+                    className = FriendsActivity::class.java.name,
+                    targetUserId = current.id
+                )
                 context.startActivity(intent)
             }
             frdImage.setImageBitmap(bitmap)
             frdName.text = current.nickName
-            frdInfo.text = String.format("%s, %d세", Sex.Locale.getLocale(current.sex) , current.age)
+            frdInfo.text = String.format("%s, %d세", Sex.Locale.getLocale(current.sex), current.age)
             frdTime.text = current.time
             return view
         }

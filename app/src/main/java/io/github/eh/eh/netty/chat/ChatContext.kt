@@ -5,19 +5,15 @@ import io.github.eh.eh.serverside.User
 import io.netty.channel.ChannelId
 import io.netty.channel.group.ChannelGroup
 
-class ChatContext {
+class ChatContext private constructor(
+    private val channels: ChannelGroup,
+    private val id: ChannelId
+) {
 
-    private var channelGroup: ChannelGroup? = null
-    private var channelId: ChannelId? = null
-    var chatRoom: ChatRoom? = null
-
-    private constructor(channels: ChannelGroup, id: ChannelId) {
-        this.channelGroup = channels
-        this.channelId = id
-    }
+    lateinit var chatRoom: ChatRoom
 
     fun writeAndFlush(o: Any) {
-        channelGroup!!.find(channelId!!).writeAndFlush(o)
+        channels.find(id).writeAndFlush(o)
     }
 
     companion object {

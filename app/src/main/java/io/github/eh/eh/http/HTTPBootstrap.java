@@ -1,9 +1,6 @@
 package io.github.eh.eh.http;
 
-import android.util.Log;
-
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -16,31 +13,26 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.BadPaddingException;
-import javax.crypto.CipherInputStream;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 import io.github.eh.eh.Env;
 import io.github.eh.eh.http.cipher.CipherBase;
 import io.github.eh.eh.ioutils.IOUtils;
-import io.github.eh.eh.netty.utils.ObjectSerializer;
 
 public class HTTPBootstrap {
 
+    public static final String POST_METHOD = "POST";
+    public static final String GET_METHOD = "GET";
     public static int PORT;
     public static String HTTP_LOGIN = "";
     public static String HTTP_REGISTER = "";
     private final int timeOut = 5;
-
     private String method = "POST";
     private StreamHandler handler;
     private String host;
     private int port;
-
     private String token;
-
-    public static final String POST_METHOD = "POST";
-    public static final String GET_METHOD = "GET";
 
     public static Builder builder() {
         return new Builder();
@@ -68,13 +60,13 @@ public class HTTPBootstrap {
         con.getResponseCode();
         InputStream inputStream = con.getInputStream();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        IOUtils.transferTo(CipherBase.getInstance().decode(inputStream),bos);
+        IOUtils.transferTo(CipherBase.getInstance().decode(inputStream), bos);
         byte[] data = bos.toByteArray();
-        for(Class<?> cls : Env.REGISTERED_CLASSES){
-            try{
-                Object o = Env.getMapper().readValue(data,cls);
+        for (Class<?> cls : Env.REGISTERED_CLASSES) {
+            try {
+                Object o = Env.getMapper().readValue(data, cls);
                 handler.onRead(o);
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 continue;
             }
         }
@@ -109,10 +101,11 @@ public class HTTPBootstrap {
             return this;
         }
 
-        public Builder method(String method){
+        public Builder method(String method) {
             bootstrap.method = method;
             return this;
         }
+
         public HTTPBootstrap build() {
             return bootstrap;
         }
