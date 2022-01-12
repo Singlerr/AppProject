@@ -56,6 +56,8 @@
                 android:textColor="#0E0E0E"
                 android:background="#00FFFFFF" />
 
+            <View style="@style/Divider"/>
+
             <Switch
                 android:id="@+id/switch1"
                 android:layout_width="match_parent"
@@ -67,6 +69,8 @@
                 android:thumb="@drawable/switch_thumb"
                 android:track="@drawable/switch_track_selecter"/>
 
+            <View style="@style/Divider"/>
+
             <Button
                 android:id="@+id/button6"
                 android:layout_width="match_parent"
@@ -76,7 +80,7 @@
                 android:layout_marginLeft="20dp"
                 android:textColor="#0E0E0E"
                 android:background="#00FFFFFF" />
-
+            <View style="@style/Divider"/>
             <Button
                 android:id="@+id/button7"
                 android:layout_width="match_parent"
