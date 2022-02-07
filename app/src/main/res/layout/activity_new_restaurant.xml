@@ -1,8 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewRestaurantActivity">
+    android:background="#FFFFFF"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="50dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/ic_back_icon" />
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="110dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="40dp"
+            android:text="맛집 추가"
+            android:textColor="#0E0E0E"
+            android:textSize="20sp"
+            app:backgroundTint="#00FFFFFF"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_rest_pic"
+            android:layout_width="124dp"
+            android:layout_height="120dp"
+            android:background="@drawable/imgbutton_circle"
+            android:clipToOutline="true"
+            android:elevation="1dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/plusSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="3dp"
+            android:text="+"
+            android:textColor="#707070"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/btn_rest_pic"
+            android:layout_width="47dp"
+            android:layout_height="44dp"
+            android:layout_gravity="right|bottom"
+            android:background="@drawable/button_img_add"
+            android:includeFontPadding="false"
+            android:text="+"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            tools:ignore="RtlCompat" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/음식점이름"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/nscjk_regular"
+            android:includeFontPadding="false"
+            android:text="음식점이름"
+            android:textColor="#0E0E0E"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/음식점이름입력"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/input"
+            android:ems="10"
+            android:fontFamily="@font/nscjk_regular"
+            android:hint=" 음식점이름을 입력해주세요"
+            android:includeFontPadding="false"
+            android:inputType="textPersonName"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/textColor"
+            android:textColorHint="#C8C4C4"
+            android:textCursorDrawable="@drawable/color_cursor" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/음식점분류"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
+        android:text="음식점분류"
+        android:textColor="#0E0E0E"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/한식"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_rounded_medium_interest_disabled"
+            android:fontFamily="@font/nscjk_regular"
+            android:includeFontPadding="false"
+            android:text="@string/subject1_1"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            app:buttonTint="@color/mainColor" />
+
+        <Button
+            android:id="@+id/중식"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_rounded_medium_interest_disabled"
+            android:fontFamily="@font/nscjk_regular"
+            android:includeFontPadding="false"
+            android:text="중식"
+            android:textSize="15sp"
+            android:textColor="#000000"
+            app:buttonTint="@color/mainColor" />
+
+        <Button
+            android:id="@+id/양식"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_rounded_medium_interest_disabled"
+            android:fontFamily="@font/nscjk_regular"
+            android:includeFontPadding="false"
+            android:text="양식"
+            android:textSize="15sp"
+            android:textColor="#000000"
+            app:buttonTint="@color/mainColor" />
+
+        <Button
+            android:id="@+id/일식"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_rounded_medium_interest_disabled"
+            android:fontFamily="@font/nscjk_regular"
+            android:includeFontPadding="false"
+            android:text="일식"
+            android:textSize="15sp"
+            android:textColor="#000000"
+            app:buttonTint="@color/mainColor" />
+
+        <Button
+            android:id="@+id/카페"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_rounded_medium_interest_disabled"
+            android:fontFamily="@font/nscjk_regular"
+            android:includeFontPadding="false"
+            android:text="카페"
+            android:textSize="15sp"
+            android:textColor="#000000"
+            app:buttonTint="@color/mainColor" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/별점"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
+        android:text="별점"
+        android:textColor="#0E0E0E"
+        android:textSize="16sp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:progressBackgroundTint="#F1D4AA"
+        android:progressTint="#FF9800"
+        android:rating="2.5"
+        android:secondaryProgressTint="#FE7B05"
+        android:stepSize="0.5" />
+
+    <TextView
+        android:id="@+id/주소"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/nscjk_regular"
+        android:includeFontPadding="false"
+        android:text="주소"
+        android:textColor="#0E0E0E"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/주소입력"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/input"
+        android:ems="10"
+        android:fontFamily="@font/nscjk_regular"
+        android:hint=" 가게주소를 입력해주세요"
+        android:includeFontPadding="false"
+        android:inputType="textPersonName"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@color/textColor"
+        android:textColorHint="#C8C4C4"
+        android:textCursorDrawable="@drawable/color_cursor" />
+</LinearLayout>

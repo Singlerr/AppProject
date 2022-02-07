@@ -3,8 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/button_clip.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/button_rounded_high.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/button_rounded_high_unclicked.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/button_rounded_medium.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/button_rounded_medium_unclicked.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/ic_clip.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/ic_clip_checked.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/ic_clip_unchecked.xml" value="0.2" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/layout_background.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/layout_background2.xml" value="0.26979166666666665" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/layout_shadow.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/rest_edge.xml" value="0.264" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/round.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/roundgray.xml" value="0.26979166666666665" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/roundwhite.xml" value="0.26979166666666665" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/shadow_test.xml" value="0.26979166666666665" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/switch_thumb.xml" value="0.26979166666666665" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/drawable/switch_track_off.xml" value="0.26979166666666665" />
@@ -14,10 +27,11 @@
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_blacklist.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_chat_room.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_chatting_list.xml" value="0.25364583333333335" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_favorite_rest.xml" value="0.264" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_find_password.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_friends.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_input_review.xml" value="0.25364583333333335" />
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_interest_list.xml" value="0.2" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_interest_list.xml" value="0.4" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_intro.xml" value="0.18425925925925926" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_login.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_logout.xml" value="0.25364583333333335" />
@@ -25,22 +39,26 @@
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_match.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_matched_status.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_matching_decision.xml" value="0.25364583333333335" />
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_new_restaurant.xml" value="0.25364583333333335" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_new_restaurant.xml" value="0.264" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_notice.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_notice_admin.xml" value="0.264" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_notice_detail.xml" value="0.264" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_notice_user.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_password.xml" value="0.25364583333333335" />
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_profile_setting.xml" value="0.25364583333333335" />
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_restaurant.xml" value="0.25364583333333335" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_profile_setting.xml" value="0.264" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_register.xml" value="0.25729166666666664" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_rest_pic_change.xml" value="0.25364583333333335" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_restaurant.xml" value="0.12773722627737227" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_restaurant_address.xml" value="0.25364583333333335" />
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_restaurant_list.xml" value="0.2" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_restaurant_list.xml" value="0.264" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_search_restaurant.xml" value="0.176" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_setting.xml" value="0.264" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/activity_setting_rules.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/adapter_chat_me.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/adapter_chat_you.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/adapter_matched_or_friend.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/adapter_menu_item.xml" value="0.25364583333333335" />
-        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/adapter_restaurant.xml" value="0.25364583333333335" />
+        <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/adapter_restaurant.xml" value="0.264" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/content_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/dialog.xml" value="0.25364583333333335" />
         <entry key="..\:/Download/EscapeHonbab/app/src/main/res/layout/fragment_first.xml" value="0.25364583333333335" />
