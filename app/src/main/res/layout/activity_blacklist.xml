@@ -51,7 +51,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/프로필"
+                    android:id="@+id/profile"
                     android:layout_width="50dp"
                     android:layout_height="60dp"
                     android:layout_marginLeft="50dp"
@@ -61,7 +61,7 @@
 
 
                 <Button
-                    android:id="@+id/해제"
+                    android:id="@+id/dismiss"
                     android:layout_width="50dp"
                     android:layout_height="64dp"
                     android:layout_marginLeft="200dp"

@@ -56,7 +56,7 @@
                 android:layout_marginTop="8dp">
 
                 <Button
-                    android:id="@+id/위치순"
+                    android:id="@+id/byLocation"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:text="위치순"
@@ -65,7 +65,7 @@
                     />
 
                 <Button
-                    android:id="@+id/인기순"
+                    android:id="@+id/byBest"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:text="인기순"
@@ -74,7 +74,7 @@
                     android:textColor="@color/black"/>
 
                 <Button
-                    android:id="@+id/추천순"
+                    android:id="@+id/by_recommandation"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:text="추천순"
@@ -125,7 +125,7 @@
                     android:orientation="vertical">
 
                     <CheckBox
-                        android:id="@+id/내가찜한식당온오프"
+                        android:id="@+id/myFavToggle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="200dp"
@@ -215,7 +215,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/맛집추가"
+        android:id="@+id/addRestaurant"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="right|bottom"
