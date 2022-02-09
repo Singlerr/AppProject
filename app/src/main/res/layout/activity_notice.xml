@@ -15,7 +15,7 @@
 
 
         <ImageButton
-            android:id="@+id/뒤로가기"
+            android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="64dp"
             android:layout_marginLeft="20dp"
@@ -48,7 +48,7 @@
             android:orientation="vertical" >
 
             <Button
-                android:id="@+id/공지사항제목및펼쳐보기"
+                android:id="@+id/expandNotice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="공지사항제목"
@@ -68,7 +68,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/공지사항추가버튼"
+        android:id="@+id/addNotice"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="right|bottom"

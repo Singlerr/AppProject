@@ -14,7 +14,7 @@
 
 
         <ImageButton
-            android:id="@+id/뒤로가기"
+            android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="64dp"
             android:layout_marginLeft="20dp"
@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/공지사항제목입력"
+        android:id="@+id/noticeTitleInput"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginLeft="25dp"
@@ -70,7 +70,7 @@
 
 
     <EditText
-        android:id="@+id/공지사항본문내용"
+        android:id="@+id/noticeTextContent"
         android:layout_width="365dp"
         android:layout_height="530dp"
         android:layout_marginLeft="25dp"
